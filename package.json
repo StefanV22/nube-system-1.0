@@ -2,18 +2,19 @@
   "name": "nube-system",
   "version": "1.0.0",
   "description": "A modern, responsive SCSS utility framework with clamp-based responsive sizing",
-  "main": "dist/nube-system.css",
+  "main": "src/main.scss",
   "style": "dist/nube-system.css",
-  "sass": "src/nube-system.scss",
+  "sass": "src/main.scss",
+  "types": "src/main.scss",
   "files": [
     "dist",
     "src",
     "README.md"
   ],
   "scripts": {
-    "build": "sass src/nube-system.scss dist/nube-system.css --style compressed",
-    "build:dev": "sass src/nube-system.scss dist/nube-system.css --style expanded",
-    "watch": "sass src/nube-system.scss dist/nube-system.css --watch",
+    "build": "sass src/main.scss dist/nube-system.css --style compressed",
+    "build:dev": "sass src/main.scss dist/nube-system.css --style expanded",
+    "watch": "sass src/main.scss dist/nube-system.css --watch",
     "prepare": "npm run build"
   },
   "keywords": [
@@ -36,9 +37,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/StefanV22/nf-system.git"
+    "url": "https://github.com/StefanV22/nube-system-1.0.git"
   },
   "bugs": {
-    "url": "https://github.com/StefanV22/nf-system/issues"
+    "url": "https://github.com/StefanV22/nube-system-1.0/issues"
   }
 }
