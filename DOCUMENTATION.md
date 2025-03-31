@@ -7,25 +7,43 @@ A comprehensive guide to using the Nube System utility framework.
 1. [Core Concepts](#core-concepts)
 2. [Utility Classes](#utility-classes)
 3. [Responsive Design](#responsive-design)
-4. [Layout System](#layout-system)
-5. [Theme System](#theme-system)
-6. [Advanced Usage](#advanced-usage)
+4. [Theme System](#theme-system)
+5. [Advanced Usage](#advanced-usage)
 
 ## Core Concepts
 
-### Responsive Behavior
+### Layout Size System
 
-All utilities in Nube System follow these principles:
+The framework uses a numeric scale from 0 to 15 for all layout-related utilities:
 
-- Spacing utilities (margin, padding, gap) are inherently responsive using `clamp()`
-- Other utilities use breakpoint prefixes with underscore notation (`xs_`, `sm_`, `md_`, `lg_`)
-- Layout sizes scale fluidly across viewports
+```scss
+:root {
+  --layout--size--0: 0rem; // 0px
+  --layout--size--1: 0.125rem; // 2px
+  --layout--size--2: 0.25rem; // 4px
+  --layout--size--3: clamp(0.375rem, 0.185vw + 0.333rem, 0.5rem); // 6-8px
+  --layout--size--4: clamp(0.625rem, 0.185vw + 0.583rem, 0.75rem); // 10-12px
+  --layout--size--5: clamp(0.75rem, 0.37vw + 0.667rem, 1rem); // 12-16px
+  --layout--size--6: clamp(1.25rem, 0.37vw + 1.167rem, 1.5rem); // 20-24px
+  --layout--size--7: clamp(1.5rem, 0.741vw + 1.333rem, 2rem); // 24-32px
+  --layout--size--8: clamp(2.5rem, 0.741vw + 2.333rem, 3rem); // 40-48px
+  --layout--size--9: clamp(3rem, 1.481vw + 2.667rem, 4rem); // 48-64px
+  --layout--size--10: clamp(4rem, 2.222vw + 3.5rem, 5.5rem); // 64-88px
+  --layout--size--11: clamp(5.5rem, 3.704vw + 4.667rem, 8rem); // 88-128px
+  --layout--size--12: clamp(7.5rem, 7.407vw + 5.833rem, 12.5rem); // 120-200px
+  --layout--size--13: clamp(11.5rem, 7.407vw + 9.833rem, 16.5rem); // 184-264px
+  --layout--size--14: clamp(13.5rem, 8.889vw + 11.5rem, 19.5rem); // 216-312px
+  --layout--size--15: clamp(15.5rem, 10.37vw + 13.167rem, 22.5rem); // 248-360px
+}
+```
+
+These sizes are used consistently across spacing utilities (margin, padding, gap) and are inherently responsive using `clamp()`.
 
 ### Naming Convention
 
 - Breakpoint prefixes use underscore: `md_fd-row`
 - Property abbreviations are consistent: `fd` (flex-direction), `jc` (justify-content)
-- Size modifiers use semantic names: `sm`, `md`, `lg`
+- Size modifiers use numeric scale (0-15)
 
 ## Utility Classes
 
@@ -58,38 +76,49 @@ Available flex utilities:
 
 ### Spacing Utilities
 
-All spacing utilities use the layout size variables and are inherently responsive:
+All spacing utilities use the numeric scale (0-15) and are inherently responsive using `clamp()`:
 
 ```html
 <!-- Padding -->
-<div class="p-sm">Small padding all around</div>
-<div class="pt-md">Medium padding top</div>
-<div class="px-lg">Large padding on x-axis</div>
+<div class="p0">No padding</div>
+<div class="p2">Small padding (4px)</div>
+<div class="p5">Medium padding (12-16px)</div>
+<div class="p8">Large padding (40-48px)</div>
+
+<!-- Directional padding -->
+<div class="pt5">Top padding</div>
+<div class="pr5">Right padding</div>
+<div class="pb5">Bottom padding</div>
+<div class="pl5">Left padding</div>
+
+<!-- Combined padding -->
+<div class="ph5 pv3">Horizontal 12-16px, vertical 6-8px</div>
 
 <!-- Margin -->
-<div class="m-sm">Small margin all around</div>
-<div class="mt-md">Medium margin top</div>
-<div class="mx-lg">Large margin on x-axis</div>
+<div class="m0">No margin</div>
+<div class="m2">Small margin (4px)</div>
+<div class="m5">Medium margin (12-16px)</div>
+<div class="m8">Large margin (40-48px)</div>
+
+<!-- Directional margin -->
+<div class="mt5">Top margin</div>
+<div class="mr5">Right margin</div>
+<div class="mb5">Bottom margin</div>
+<div class="ml5">Left margin</div>
+
+<!-- Combined margin -->
+<div class="mh5 mv3">Horizontal 12-16px, vertical 6-8px</div>
 
 <!-- Gap -->
-<div class="gap-sm">Small gap between items</div>
-<div class="gap-x-md">Medium column gap</div>
-<div class="gap-y-lg">Large row gap</div>
+<div class="gap0">No gap</div>
+<div class="gap2">Small gap (4px)</div>
+<div class="gap5">Medium gap (12-16px)</div>
+<div class="gap8">Large gap (40-48px)</div>
 
-<!-- Negative margins -->
-<div class="-mt-sm">Small negative margin top</div>
-<div class="-mx-md">Medium negative margin on x-axis</div>
+<!-- Row and column gaps -->
+<div class="rgap5">Row gap</div>
+<div class="cgap5">Column gap</div>
 ```
-
-Available size modifiers:
-
-- `2xs`: Extra extra small
-- `xs`: Extra small
-- `sm`: Small
-- `md`: Medium
-- `lg`: Large
-- `xl`: Extra large
-- `2xl`: Extra extra large
 
 ### Theme Utilities
 
@@ -147,24 +176,8 @@ $breakpoints: (
   // Tablet
   md: 992px,
   // Desktop
-  lg: 992px // Large desktop,,
+  lg: 992px // Large desktop,,,
 );
-```
-
-### Layout Sizes
-
-Layout sizes use `clamp()` for fluid responsiveness:
-
-```scss
-:root {
-  --layout--size--2xs: clamp(0.25rem, 0.2rem + 0.25vw, 0.5rem);
-  --layout--size--xs: clamp(0.5rem, 0.4rem + 0.5vw, 1rem);
-  --layout--size--sm: clamp(0.75rem, 0.6rem + 0.75vw, 1.5rem);
-  --layout--size--md: clamp(1rem, 0.8rem + 1vw, 2rem);
-  --layout--size--lg: clamp(1.5rem, 1.2rem + 1.5vw, 3rem);
-  --layout--size--xl: clamp(2rem, 1.6rem + 2vw, 4rem);
-  --layout--size--2xl: clamp(3rem, 2.4rem + 3vw, 6rem);
-}
 ```
 
 ### Responsive Patterns
@@ -215,13 +228,6 @@ const StyledComponent = styled.div`
   `}
 `;
 ```
-
-### Performance Tips
-
-1. Use `@use` instead of `@import` for better compilation
-2. Leverage the modular structure for tree-shaking
-3. Combine related utilities in components
-4. Use semantic class names for better maintainability
 
 ## Best Practices
 

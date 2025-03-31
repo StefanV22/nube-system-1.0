@@ -4,64 +4,64 @@
 // Generate spacing utilities
 @each $name, $value in v.$layout-sizes {
   // Margin
-  .m-#{$name} {
+  .m#{$name} {
     margin: var(--layout--size--#{$name});
   }
-  .mt-#{$name} {
+  .mt#{$name} {
     margin-top: var(--layout--size--#{$name});
   }
-  .mr-#{$name} {
+  .mr#{$name} {
     margin-right: var(--layout--size--#{$name});
   }
-  .mb-#{$name} {
+  .mb#{$name} {
     margin-bottom: var(--layout--size--#{$name});
   }
-  .ml-#{$name} {
+  .ml#{$name} {
     margin-left: var(--layout--size--#{$name});
   }
-  .mx-#{$name} {
+  .mh#{$name} {
     margin-left: var(--layout--size--#{$name});
     margin-right: var(--layout--size--#{$name});
   }
-  .my-#{$name} {
+  .mv#{$name} {
     margin-top: var(--layout--size--#{$name});
     margin-bottom: var(--layout--size--#{$name});
   }
 
   // Padding
-  .p-#{$name} {
+  .p#{$name} {
     padding: var(--layout--size--#{$name});
   }
-  .pt-#{$name} {
+  .pt#{$name} {
     padding-top: var(--layout--size--#{$name});
   }
-  .pr-#{$name} {
+  .pr#{$name} {
     padding-right: var(--layout--size--#{$name});
   }
-  .pb-#{$name} {
+  .pb#{$name} {
     padding-bottom: var(--layout--size--#{$name});
   }
-  .pl-#{$name} {
+  .pl#{$name} {
     padding-left: var(--layout--size--#{$name});
   }
-  .px-#{$name} {
+  .ph#{$name} {
     padding-left: var(--layout--size--#{$name});
     padding-right: var(--layout--size--#{$name});
   }
-  .py-#{$name} {
+  .pv#{$name} {
     padding-top: var(--layout--size--#{$name});
     padding-bottom: var(--layout--size--#{$name});
   }
 
   // Gap
-  .gap-#{$name} {
+  .gap#{$name} {
     gap: var(--layout--size--#{$name});
   }
-  .gap-x-#{$name} {
-    column-gap: var(--layout--size--#{$name});
-  }
-  .gap-y-#{$name} {
+  .rgap#{$name} {
     row-gap: var(--layout--size--#{$name});
+  }
+  .cgap#{$name} {
+    column-gap: var(--layout--size--#{$name});
   }
 }
 
