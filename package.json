@@ -12,7 +12,7 @@
     "LICENSE"
   ],
   "scripts": {
-    "build": "sass src/variables.scss:styles/variables.css src/flex.scss:styles/flex.css src/layout.scss:styles/layout.css src/spacing.scss:styles/spacing.css src/typography.scss:styles/typography.css --style=compressed --no-source-map",
+    "build": "sass src/variables.scss:styles/variables.css src/flex.scss:styles/flex.css src/layout.scss:styles/layout.css src/spacing.scss:styles/spacing.css src/typography.scss:styles/typography.css --style=expanded --no-source-map",
     "dev": "sass src/:styles/ --watch",
     "prepare": "npm run build",
     "postinstall": "node scripts/setup-astro.js"

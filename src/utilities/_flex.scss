@@ -1,5 +1,4 @@
 @use "sass:map";
-@use "../core/variables" as v;
 
 // Base flex utilities
 [class*="fd-"],
@@ -11,136 +10,119 @@
   display: flex;
 }
 
-// Generate flex utilities for each breakpoint
-@each $breakpoint, $value in v.$breakpoints {
-  $prefix: if($breakpoint == "xs", "", "#{$breakpoint}_");
+// Flex direction
+[class*="fd-row"] {
+  flex-direction: row;
+}
+[class*="fd-column"] {
+  flex-direction: column;
+}
+[class*="fd-row-reverse"] {
+  flex-direction: row-reverse;
+}
+[class*="fd-column-reverse"] {
+  flex-direction: column-reverse;
+}
 
-  // Flex direction
-  [class*="#{$prefix}fd-row"] {
-    flex-direction: row;
-  }
-  [class*="#{$prefix}fd-column"] {
-    flex-direction: column;
-  }
-  [class*="#{$prefix}fd-row-reverse"] {
-    flex-direction: row-reverse;
-  }
-  [class*="#{$prefix}fd-column-reverse"] {
-    flex-direction: column-reverse;
-  }
+// Justify content
+[class*="jc-start"] {
+  justify-content: flex-start;
+}
+[class*="jc-end"] {
+  justify-content: flex-end;
+}
+[class*="jc-center"] {
+  justify-content: center;
+}
+[class*="jc-between"] {
+  justify-content: space-between;
+}
+[class*="jc-around"] {
+  justify-content: space-around;
+}
+[class*="jc-evenly"] {
+  justify-content: space-evenly;
+}
 
-  // Justify content
-  [class*="#{$prefix}jc-start"] {
-    justify-content: flex-start;
-  }
-  [class*="#{$prefix}jc-end"] {
-    justify-content: flex-end;
-  }
-  [class*="#{$prefix}jc-center"] {
-    justify-content: center;
-  }
-  [class*="#{$prefix}jc-between"] {
-    justify-content: space-between;
-  }
-  [class*="#{$prefix}jc-around"] {
-    justify-content: space-around;
-  }
-  [class*="#{$prefix}jc-evenly"] {
-    justify-content: space-evenly;
-  }
+// Align items
+[class*="ai-start"] {
+  align-items: flex-start;
+}
+[class*="ai-end"] {
+  align-items: flex-end;
+}
+[class*="ai-center"] {
+  align-items: center;
+}
+[class*="ai-baseline"] {
+  align-items: baseline;
+}
+[class*="ai-stretch"] {
+  align-items: stretch;
+}
 
-  // Align items
-  [class*="#{$prefix}ai-start"] {
-    align-items: flex-start;
-  }
-  [class*="#{$prefix}ai-end"] {
-    align-items: flex-end;
-  }
-  [class*="#{$prefix}ai-center"] {
-    align-items: center;
-  }
-  [class*="#{$prefix}ai-baseline"] {
-    align-items: baseline;
-  }
-  [class*="#{$prefix}ai-stretch"] {
-    align-items: stretch;
-  }
+// Flex wrap
+[class*="fw-wrap"] {
+  flex-wrap: wrap;
+}
+[class*="fw-nowrap"] {
+  flex-wrap: nowrap;
+}
+[class*="fw-wrap-reverse"] {
+  flex-wrap: wrap-reverse;
+}
 
-  // Flex wrap
-  [class*="#{$prefix}fw-wrap"] {
-    flex-wrap: wrap;
-  }
-  [class*="#{$prefix}fw-nowrap"] {
-    flex-wrap: nowrap;
-  }
-  [class*="#{$prefix}fw-wrap-reverse"] {
-    flex-wrap: wrap-reverse;
-  }
+// Flex grow/shrink
+[class*="fg-0"] {
+  flex-grow: 0;
+}
+[class*="fg-1"] {
+  flex-grow: 1;
+}
+[class*="fs-0"] {
+  flex-shrink: 0;
+}
+[class*="fs-1"] {
+  flex-shrink: 1;
+}
 
-  // Flex grow/shrink
-  [class*="#{$prefix}fg-0"] {
-    flex-grow: 0;
-  }
-  [class*="#{$prefix}fg-1"] {
-    flex-grow: 1;
-  }
-  [class*="#{$prefix}fs-0"] {
-    flex-shrink: 0;
-  }
-  [class*="#{$prefix}fs-1"] {
-    flex-shrink: 1;
-  }
-
-  // Align self
-  [class*="#{$prefix}as-auto"] {
-    align-self: auto;
-  }
-  [class*="#{$prefix}as-start"] {
-    align-self: flex-start;
-  }
-  [class*="#{$prefix}as-end"] {
-    align-self: flex-end;
-  }
-  [class*="#{$prefix}as-center"] {
-    align-self: center;
-  }
-  [class*="#{$prefix}as-baseline"] {
-    align-self: baseline;
-  }
-  [class*="#{$prefix}as-stretch"] {
-    align-self: stretch;
-  }
+// Align self
+[class*="as-auto"] {
+  align-self: auto;
+}
+[class*="as-start"] {
+  align-self: flex-start;
+}
+[class*="as-end"] {
+  align-self: flex-end;
+}
+[class*="as-center"] {
+  align-self: center;
+}
+[class*="as-baseline"] {
+  align-self: baseline;
+}
+[class*="as-stretch"] {
+  align-self: stretch;
 }
 
 // Generate flex order utilities
 @for $i from 1 through 12 {
-  @each $breakpoint, $value in v.$breakpoints {
-    $prefix: if($breakpoint == "xs", "", "#{$breakpoint}_");
-
-    [class*="#{$prefix}order-#{$i}"] {
-      order: $i;
-    }
+  [class*="order-#{$i}"] {
+    order: $i;
   }
 }
 
 // Generate flex basis utilities
-@each $name, $value in v.$layout-sizes {
-  @each $breakpoint, $bp-value in v.$breakpoints {
-    $prefix: if($breakpoint == "xs", "", "#{$breakpoint}_");
-
-    [class*="#{$prefix}fb-#{$name}"] {
-      flex-basis: var(--layout--size--#{$name});
-    }
+@for $i from 0 through 8 {
+  [class*="fb-#{$i}"] {
+    flex-basis: var(--layout--size--#{$i});
   }
 }
 
 // Generate flex gap utilities
-@each $name, $value in v.$layout-sizes {
-  @each $breakpoint, $bp-value in v.$breakpoints {
-    $prefix: if($breakpoint == "xs", "", "#{$breakpoint}_");
-
-    [class*="#{$prefix}gap-#{$name}"] {
-      gap: var(--layout--size--#{$name});
-    }
+@for $i from 0 through 8 {
+  [class*="gap-#{$i}"] {
+    gap: var(--layout--size--#{$i});
   }
 }

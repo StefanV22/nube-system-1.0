@@ -1,56 +1,63 @@
-@use "sass:map";
-@use "../core/variables" as v;
-
 // Font sizes
-@each $name, $value in v.$font-sizes {
-  .text-#{$name} {
-    font-size: var(--font--size--#{$name});
+@for $i from 0 through 8 {
+  .text#{$i} {
+    font-size: var(--font--size--#{$i});
   }
 }
 
 // Font weights
-@each $name, $value in v.$font-weights {
-  .font-#{$name} {
-    font-weight: $value;
+@for $i from 0 through 5 {
+  .fw#{$i} {
+    font-weight: var(--font--weight--#{$i});
   }
 }
 
 // Line heights
-.line-height-base {
-  line-height: var(--line-height-base);
+.lh-none {
+  line-height: var(--line--height--none);
+}
+.lh-tight {
+  line-height: var(--line--height--tight);
+}
+.lh-snug {
+  line-height: var(--line--height--snug);
+}
+.lh-normal {
+  line-height: var(--line--height--normal);
+}
+.lh-relaxed {
+  line-height: var(--line--height--relaxed);
+}
+.lh-loose {
+  line-height: var(--line--height--loose);
 }
 
 // Text alignment
-.text-left {
+.ta-left {
   text-align: left;
 }
-
-.text-center {
+.ta-center {
   text-align: center;
 }
-
-.text-right {
+.ta-right {
   text-align: right;
 }
 
 // Text decoration
-.text-underline {
+.td-underline {
   text-decoration: underline;
 }
-
-.text-none {
+.td-none {
   text-decoration: none;
 }
 
 // Text transform
-.text-uppercase {
+.tt-uppercase {
   text-transform: uppercase;
 }
-
-.text-lowercase {
+.tt-lowercase {
   text-transform: lowercase;
 }
-
-.text-capitalize {
+.tt-capitalize {
   text-transform: capitalize;
 }

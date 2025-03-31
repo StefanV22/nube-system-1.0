@@ -1,3 +1,66 @@
-@use "core/variables" as *;
 @use "utilities/typography";
 @use "utilities/theme";
+
+// Font sizes
+@for $i from 0 through 8 {
+  .text#{$i} {
+    font-size: var(--font--size--#{$i});
+  }
+}
+
+// Font weights
+@for $i from 0 through 5 {
+  .fw#{$i} {
+    font-weight: var(--font--weight--#{$i});
+  }
+}
+
+// Line heights
+.lh-none {
+  line-height: var(--line--height--none);
+}
+.lh-tight {
+  line-height: var(--line--height--tight);
+}
+.lh-snug {
+  line-height: var(--line--height--snug);
+}
+.lh-normal {
+  line-height: var(--line--height--normal);
+}
+.lh-relaxed {
+  line-height: var(--line--height--relaxed);
+}
+.lh-loose {
+  line-height: var(--line--height--loose);
+}
+
+// Text alignment
+.ta-left {
+  text-align: left;
+}
+.ta-center {
+  text-align: center;
+}
+.ta-right {
+  text-align: right;
+}
+
+// Text decoration
+.td-underline {
+  text-decoration: underline;
+}
+.td-none {
+  text-decoration: none;
+}
+
+// Text transform
+.tt-uppercase {
+  text-transform: uppercase;
+}
+.tt-lowercase {
+  text-transform: lowercase;
+}
+.tt-capitalize {
+  text-transform: capitalize;
+}

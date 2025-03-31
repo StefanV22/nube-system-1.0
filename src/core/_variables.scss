@@ -4,28 +4,47 @@
 // CSS Custom Properties - These will be output to variables.css
 :root {
   // Layout Sizes
-  --layout--size--0: 0.875rem;
-  --layout--size--1: 1rem;
-  --layout--size--2: clamp(1rem, 0.185vw + 0.958rem, 1.125rem);
-  --layout--size--3: clamp(1.125rem, 0.185vw + 1.083rem, 1.25rem);
-  --layout--size--4: clamp(1.25rem, 0.37vw + 1.167rem, 1.5rem);
-  --layout--size--5: clamp(1.5rem, 0.741vw + 1.333rem, 2rem);
-  --layout--size--6: clamp(2rem, 1.481vw + 1.667rem, 3rem);
-  --layout--size--7: clamp(2.5rem, 2.222vw + 2rem, 4rem);
-  --layout--size--8: clamp(3.25rem, 4.815vw + 2.167rem, 6.5rem);
+  --layout--size--0: 0rem;
+  --layout--size--1: 0.125rem;
+  --layout--size--2: 0.25rem;
+  --layout--size--3: clamp(0.375rem, 0.185vw + 0.333rem, 0.5rem);
+  --layout--size--4: clamp(0.625rem, 0.185vw + 0.583rem, 0.75rem);
+  --layout--size--5: clamp(0.75rem, 0.37vw + 0.667rem, 1rem);
+  --layout--size--6: clamp(1.25rem, 0.37vw + 1.167rem, 1.5rem);
+  --layout--size--7: clamp(1.5rem, 0.741vw + 1.333rem, 2rem);
+  --layout--size--8: clamp(2.5rem, 0.741vw + 2.333rem, 3rem);
+  --layout--size--9: clamp(3rem, 1.481vw + 2.667rem, 4rem);
+  --layout--size--10: clamp(4rem, 2.222vw + 3.5rem, 5.5rem);
+  --layout--size--11: clamp(5.5rem, 3.704vw + 4.667rem, 8rem);
+  --layout--size--12: clamp(7.5rem, 7.407vw + 5.833rem, 12.5rem);
+  --layout--size--13: clamp(11.5rem, 7.407vw + 9.833rem, 16.5rem);
 
   // Theme Colors
-  --color--surface--primary: #1a1a1a;
-  --color--surface--secondary: #2a2a2a;
-  --color--surface--tertiary: #3a3a3a;
+  --surface--primary: #1a1a1a;
+  --surface--secondary: #2a2a2a;
+  --surface--tertiary: #3a3a3a;
 
-  --color--ink--body: #ffffff;
-  --color--ink--muted: rgba(255, 255, 255, 0.7);
-  --color--ink--subtle: rgba(255, 255, 255, 0.5);
+  --ink--body: #ffffff;
+  --ink--muted: rgba(255, 255, 255, 0.7);
+  --ink--subtle: rgba(255, 255, 255, 0.5);
 
-  --color--accent--primary: #3b82f6;
-  --color--accent--secondary: #60a5fa;
-  --color--accent--tertiary: #93c5fd;
+  --spot--primary: #3b82f6;
+  --spot--secondary: #60a5fa;
+  --spot--accent: #93c5fd;
+  --spot--accent-hover: #60a5fa;
+  --spot--scarcity: #ef4444;
+  --spot--scarcity-hover: #dc2626;
+
+  --spot-ink--primary: #ffffff;
+  --spot-ink--secondary: #ffffff;
+  --spot-ink--accent: #ffffff;
+  --spot-ink--accent-hover: #ffffff;
+  --spot-ink--scarcity: #ffffff;
+  --spot-ink--scarcity-hover: #ffffff;
+
+  --stroke--primary: rgba(255, 255, 255, 0.1);
+  --stroke--secondary: rgba(255, 255, 255, 0.05);
+  --stroke--tertiary: rgba(255, 255, 255, 0.02);
 
   // Typography
   --font--family--base: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
@@ -35,12 +54,12 @@
     "Liberation Mono", "Courier New", monospace;
 
   // Font Weights
-  --font--weight--light: 300;
-  --font--weight--normal: 400;
-  --font--weight--medium: 500;
-  --font--weight--semibold: 600;
-  --font--weight--bold: 700;
-  --font--weight--extrabold: 800;
+  --font--weight--0: 300;
+  --font--weight--1: 400;
+  --font--weight--2: 500;
+  --font--weight--3: 600;
+  --font--weight--4: 700;
+  --font--weight--5: 800;
 
   // Line Heights
   --line--height--none: 1;
@@ -49,12 +68,6 @@
   --line--height--normal: 1.5;
   --line--height--relaxed: 1.625;
   --line--height--loose: 2;
-
-  // Breakpoints
-  --breakpoint-xs: 480px;
-  --breakpoint-sm: 768px;
-  --breakpoint-md: 992px;
-  --breakpoint-lg: 992px;
 
   // Layout
   --container-max-width: 1200px;
@@ -82,61 +95,44 @@ $layout-sizes: (
   "6": var(--layout--size--6),
   "7": var(--layout--size--7),
   "8": var(--layout--size--8),
-) !default;
-
-$font-sizes: (
-  "0": var(--font--size--0),
-  "1": var(--font--size--1),
-  "2": var(--font--size--2),
-  "3": var(--font--size--3),
-  "4": var(--font--size--4),
-  "5": var(--font--size--5),
-  "6": var(--font--size--6),
-  "7": var(--font--size--7),
-  "8": var(--font--size--8),
-) !default;
-
-$font-weights: (
-  "normal": var(--font-weight-normal),
-  "medium": 500,
-  "semibold": 600,
-  "bold": var(--font-weight-bold),
+  "9": var(--layout--size--9),
+  "10": var(--layout--size--10),
+  "11": var(--layout--size--11),
+  "12": var(--layout--size--12),
+  "13": var(--layout--size--13),
 ) !default;
 
 // Theme tokens map for generating theme-specific utilities
 $theme-tokens: (
   "surface": (
-    "primary": var(--token--surface--primary),
-    "secondary": var(--token--surface--secondary),
-    "tertiary": var(--token--surface--tertiary),
+    "primary": var(--surface--primary),
+    "secondary": var(--surface--secondary),
+    "tertiary": var(--surface--tertiary),
   ),
   "ink": (
-    "title": var(--token--ink--title),
-    "body": var(--token--ink--body),
-    "strong": var(--token--ink--strong),
-    "dimmed": var(--token--ink--dimmed),
-    "faded": var(--token--ink--faded),
-    "accent": var(--token--ink--accent),
-  ),
-  "stroke": (
-    "primary": var(--token--stroke--primary),
-    "secondary": var(--token--stroke--secondary),
-    "tertiary": var(--token--stroke--tertiary),
+    "body": var(--ink--body),
+    "muted": var(--ink--muted),
+    "subtle": var(--ink--subtle),
   ),
   "spot": (
-    "primary": var(--token--spot--primary),
-    "secondary": var(--token--spot--secondary),
-    "accent": var(--token--spot--accent),
-    "accent-hover": var(--token--spot--accent-hover),
-    "scarcity": var(--token--spot--scarcity),
-    "scarcity-hover": var(--token--spot--scarcity-hover),
+    "primary": var(--spot--primary),
+    "secondary": var(--spot--secondary),
+    "accent": var(--spot--accent),
+    "accent-hover": var(--spot--accent-hover),
+    "scarcity": var(--spot--scarcity),
+    "scarcity-hover": var(--spot--scarcity-hover),
   ),
   "spot-ink": (
-    "primary": var(--token--spot-ink--primary),
-    "secondary": var(--token--spot-ink--secondary),
-    "accent": var(--token--spot-ink--accent),
-    "accent-hover": var(--token--spot-ink--accent-hover),
-    "scarcity": var(--token--spot-ink--scarcity),
-    "scarcity-hover": var(--token--spot-ink--scarcity-hover),
+    "primary": var(--spot-ink--primary),
+    "secondary": var(--spot-ink--secondary),
+    "accent": var(--spot-ink--accent),
+    "accent-hover": var(--spot-ink--accent-hover),
+    "scarcity": var(--spot-ink--scarcity),
+    "scarcity-hover": var(--spot-ink--scarcity-hover),
   ),
-);
+  "stroke": (
+    "primary": var(--stroke--primary),
+    "secondary": var(--stroke--secondary),
+    "tertiary": var(--stroke--tertiary),
+  ),
+) !default;

@@ -1,4 +1,4 @@
-@use "../core/variables" as *;
+@use "sass:math";
 
 // Grid Container
 [class*="cnt"] {
@@ -11,13 +11,13 @@
 [class*="rw"] {
   display: flex;
   flex-wrap: wrap;
-  margin-inline: calc(-1 * var(--layout--size-2));
-  gap: var(--layout--size-2);
+  margin-inline: calc(-1 * var(--layout--size--2));
+  gap: var(--layout--size--2);
 }
 
 // Grid Column Base
 [class*="clm"] {
-  padding-inline: var(--layout--size-2);
+  padding-inline: var(--layout--size--2);
   flex: 1 1 100%;
   max-width: 100%;
 }
@@ -28,112 +28,78 @@
   max-width: 100%;
 }
 
-// Column Widths Map
-$column-widths: (
-  "1": 8.33%,
-  "2": 16.666%,
-  "3": 25%,
-  "4": 33.333%,
-  "5": 41.666%,
-  "6": 50%,
-  "7": 58.333%,
-  "8": 66.666%,
-  "9": 75%,
-  "10": 83.333%,
-  "11": 91.67%,
-  "12": 100%,
-);
-
-// Generate Column Classes
-@mixin generate-columns($prefix: "") {
-  @each $size, $width in $column-widths {
-    [class*="#{$prefix}_#{$size}"] {
-      flex: 1 1 $width;
-      max-width: $width;
-    }
-  }
-}
-
-// Generate Responsive Columns
-@each $breakpoint, $value in $breakpoints {
-  @if $breakpoint == "xs" {
-    @include generate-columns("xs");
-  } @else {
-    @media (min-width: $value) {
-      @include generate-columns($breakpoint);
-    }
+// Column Widths
+@for $i from 1 through 12 {
+  [class*="clm-#{$i}"] {
+    flex: 1 1 math.percentage(math.div($i, 12));
+    max-width: math.percentage(math.div($i, 12));
   }
 }
 
 // Generate Size-based Utilities
-@mixin generate-size-utilities {
-  @for $i from 1 through 15 {
-    // Padding
-    [class*="p#{$i}"] {
-      padding: var(--layout--size-#{$i});
-    }
+@for $i from 0 through 13 {
+  // Padding
+  [class*="p#{$i}"] {
+    padding: var(--layout--size--#{$i});
+  }
 
-    // Padding Top
-    [class*="pt#{$i}"] {
-      padding-top: var(--layout--size-#{$i});
-    }
+  // Padding Top
+  [class*="pt#{$i}"] {
+    padding-top: var(--layout--size--#{$i});
+  }
 
-    // Padding Right
-    [class*="pr#{$i}"] {
-      padding-right: var(--layout--size-#{$i});
-    }
+  // Padding Right
+  [class*="pr#{$i}"] {
+    padding-right: var(--layout--size--#{$i});
+  }
 
-    // Padding Bottom
-    [class*="pb#{$i}"] {
-      padding-bottom: var(--layout--size-#{$i});
-    }
+  // Padding Bottom
+  [class*="pb#{$i}"] {
+    padding-bottom: var(--layout--size--#{$i});
+  }
 
-    // Padding Left
-    [class*="pl#{$i}"] {
-      padding-left: var(--layout--size-#{$i});
-    }
+  // Padding Left
+  [class*="pl#{$i}"] {
+    padding-left: var(--layout--size--#{$i});
+  }
 
-    // Margin
-    [class*="m#{$i}"] {
-      margin: var(--layout--size-#{$i});
-    }
+  // Margin
+  [class*="m#{$i}"] {
+    margin: var(--layout--size--#{$i});
+  }
 
-    // Margin Top
-    [class*="mt#{$i}"] {
-      margin-top: var(--layout--size-#{$i});
-    }
+  // Margin Top
+  [class*="mt#{$i}"] {
+    margin-top: var(--layout--size--#{$i});
+  }
 
-    // Margin Right
-    [class*="mr#{$i}"] {
-      margin-right: var(--layout--size-#{$i});
-    }
+  // Margin Right
+  [class*="mr#{$i}"] {
+    margin-right: var(--layout--size--#{$i});
+  }
 
-    // Margin Bottom
-    [class*="mb#{$i}"] {
-      margin-bottom: var(--layout--size-#{$i});
-    }
+  // Margin Bottom
+  [class*="mb#{$i}"] {
+    margin-bottom: var(--layout--size--#{$i});
+  }
 
-    // Margin Left
-    [class*="ml#{$i}"] {
-      margin-left: var(--layout--size-#{$i});
-    }
+  // Margin Left
+  [class*="ml#{$i}"] {
+    margin-left: var(--layout--size--#{$i});
+  }
 
-    // Gap
-    [class*="gap#{$i}"] {
-      gap: var(--layout--size-#{$i});
-    }
+  // Gap
+  [class*="gap#{$i}"] {
+    gap: var(--layout--size--#{$i});
+  }
 
-    // Row Gap
-    [class*="rgap#{$i}"] {
-      row-gap: var(--layout--size-#{$i});
-    }
+  // Row Gap
+  [class*="rgap#{$i}"] {
+    row-gap: var(--layout--size--#{$i});
+  }
 
-    // Column Gap
-    [class*="cgap#{$i}"] {
-      column-gap: var(--layout--size-#{$i});
-    }
+  // Column Gap
+  [class*="cgap#{$i}"] {
+    column-gap: var(--layout--size--#{$i});
   }
 }
-
-// Generate Size Utilities
-@include generate-size-utilities;
