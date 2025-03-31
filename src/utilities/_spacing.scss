@@ -1,0 +1,95 @@
+@use "sass:map";
+@use "../core/variables" as v;
+
+// Generate spacing utilities
+@each $name, $value in v.$layout-sizes {
+  // Margin
+  .m-#{$name} {
+    margin: var(--layout--size--#{$name});
+  }
+  .mt-#{$name} {
+    margin-top: var(--layout--size--#{$name});
+  }
+  .mr-#{$name} {
+    margin-right: var(--layout--size--#{$name});
+  }
+  .mb-#{$name} {
+    margin-bottom: var(--layout--size--#{$name});
+  }
+  .ml-#{$name} {
+    margin-left: var(--layout--size--#{$name});
+  }
+  .mx-#{$name} {
+    margin-left: var(--layout--size--#{$name});
+    margin-right: var(--layout--size--#{$name});
+  }
+  .my-#{$name} {
+    margin-top: var(--layout--size--#{$name});
+    margin-bottom: var(--layout--size--#{$name});
+  }
+
+  // Padding
+  .p-#{$name} {
+    padding: var(--layout--size--#{$name});
+  }
+  .pt-#{$name} {
+    padding-top: var(--layout--size--#{$name});
+  }
+  .pr-#{$name} {
+    padding-right: var(--layout--size--#{$name});
+  }
+  .pb-#{$name} {
+    padding-bottom: var(--layout--size--#{$name});
+  }
+  .pl-#{$name} {
+    padding-left: var(--layout--size--#{$name});
+  }
+  .px-#{$name} {
+    padding-left: var(--layout--size--#{$name});
+    padding-right: var(--layout--size--#{$name});
+  }
+  .py-#{$name} {
+    padding-top: var(--layout--size--#{$name});
+    padding-bottom: var(--layout--size--#{$name});
+  }
+
+  // Gap
+  .gap-#{$name} {
+    gap: var(--layout--size--#{$name});
+  }
+  .gap-x-#{$name} {
+    column-gap: var(--layout--size--#{$name});
+  }
+  .gap-y-#{$name} {
+    row-gap: var(--layout--size--#{$name});
+  }
+}
+
+// Negative margins
+@each $name, $value in v.$layout-sizes {
+  @if $name != "0" {
+    .-m-#{$name} {
+      margin: calc(var(--layout--size--#{$name}) * -1);
+    }
+    .-mt-#{$name} {
+      margin-top: calc(var(--layout--size--#{$name}) * -1);
+    }
+    .-mr-#{$name} {
+      margin-right: calc(var(--layout--size--#{$name}) * -1);
+    }
+    .-mb-#{$name} {
+      margin-bottom: calc(var(--layout--size--#{$name}) * -1);
+    }
+    .-ml-#{$name} {
+      margin-left: calc(var(--layout--size--#{$name}) * -1);
+    }
+    .-mx-#{$name} {
+      margin-left: calc(var(--layout--size--#{$name}) * -1);
+      margin-right: calc(var(--layout--size--#{$name}) * -1);
+    }
+    .-my-#{$name} {
+      margin-top: calc(var(--layout--size--#{$name}) * -1);
+      margin-bottom: calc(var(--layout--size--#{$name}) * -1);
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "name": "nube-system",
+  "version": "1.0.0",
+  "description": "A modern, responsive SCSS utility framework with clamp-based responsive sizing",
+  "main": "dist/nube-system.css",
+  "style": "dist/nube-system.css",
+  "sass": "src/nube-system.scss",
+  "files": [
+    "dist",
+    "src",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "sass src/nube-system.scss dist/nube-system.css --style compressed",
+    "build:dev": "sass src/nube-system.scss dist/nube-system.css --style expanded",
+    "watch": "sass src/nube-system.scss dist/nube-system.css --watch",
+    "prepare": "npm run build"
+  },
+  "keywords": [
+    "css",
+    "scss",
+    "utility",
+    "framework",
+    "responsive",
+    "clamp",
+    "css-variables",
+    "utility-first"
+  ],
+  "author": "Don Vaskez",
+  "license": "MIT",
+  "devDependencies": {
+    "sass": "^1.69.0"
+  },
+  "peerDependencies": {
+    "sass": "^1.69.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/StefanV22/nf-system.git"
+  },
+  "bugs": {
+    "url": "https://github.com/StefanV22/nf-system/issues"
+  }
+}

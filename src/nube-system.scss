@@ -1,0 +1,10 @@
+// Core
+@use "core/variables" as *;
+@use "core/mixins" as *;
+
+// Utilities
+@use "utilities/layout";
+@use "utilities/theme";
+@use "utilities/typography";
+@use "utilities/flex";
+@use "utilities/spacing";

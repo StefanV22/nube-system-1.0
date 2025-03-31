@@ -1,0 +1,80 @@
+@use "sass:map";
+@use "sass:string";
+@use "../core/variables" as v;
+
+// Surface colors
+@each $name, $value in map.get(v.$theme-tokens, "surface") {
+  .bg-#{$name} {
+    background-color: var(--color--surface--#{$name});
+  }
+}
+
+// Text colors
+@each $name, $value in map.get(v.$theme-tokens, "ink") {
+  .text-#{$name} {
+    color: var(--color--ink--#{$name});
+  }
+}
+
+// Border colors
+@each $name, $value in map.get(v.$theme-tokens, "stroke") {
+  .border-#{$name} {
+    border-color: var(--color--stroke--#{$name});
+  }
+}
+
+// Accent colors
+@each $name, $value in map.get(v.$theme-tokens, "spot") {
+  .spot-#{$name} {
+    background-color: var(--color--spot--#{$name});
+  }
+  .spot-text-#{$name} {
+    color: map.get(map.get(v.$theme-tokens, "spot-ink"), $name);
+  }
+}
+
+// Generate hover states for spot colors
+@each $name, $value in map.get(v.$theme-tokens, "spot") {
+  @if string.index($name, "hover") == null {
+    .spot-#{$name}:hover {
+      background-color: var(--color--spot--#{$name}-hover);
+      color: var(--color--spot-ink--#{$name}-hover);
+    }
+  }
+}
+
+// Generate responsive theme utilities
+@each $breakpoint, $value in v.$breakpoints {
+  $prefix: if($breakpoint == "xs", "", "#{$breakpoint}_");
+
+  // Surface colors
+  @each $name, $value in map.get(v.$theme-tokens, "surface") {
+    .#{$prefix}bg-#{$name} {
+      background-color: var(--color--surface--#{$name});
+    }
+  }
+
+  // Text colors
+  @each $name, $value in map.get(v.$theme-tokens, "ink") {
+    .#{$prefix}text-#{$name} {
+      color: var(--color--ink--#{$name});
+    }
+  }
+
+  // Border colors
+  @each $name, $value in map.get(v.$theme-tokens, "stroke") {
+    .#{$prefix}border-#{$name} {
+      border-color: var(--color--stroke--#{$name});
+    }
+  }
+
+  // Accent colors
+  @each $name, $value in map.get(v.$theme-tokens, "spot") {
+    .#{$prefix}spot-#{$name} {
+      background-color: var(--color--spot--#{$name});
+    }
+    .#{$prefix}spot-text-#{$name} {
+      color: var(--color--spot-ink--#{$name});
+    }
+  }
+}
