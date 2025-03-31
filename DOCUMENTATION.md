@@ -176,7 +176,7 @@ $breakpoints: (
   // Tablet
   md: 992px,
   // Desktop
-  lg: 992px // Large desktop,,,
+  lg: 992px // Large desktop,,,,,,,
 );
 ```
 
@@ -184,12 +184,12 @@ $breakpoints: (
 
 ```html
 <!-- Responsive layout example -->
-<div class="xs_fd-column md_fd-row xs_ai-center md_ai-start gap-md">
-  <div class="xs_order-2 md_order-1 p-sm">
+<div class="xs_fd-column md_fd-row xs_ai-center md_ai-start gap5">
+  <div class="p3">
     <h2 class="xs_text-lg md_text-xl font-bold">Title</h2>
     <p class="text-md">Content</p>
   </div>
-  <div class="xs_order-1 md_order-2 m-sm">
+  <div class="m3">
     <img src="image.jpg" alt="Example" />
   </div>
 </div>
@@ -203,30 +203,12 @@ $breakpoints: (
 // In your variables file
 :root {
   // Override layout sizes
-  --layout--size--sm: clamp(0.5rem, 0.4rem + 0.5vw, 1.25rem);
+  --layout--size--0: clamp(0.5rem, 0.4rem + 0.5vw, 1.25rem);
 
   // Override theme colors
   --color--surface--primary: #1a1a1a;
   --color--ink--body: #ffffff;
 }
-```
-
-### Using with CSS-in-JS
-
-```javascript
-const StyledComponent = styled.div`
-  ${(props) =>
-    props.spacing &&
-    `
-    padding: var(--layout--size--${props.spacing});
-  `}
-
-  ${(props) =>
-    props.color &&
-    `
-    color: var(--color--ink--${props.color});
-  `}
-`;
 ```
 
 ## Best Practices
