@@ -1,20 +1,17 @@
 {
   "name": "nube-system",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A modern, responsive SCSS utility framework with clamp-based responsive sizing",
-  "main": "src/main.scss",
-  "style": "dist/nube-system.css",
-  "sass": "src/main.scss",
-  "types": "src/main.scss",
+  "main": "styles/global-classes.css",
+  "style": "styles/global-classes.css",
   "files": [
-    "dist",
-    "src",
+    "styles",
     "README.md"
   ],
   "scripts": {
-    "build": "sass src/main.scss dist/nube-system.css --style compressed",
-    "build:dev": "sass src/main.scss dist/nube-system.css --style expanded",
-    "watch": "sass src/main.scss dist/nube-system.css --watch",
+    "build": "npm run build:variables && npm run build:classes",
+    "build:variables": "sass src/core/_variables.scss styles/variables.css --style compressed",
+    "build:classes": "sass src/main.scss styles/global-classes.css --style compressed",
     "prepare": "npm run build"
   },
   "keywords": [
