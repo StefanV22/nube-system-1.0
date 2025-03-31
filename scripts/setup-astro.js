@@ -1,24 +1,21 @@
 const fs = require("fs");
 const path = require("path");
 
-// Function to copy file
+// Helper function to create directory if it doesn't exist
+function ensureDirectoryExists(directory) {
+  if (!fs.existsSync(directory)) {
+    fs.mkdirSync(directory, { recursive: true });
+  }
+}
+
+// Helper function to copy a file
 function copyFile(source, target) {
   try {
-    // Create target directory if it doesn't exist
-    const targetDir = path.dirname(target);
-    if (!fs.existsSync(targetDir)) {
-      fs.mkdirSync(targetDir, { recursive: true });
-    }
-
-    // Copy the file
+    ensureDirectoryExists(path.dirname(target));
     fs.copyFileSync(source, target);
-    console.log(`✓ Created ${target}`);
+    console.log(`✓ Created ${path.basename(target)}`);
   } catch (err) {
-    if (err.code === "ENOENT") {
-      console.log("Note: Not an Astro project, skipping file setup");
-    } else {
-      console.error(`Error copying file: ${err.message}`);
-    }
+    console.error(`Error copying ${path.basename(source)}:`, err);
   }
 }
 
@@ -37,27 +34,55 @@ function setupAstro() {
   if (fs.existsSync(path.join(projectRoot, "src"))) {
     const stylesDir = path.join(projectRoot, "src", "styles");
 
-    // Source files
-    const variablesSource = path.join(packagePath, "styles", "variables.css");
-    const classesSource = path.join(
-      packagePath,
-      "styles",
-      "global-classes.css"
+    // Define our CSS modules
+    const modules = {
+      variables: "variables.css",
+      flex: "flex.css",
+      layout: "layout.css",
+      spacing: "spacing.css",
+      typography: "typography.css",
+    };
+
+    // Copy each module
+    Object.entries(modules).forEach(([name, filename]) => {
+      const source = path.join(packagePath, "styles", filename);
+      const target = path.join(stylesDir, filename);
+      copyFile(source, target);
+    });
+
+    // Copy documentation
+    const docSource = path.join(packagePath, "DOCUMENTATION.md");
+    const docTarget = path.join(projectRoot, "src", "styles", "system.doc.md");
+    copyFile(docSource, docTarget);
+
+    console.log("\nNube System has been set up in your project!");
+    console.log("\nFiles created:");
+    console.log("1. Style Modules (in src/styles/):");
+    Object.values(modules).forEach((filename) => {
+      console.log(`   - ${filename}`);
+    });
+    console.log("2. Documentation:");
+    console.log("   - system.doc.md (in src/styles/)");
+
+    console.log("\nTo use the system, import the modules you need:");
+    console.log("\n// In your main layout or entry point:");
+    console.log('import "../styles/variables.css"; // Required');
+    console.log(
+      'import "../styles/flex.css";      // Optional - Flexbox utilities'
+    );
+    console.log(
+      'import "../styles/layout.css";    // Optional - Layout utilities'
+    );
+    console.log(
+      'import "../styles/spacing.css";   // Optional - Spacing utilities'
+    );
+    console.log(
+      'import "../styles/typography.css"; // Optional - Typography & theme'
     );
 
-    // Target files
-    const variablesTarget = path.join(stylesDir, "variables.css");
-    const classesTarget = path.join(stylesDir, "global-classes.css");
-
-    // Copy files
-    copyFile(variablesSource, variablesTarget);
-    copyFile(classesSource, classesTarget);
-
-    console.log("\nNube System files have been set up in your Astro project!");
-    console.log("\nMake sure to import these files in your project:");
-    console.log("\n1. In your main layout or entry point:");
-    console.log('import "../styles/variables.css";');
-    console.log('import "../styles/global-classes.css";\n');
+    console.log(
+      "\nCheck system.doc.md for detailed documentation and examples."
+    );
   }
 }
 

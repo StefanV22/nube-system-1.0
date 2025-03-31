@@ -1,66 +1,66 @@
 @use "sass:map";
 @use "../core/variables" as v;
 
-// Generate spacing utilities
+// Generate spacing utilities with combo class support
 @each $name, $value in v.$layout-sizes {
   // Margin
-  .m#{$name} {
+  [class*="m#{$name}"] {
     margin: var(--layout--size--#{$name});
   }
-  .mt#{$name} {
+  [class*="mt#{$name}"] {
     margin-top: var(--layout--size--#{$name});
   }
-  .mr#{$name} {
+  [class*="mr#{$name}"] {
     margin-right: var(--layout--size--#{$name});
   }
-  .mb#{$name} {
+  [class*="mb#{$name}"] {
     margin-bottom: var(--layout--size--#{$name});
   }
-  .ml#{$name} {
+  [class*="ml#{$name}"] {
     margin-left: var(--layout--size--#{$name});
   }
-  .mh#{$name} {
+  [class*="mh#{$name}"] {
     margin-left: var(--layout--size--#{$name});
     margin-right: var(--layout--size--#{$name});
   }
-  .mv#{$name} {
+  [class*="mv#{$name}"] {
     margin-top: var(--layout--size--#{$name});
     margin-bottom: var(--layout--size--#{$name});
   }
 
   // Padding
-  .p#{$name} {
+  [class*="p#{$name}"] {
     padding: var(--layout--size--#{$name});
   }
-  .pt#{$name} {
+  [class*="pt#{$name}"] {
     padding-top: var(--layout--size--#{$name});
   }
-  .pr#{$name} {
+  [class*="pr#{$name}"] {
     padding-right: var(--layout--size--#{$name});
   }
-  .pb#{$name} {
+  [class*="pb#{$name}"] {
     padding-bottom: var(--layout--size--#{$name});
   }
-  .pl#{$name} {
+  [class*="pl#{$name}"] {
     padding-left: var(--layout--size--#{$name});
   }
-  .ph#{$name} {
+  [class*="ph#{$name}"] {
     padding-left: var(--layout--size--#{$name});
     padding-right: var(--layout--size--#{$name});
   }
-  .pv#{$name} {
+  [class*="pv#{$name}"] {
     padding-top: var(--layout--size--#{$name});
     padding-bottom: var(--layout--size--#{$name});
   }
 
   // Gap
-  .gap#{$name} {
+  [class*="gap#{$name}"] {
     gap: var(--layout--size--#{$name});
   }
-  .rgap#{$name} {
+  [class*="rgap#{$name}"] {
     row-gap: var(--layout--size--#{$name});
   }
-  .cgap#{$name} {
+  [class*="cgap#{$name}"] {
     column-gap: var(--layout--size--#{$name});
   }
 }

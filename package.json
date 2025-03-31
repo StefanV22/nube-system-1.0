@@ -1,40 +1,34 @@
 {
   "name": "nube-system",
   "version": "1.0.6",
-  "description": "A modern utility-first CSS framework with semantic theme tokens",
-  "main": "dist/index.js",
-  "style": "styles/global-classes.css",
+  "description": "A modern, utility-first CSS framework with semantic theme tokens and fluid responsive design",
+  "main": "index.js",
+  "style": "styles/variables.css",
   "files": [
     "styles",
+    "scripts",
+    "DOCUMENTATION.md",
     "README.md",
-    "scripts"
+    "LICENSE"
   ],
   "scripts": {
-    "build": "npm run build:variables && npm run build:classes",
-    "build:variables": "sass src/variables.scss styles/variables.css --style compressed",
-    "build:classes": "sass src/main.scss styles/global-classes.css --style compressed",
+    "build": "sass src/variables.scss:styles/variables.css src/flex.scss:styles/flex.css src/layout.scss:styles/layout.css src/spacing.scss:styles/spacing.css src/typography.scss:styles/typography.css --style=compressed --no-source-map",
+    "dev": "sass src/:styles/ --watch",
     "prepare": "npm run build",
     "postinstall": "node scripts/setup-astro.js"
   },
   "keywords": [
     "css",
     "scss",
-    "utility-first",
-    "framework"
+    "utility",
+    "framework",
+    "responsive",
+    "fluid",
+    "modular"
   ],
-  "author": "Stefan Vaskovic",
+  "author": "Don Vaskez",
   "license": "MIT",
-  "devDependencies": {
-    "sass": "^1.69.0"
-  },
-  "peerDependencies": {
-    "sass": "^1.69.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/StefanV22/nube-system-1.0.git"
-  },
-  "bugs": {
-    "url": "https://github.com/StefanV22/nube-system-1.0/issues"
+  "dependencies": {
+    "sass": "^1.69.5"
   }
 }

@@ -1,15 +1,22 @@
 // CSS Custom Properties - These will be output to variables.css
 :root {
   // Layout Sizes
-  --layout--size--0: 0.875rem;
-  --layout--size--1: 1rem;
-  --layout--size--2: clamp(1rem, 0.185vw + 0.958rem, 1.125rem);
-  --layout--size--3: clamp(1.125rem, 0.185vw + 1.083rem, 1.25rem);
-  --layout--size--4: clamp(1.25rem, 0.37vw + 1.167rem, 1.5rem);
-  --layout--size--5: clamp(1.5rem, 0.741vw + 1.333rem, 2rem);
-  --layout--size--6: clamp(2rem, 1.481vw + 1.667rem, 3rem);
-  --layout--size--7: clamp(2.5rem, 2.222vw + 2rem, 4rem);
-  --layout--size--8: clamp(3.25rem, 4.815vw + 2.167rem, 6.5rem);
+  --layout--size--0: 0rem;
+  --layout--size--1: 0.125rem;
+  --layout--size--2: 0.25rem;
+  --layout--size--3: clamp(0.375rem, 0.185vw + 0.333rem, 0.5rem);
+  --layout--size--4: clamp(0.625rem, 0.185vw + 0.583rem, 0.75rem);
+  --layout--size--5: clamp(0.75rem, 0.37vw + 0.667rem, 1rem);
+  --layout--size--6: clamp(1.25rem, 0.37vw + 1.167rem, 1.5rem);
+  --layout--size--7: clamp(1.5rem, 0.741vw + 1.333rem, 2rem);
+  --layout--size--8: clamp(2.5rem, 0.741vw + 2.333rem, 3rem);
+  --layout--size--9: clamp(3rem, 1.481vw + 2.667rem, 4rem);
+  --layout--size--10: clamp(4rem, 2.222vw + 3.5rem, 5.5rem);
+  --layout--size--11: clamp(5.5rem, 3.704vw + 4.667rem, 8rem);
+  --layout--size--12: clamp(7.5rem, 7.407vw + 5.833rem, 12.5rem);
+  --layout--size--13: clamp(11.5rem, 7.407vw + 9.833rem, 16.5rem);
+  --layout--size--14: clamp(13.5rem, 8.889vw + 11.5rem, 19.5rem);
+  --layout--size--15: clamp(15.5rem, 10.37vw + 13.167rem, 22.5rem);
 
   // Theme Colors
   --color--surface--primary: #1a1a1a;
