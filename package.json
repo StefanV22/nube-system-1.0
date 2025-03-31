@@ -1,6 +1,6 @@
 {
   "name": "nube-system",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A modern utility-first CSS framework with semantic theme tokens",
   "main": "dist/index.js",
   "style": "styles/global-classes.css",
