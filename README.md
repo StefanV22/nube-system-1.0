@@ -1,37 +1,53 @@
 # Nube System 1.0
 
-A modern, responsive SCSS utility framework with clamp-based responsive sizing and semantic theme tokens.
+A modern, utility-first SCSS framework with semantic theme tokens and fluid responsive design.
 
-## Quick Start
+## Installation
+
+### Option 1: NPM
 
 ```bash
-# Install via npm
 npm install nube-system
+```
 
-# Or via yarn
+### Option 2: Yarn
+
+```bash
 yarn add nube-system
 ```
 
-Import in your SCSS:
+### Option 3: Manual Installation
 
-```scss
-// Option 1: Import the compiled CSS
-@import "nube-system/dist/nube-system.css";
+1. Clone the repository:
 
-// Option 2: Import the SCSS source (for customization)
-@use "nube-system/src/nube-system.scss";
+```bash
+git clone https://github.com/StefanV22/nube-system-1.0.git
 ```
 
-## Example Usage
+2. Copy the `src` directory to your project
+3. Import the main file in your SCSS:
+
+```scss
+@use "path/to/nube-system/src/main" as *;
+```
+
+## Quick Start
+
+1. Import the framework in your main SCSS file:
+
+```scss
+@use "nube-system/src/main" as *;
+```
+
+2. Start using the utilities:
 
 ```html
-<!-- Responsive flex container -->
-<div class="xs_fd-column md_fd-row xs_ai-center gap-md p-lg">
-  <div class="xs_order-2 md_order-1">
-    <h2 class="xs_text-lg md_text-xl font-bold text-body">Title</h2>
-    <p class="text-md text-muted">Content</p>
+<div class="xs_fd-column md_fd-row xs_ai-center md_ai-start gap5">
+  <div class="p3">
+    <h2 class="xs_text-lg md_text-xl font-bold">Title</h2>
+    <p class="text-md">Content</p>
   </div>
-  <div class="xs_order-1 md_order-2">
+  <div class="m3">
     <img src="image.jpg" alt="Example" />
   </div>
 </div>
@@ -39,16 +55,16 @@ Import in your SCSS:
 
 ## Key Features
 
-- 🎯 Utility-first approach with semantic naming
-- 📱 Responsive by default using CSS clamp()
-- 🎨 Theme system with semantic color tokens
-- 🔧 Modular SCSS architecture
-- 📦 Tree-shakeable
-- 🚀 Zero-runtime overhead
+- Utility-first approach with semantic class names
+- Fluid responsive design using `clamp()`
+- Semantic theme system with CSS variables
+- Modular SCSS architecture
+- Tree-shakeable utilities
+- Zero runtime overhead
 
 ## Documentation
 
-See [DOCUMENTATION.md](DOCUMENTATION.md) for detailed usage, examples, and customization options.
+For detailed documentation, see [DOCUMENTATION.md](DOCUMENTATION.md)
 
 ## Contributing
 
