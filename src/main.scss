@@ -1,4 +1,7 @@
-@use "core/variables";
+// Import variables first
+@use "core/variables" as *;
+
+// Import utilities
 @use "utilities/flex";
 @use "utilities/layout";
 @use "utilities/spacing";

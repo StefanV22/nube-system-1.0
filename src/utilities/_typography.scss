@@ -3,86 +3,54 @@
 
 // Font sizes
 @each $name, $value in v.$font-sizes {
-  [class*="text-#{$name}"] {
+  .text-#{$name} {
     font-size: var(--font--size--#{$name});
   }
 }
 
 // Font weights
 @each $name, $value in v.$font-weights {
-  [class*="font-#{$name}"] {
+  .font-#{$name} {
     font-weight: $value;
   }
 }
 
 // Line heights
-[class*="line-height-base"] {
+.line-height-base {
   line-height: var(--line-height-base);
 }
 
 // Text alignment
-[class*="text-left"] {
+.text-left {
   text-align: left;
 }
 
-[class*="text-center"] {
+.text-center {
   text-align: center;
 }
 
-[class*="text-right"] {
+.text-right {
   text-align: right;
 }
 
 // Text decoration
-[class*="text-underline"] {
+.text-underline {
   text-decoration: underline;
 }
 
-[class*="text-none"] {
+.text-none {
   text-decoration: none;
 }
 
 // Text transform
-[class*="text-uppercase"] {
+.text-uppercase {
   text-transform: uppercase;
 }
 
-[class*="text-lowercase"] {
+.text-lowercase {
   text-transform: lowercase;
 }
 
-[class*="text-capitalize"] {
+.text-capitalize {
   text-transform: capitalize;
-}
-
-// Generate responsive typography utilities
-@each $breakpoint, $value in v.$breakpoints {
-  $prefix: if($breakpoint == "xs", "", "#{$breakpoint}_");
-
-  // Font sizes
-  @each $name, $size in v.$font-sizes {
-    [class*="#{$prefix}text-#{$name}"] {
-      font-size: var(--font--size--#{$name});
-    }
-  }
-
-  // Font weights
-  @each $name, $weight in v.$font-weights {
-    [class*="#{$prefix}font-#{$name}"] {
-      font-weight: $weight;
-    }
-  }
-
-  // Text alignment
-  [class*="#{$prefix}text-left"] {
-    text-align: left;
-  }
-
-  [class*="#{$prefix}text-center"] {
-    text-align: center;
-  }
-
-  [class*="#{$prefix}text-right"] {
-    text-align: right;
-  }
 }

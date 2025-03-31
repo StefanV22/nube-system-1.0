@@ -64,32 +64,3 @@
     column-gap: var(--layout--size--#{$name});
   }
 }
-
-// Negative margins
-@each $name, $value in v.$layout-sizes {
-  @if $name != "0" {
-    .-m-#{$name} {
-      margin: calc(var(--layout--size--#{$name}) * -1);
-    }
-    .-mt-#{$name} {
-      margin-top: calc(var(--layout--size--#{$name}) * -1);
-    }
-    .-mr-#{$name} {
-      margin-right: calc(var(--layout--size--#{$name}) * -1);
-    }
-    .-mb-#{$name} {
-      margin-bottom: calc(var(--layout--size--#{$name}) * -1);
-    }
-    .-ml-#{$name} {
-      margin-left: calc(var(--layout--size--#{$name}) * -1);
-    }
-    .-mx-#{$name} {
-      margin-left: calc(var(--layout--size--#{$name}) * -1);
-      margin-right: calc(var(--layout--size--#{$name}) * -1);
-    }
-    .-my-#{$name} {
-      margin-top: calc(var(--layout--size--#{$name}) * -1);
-      margin-bottom: calc(var(--layout--size--#{$name}) * -1);
-    }
-  }
-}

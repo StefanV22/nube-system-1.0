@@ -1,8 +1,8 @@
 {
   "name": "nube-system",
   "version": "1.0.4",
-  "description": "A modern, responsive SCSS utility framework with clamp-based responsive sizing",
-  "main": "styles/global-classes.css",
+  "description": "A modern utility-first CSS framework with semantic theme tokens",
+  "main": "dist/index.js",
   "style": "styles/global-classes.css",
   "files": [
     "styles",
@@ -11,7 +11,7 @@
   ],
   "scripts": {
     "build": "npm run build:variables && npm run build:classes",
-    "build:variables": "sass src/core/_variables.scss styles/variables.css --style compressed",
+    "build:variables": "sass src/variables.scss styles/variables.css --style compressed",
     "build:classes": "sass src/main.scss styles/global-classes.css --style compressed",
     "prepare": "npm run build",
     "postinstall": "node scripts/setup-astro.js"
@@ -19,14 +19,10 @@
   "keywords": [
     "css",
     "scss",
-    "utility",
-    "framework",
-    "responsive",
-    "clamp",
-    "css-variables",
-    "utility-first"
+    "utility-first",
+    "framework"
   ],
-  "author": "Don Vaskez",
+  "author": "Stefan Vaskovic",
   "license": "MIT",
   "devDependencies": {
     "sass": "^1.69.0"
