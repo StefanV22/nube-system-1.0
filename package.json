@@ -6,13 +6,15 @@
   "style": "styles/global-classes.css",
   "files": [
     "styles",
-    "README.md"
+    "README.md",
+    "scripts"
   ],
   "scripts": {
     "build": "npm run build:variables && npm run build:classes",
     "build:variables": "sass src/core/_variables.scss styles/variables.css --style compressed",
     "build:classes": "sass src/main.scss styles/global-classes.css --style compressed",
-    "prepare": "npm run build"
+    "prepare": "npm run build",
+    "postinstall": "node scripts/setup-astro.js"
   },
   "keywords": [
     "css",

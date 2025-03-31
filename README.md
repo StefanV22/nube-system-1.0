@@ -16,40 +16,23 @@ npm install nube-system
 yarn add nube-system
 ```
 
-## Usage
+## Usage in Astro Projects
 
-After installation, you'll find two files in the `node_modules/nube-system/styles` directory:
+When installed in an Astro project, Nube System automatically creates:
 
-1. `variables.css` - Contains all CSS variables (colors, sizes, typography)
-2. `global-classes.css` - Contains all utility classes
-
-Import them in your project:
-
-```css
-/* In your global CSS file */
-@import "nube-system/styles/variables.css";
-@import "nube-system/styles/global-classes.css";
+```
+src/
+  ├── styles/
+      ├── variables.css    (CSS variables for colors, sizes, typography)
+      └── global-classes.css   (All utility classes)
 ```
 
-For Astro projects, add to your `astro.config.mjs`:
+Import these files in your main layout or entry point:
 
-```js
-import { defineConfig } from "astro/config";
-
-export default defineConfig({
-  vite: {
-    css: {
-      preprocessorOptions: {
-        scss: {
-          additionalData: `
-            @import "nube-system/styles/variables.css";
-            @import "nube-system/styles/global-classes.css";
-          `,
-        },
-      },
-    },
-  },
-});
+```javascript
+// e.g., in src/layouts/Layout.astro
+import "../styles/variables.css";
+import "../styles/global-classes.css";
 ```
 
 ## Key Features
