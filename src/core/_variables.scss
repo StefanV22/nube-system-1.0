@@ -64,12 +64,12 @@
   --transition-duration: 0.2s;
 }
 
-// SCSS Maps for generating utilities - These will NOT be output to variables.css
+// SCSS Maps for generating utilities - These will NOT be output to CSS
 $breakpoints: (
-  "xs": var(--breakpoint-xs),
-  "sm": var(--breakpoint-sm),
-  "md": var(--breakpoint-md),
-  "lg": var(--breakpoint-lg),
+  "xs": 480px,
+  "sm": 768px,
+  "md": 992px,
+  "lg": 992px,
 ) !default;
 
 $layout-sizes: (
