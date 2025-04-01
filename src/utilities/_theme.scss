@@ -30,14 +30,23 @@
 }
 
 // Text colors (ink)
+[class*="ink-title"] {
+  color: var(--ink--title);
+}
 [class*="ink-body"] {
   color: var(--ink--body);
 }
-[class*="ink-muted"] {
-  color: var(--ink--muted);
+[class*="ink-strong"] {
+  color: var(--ink--strong);
 }
-[class*="ink-subtle"] {
-  color: var(--ink--subtle);
+[class*="ink-dimmed"] {
+  color: var(--ink--dimmed);
+}
+[class*="ink-faded"] {
+  color: var(--ink--faded);
+}
+[class*="ink-accent"] {
+  color: var(--ink--accent);
 }
 
 // Text colors (spot-ink)

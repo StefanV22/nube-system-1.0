@@ -1,3 +1,5 @@
+@use "../core/variables" as *;
+
 // Generate spacing utilities with combo class support
 @for $i from 0 through 13 {
   // Margin
@@ -54,10 +56,10 @@
   [class*="gap#{$i}"] {
     gap: var(--layout--size--#{$i});
   }
-  [class*="rgap#{$i}"] {
+  [class*="vg#{$i}"] {
     row-gap: var(--layout--size--#{$i});
   }
-  [class*="cgap#{$i}"] {
+  [class*="hg#{$i}"] {
     column-gap: var(--layout--size--#{$i});
   }
 }

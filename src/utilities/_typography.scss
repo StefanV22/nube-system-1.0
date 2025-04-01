@@ -1,8 +1,20 @@
-// Font sizes
+@use "../core/variables" as *;
+
+// Font sizes with matching line heights
 @for $i from 0 through 8 {
-  .text#{$i} {
+  [class*="f#{$i}"] {
     font-size: var(--font--size--#{$i});
+    line-height: var(--line--height--#{$i});
   }
+}
+
+// Font families
+[class*="ff0"] {
+  font-family: var(--font--family--0);
+}
+
+[class*="ff1"] {
+  font-family: var(--font--family--1);
 }
 
 // Font weights
@@ -12,35 +24,34 @@
   }
 }
 
-// Line heights
-.lh-none {
-  line-height: var(--line--height--none);
-}
-.lh-tight {
-  line-height: var(--line--height--tight);
-}
-.lh-snug {
-  line-height: var(--line--height--snug);
-}
-.lh-normal {
-  line-height: var(--line--height--normal);
-}
-.lh-relaxed {
-  line-height: var(--line--height--relaxed);
-}
-.lh-loose {
-  line-height: var(--line--height--loose);
-}
-
-// Text alignment
-.ta-left {
+// Default (xs) Text alignment
+[class*="xs_ta0"] {
   text-align: left;
 }
-.ta-center {
+
+[class*="xs_ta1"] {
   text-align: center;
 }
-.ta-right {
+
+[class*="xs_ta2"] {
   text-align: right;
+}
+
+// Responsive text alignment
+@each $breakpoint, $min-width in $breakpoints {
+  @if $breakpoint != "xs" {
+    @media (min-width: $min-width) {
+      [class*="#{$breakpoint}_ta0"] {
+        text-align: left;
+      }
+      [class*="#{$breakpoint}_ta1"] {
+        text-align: center;
+      }
+      [class*="#{$breakpoint}_ta2"] {
+        text-align: right;
+      }
+    }
+  }
 }
 
 // Text decoration
