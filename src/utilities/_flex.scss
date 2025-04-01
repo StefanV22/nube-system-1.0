@@ -1,112 +1,6 @@
 @use "sass:map";
 @use "../core/variables" as *;
 
-// Base flex utilities
-[class*="fd-"],
-[class*="jc-"],
-[class*="ai-"],
-[class*="fw-"],
-[class*="fg-"],
-[class*="fs-"] {
-  display: flex;
-}
-
-// Flex direction
-[class*="fd-row"] {
-  flex-direction: row;
-}
-[class*="fd-column"] {
-  flex-direction: column;
-}
-[class*="fd-row-reverse"] {
-  flex-direction: row-reverse;
-}
-[class*="fd-column-reverse"] {
-  flex-direction: column-reverse;
-}
-
-// Justify content
-[class*="jc-start"] {
-  justify-content: flex-start;
-}
-[class*="jc-end"] {
-  justify-content: flex-end;
-}
-[class*="jc-center"] {
-  justify-content: center;
-}
-[class*="jc-between"] {
-  justify-content: space-between;
-}
-[class*="jc-around"] {
-  justify-content: space-around;
-}
-[class*="jc-evenly"] {
-  justify-content: space-evenly;
-}
-
-// Align items
-[class*="ai-start"] {
-  align-items: flex-start;
-}
-[class*="ai-end"] {
-  align-items: flex-end;
-}
-[class*="ai-center"] {
-  align-items: center;
-}
-[class*="ai-baseline"] {
-  align-items: baseline;
-}
-[class*="ai-stretch"] {
-  align-items: stretch;
-}
-
-// Flex wrap
-[class*="fw-wrap"] {
-  flex-wrap: wrap;
-}
-[class*="fw-nowrap"] {
-  flex-wrap: nowrap;
-}
-[class*="fw-wrap-reverse"] {
-  flex-wrap: wrap-reverse;
-}
-
-// Flex grow/shrink
-[class*="fg-0"] {
-  flex-grow: 0;
-}
-[class*="fg-1"] {
-  flex-grow: 1;
-}
-[class*="fs-0"] {
-  flex-shrink: 0;
-}
-[class*="fs-1"] {
-  flex-shrink: 1;
-}
-
-// Align self
-[class*="as-auto"] {
-  align-self: auto;
-}
-[class*="as-start"] {
-  align-self: flex-start;
-}
-[class*="as-end"] {
-  align-self: flex-end;
-}
-[class*="as-center"] {
-  align-self: center;
-}
-[class*="as-baseline"] {
-  align-self: baseline;
-}
-[class*="as-stretch"] {
-  align-self: stretch;
-}
-
 // Generate flex order utilities
 @for $i from 1 through 12 {
   [class*="order-#{$i}"] {
@@ -297,7 +191,7 @@
         display: flex;
       }
 
-      // Align Content (md and lg only)
+      // Align Content
       @if $breakpoint == "md" or $breakpoint == "lg" {
         [class*="#{$breakpoint}_fac0"] {
           align-content: flex-start;
@@ -306,4 +200,18 @@
       }
     }
   }
+}
+
+// Flex grow/shrink
+[class*="fg-0"] {
+  flex-grow: 0;
+}
+[class*="fg-1"] {
+  flex-grow: 1;
+}
+[class*="fs-0"] {
+  flex-shrink: 0;
+}
+[class*="fs-1"] {
+  flex-shrink: 1;
 }

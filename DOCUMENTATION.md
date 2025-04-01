@@ -60,36 +60,6 @@ The system uses a mobile-first approach with these breakpoints for responsive ut
 - `md`: 768px and up
 - `lg`: 992px and up
 
-Responsive classes follow this pattern in media queries:
-
-```scss
-// Default (xs) - no media query needed
-[class*="xs_className"] {
-  /* Default styles */
-}
-
-// Small devices (sm) - 480px and up
-@media (min-width: 480px) {
-  [class*="sm_className"] {
-    /* Small device styles */
-  }
-}
-
-// Medium devices (md) - 768px and up
-@media (min-width: 768px) {
-  [class*="md_className"] {
-    /* Medium device styles */
-  }
-}
-
-// Large devices (lg) - 992px and up
-@media (min-width: 992px) {
-  [class*="lg_className"] {
-    /* Large device styles */
-  }
-}
-```
-
 To use responsive variants, prefix the class with the breakpoint and an underscore:
 
 ```html
@@ -249,53 +219,67 @@ Available grid gap classes:
 
 ## Flex Utilities
 
-Create flexible, responsive layouts with flex utilities:
+The system uses a mobile-first, responsive approach for flexible layouts:
 
 ```html
-<div class="xs_fd-column md_fd-row xs_jc-center md_jc-between xs_ai-center">
-  <!-- Column by default, row on 768px+ screens, with dynamic alignment -->
+<div class="xs_fd1 xs_fj3 xs_fa1 md_fd0 md_fj1">
+  <!-- Row with space-between and centered items by default,
+       Column with centered content on md+ screens -->
 </div>
 ```
 
-Available flex direction classes:
+Available flex classes:
 
-- `fd-row`: `flex-direction: row`
-- `fd-column`: `flex-direction: column`
-- `fd-row-reverse`: `flex-direction: row-reverse`
-- `fd-column-reverse`: `flex-direction: column-reverse`
+**Flex Direction**
 
-Justify content classes:
+- `xs_fd0`, `sm_fd0`, `md_fd0`, `lg_fd0`: Column
+- `xs_fd1`, `sm_fd1`, `md_fd1`, `lg_fd1`: Row
+- `xs_fd2`, `sm_fd2`, `md_fd2`, `lg_fd2`: Column reverse
+- `xs_fd3`, `sm_fd3`, `md_fd3`, `lg_fd3`: Row reverse
 
-- `jc-start`: `justify-content: flex-start`
-- `jc-end`: `justify-content: flex-end`
-- `jc-center`: `justify-content: center`
-- `jc-between`: `justify-content: space-between`
-- `jc-around`: `justify-content: space-around`
-- `jc-evenly`: `justify-content: space-evenly`
+**Justify Content**
 
-Align items classes:
+- `xs_fj0`, `sm_fj0`, `md_fj0`, `lg_fj0`: Start
+- `xs_fj1`, `sm_fj1`, `md_fj1`, `lg_fj1`: Center
+- `xs_fj2`, `sm_fj2`, `md_fj2`, `lg_fj2`: End
+- `xs_fj3`, `sm_fj3`, `md_fj3`, `lg_fj3`: Space between
+- `xs_fj4`, `sm_fj4`, `md_fj4`, `lg_fj4`: Space around
 
-- `ai-start`: `align-items: flex-start`
-- `ai-end`: `align-items: flex-end`
-- `ai-center`: `align-items: center`
-- `ai-baseline`: `align-items: baseline`
-- `ai-stretch`: `align-items: stretch`
+**Align Items**
 
-Flex wrap classes:
+- `xs_fa0`, `sm_fa0`, `md_fa0`, `lg_fa0`: Start
+- `xs_fa1`, `sm_fa1`, `md_fa1`, `lg_fa1`: Center
+- `xs_fa2`, `sm_fa2`, `md_fa2`, `lg_fa2`: End
+- `xs_fa3`, `sm_fa3`, `md_fa3`, `lg_fa3`: Stretch
+- `xs_fa4`, `sm_fa4`, `md_fa4`, `lg_fa4`: Baseline
 
-- `fw-wrap`: `flex-wrap: wrap`
-- `fw-nowrap`: `flex-wrap: nowrap`
-- `fw-wrap-reverse`: `flex-wrap: wrap-reverse`
+**Flex Wrap**
 
-Flex child properties:
+- `xs_fw0`, `sm_fw0`, `md_fw0`, `lg_fw0`: No wrap
+- `xs_fw1`, `sm_fw1`, `md_fw1`, `lg_fw1`: Wrap
+- `xs_fw2`, `sm_fw2`, `md_fw2`, `lg_fw2`: Wrap reverse
 
+**Align Content (md and lg only)**
+
+- `md_fac0`, `lg_fac0`: Flex start
+
+**Additional Flex Properties**
+
+These utilities complement the flex directional classes:
+
+```html
+<div class="fb-4 order-2 fg-1 fs-0">
+  <!-- Flex basis, order, grow and shrink properties -->
+</div>
+```
+
+Available flex property classes:
+
+- `fb-0` through `fb-8`: Flex basis using layout size scale
+- `order-1` through `order-12`: Order property
 - `fg-0`, `fg-1`: Flex grow (0 or 1)
 - `fs-0`, `fs-1`: Flex shrink (0 or 1)
-- `order-1` through `order-12`: Order property
-- `as-auto`, `as-start`, `as-end`, `as-center`, `as-baseline`, `as-stretch`: Align self
-- `fb-0` through `fb-8`: Flex basis using layout size scale
-
-All flex utilities are available with responsive variants (e.g., `md_fd-row`).
+- `gap-0` through `gap-8`: Gap using layout size scale
 
 ## Spacing Utilities
 
@@ -305,6 +289,7 @@ All flex utilities are available with responsive variants (e.g., `md_fd-row`).
 <div class="m5">Margin on all sides</div>
 <div class="mt6">Margin top</div>
 <div class="ml3 mr3">Margin left and right</div>
+<div class="m-auto">Horizontally centered</div>
 ```
 
 Available margin classes:
@@ -316,6 +301,9 @@ Available margin classes:
 - `ml0` through `ml13`: Margin left
 - `mh0` through `mh13`: Horizontal margins (left & right)
 - `mv0` through `mv13`: Vertical margins (top & bottom)
+- `m-auto`: Auto margins on left and right (horizontal centering)
+- `ml-auto`: Auto margin on left
+- `mr-auto`: Auto margin on right
 
 ### Padding
 
@@ -396,8 +384,8 @@ All major utility classes can be prefixed with a breakpoint to apply them at spe
   <!-- 2 cols by default, 4 cols on 768px+, 6 cols on 992px+ -->
 </div>
 
-<div class="xs_fd-column md_fd-row xs_ai-center md_ai-start">
-  <!-- Direction and alignment changes based on breakpoint -->
+<div class="xs_fd0 md_fd1 xs_fa1 md_fa0">
+  <!-- Column by default, row on 768px+, center-aligned by default, start-aligned on 768px+ -->
 </div>
 
 <p class="xs_ta0 md_ta1">

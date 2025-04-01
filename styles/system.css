@@ -2655,6 +2655,19 @@
   column-gap: var(--layout--size--13);
 }
 
+[class*=m-auto] {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+[class*=ml-auto] {
+  margin-left: auto;
+}
+
+[class*=mr-auto] {
+  margin-right: auto;
+}
+
 /**
  * Nube System - CSS Utility Framework
  * 
@@ -2665,127 +2678,6 @@
  * Variables (CSS Custom Properties)
  * This MUST be first to ensure variables are at the top of the compiled CSS
  */
-[class*=fd-],
-[class*=jc-],
-[class*=ai-],
-[class*=fw-],
-[class*=fg-],
-[class*=fs-] {
-  display: flex;
-}
-
-[class*=fd-row] {
-  flex-direction: row;
-}
-
-[class*=fd-column] {
-  flex-direction: column;
-}
-
-[class*=fd-row-reverse] {
-  flex-direction: row-reverse;
-}
-
-[class*=fd-column-reverse] {
-  flex-direction: column-reverse;
-}
-
-[class*=jc-start] {
-  justify-content: flex-start;
-}
-
-[class*=jc-end] {
-  justify-content: flex-end;
-}
-
-[class*=jc-center] {
-  justify-content: center;
-}
-
-[class*=jc-between] {
-  justify-content: space-between;
-}
-
-[class*=jc-around] {
-  justify-content: space-around;
-}
-
-[class*=jc-evenly] {
-  justify-content: space-evenly;
-}
-
-[class*=ai-start] {
-  align-items: flex-start;
-}
-
-[class*=ai-end] {
-  align-items: flex-end;
-}
-
-[class*=ai-center] {
-  align-items: center;
-}
-
-[class*=ai-baseline] {
-  align-items: baseline;
-}
-
-[class*=ai-stretch] {
-  align-items: stretch;
-}
-
-[class*=fw-wrap] {
-  flex-wrap: wrap;
-}
-
-[class*=fw-nowrap] {
-  flex-wrap: nowrap;
-}
-
-[class*=fw-wrap-reverse] {
-  flex-wrap: wrap-reverse;
-}
-
-[class*=fg-0] {
-  flex-grow: 0;
-}
-
-[class*=fg-1] {
-  flex-grow: 1;
-}
-
-[class*=fs-0] {
-  flex-shrink: 0;
-}
-
-[class*=fs-1] {
-  flex-shrink: 1;
-}
-
-[class*=as-auto] {
-  align-self: auto;
-}
-
-[class*=as-start] {
-  align-self: flex-start;
-}
-
-[class*=as-end] {
-  align-self: flex-end;
-}
-
-[class*=as-center] {
-  align-self: center;
-}
-
-[class*=as-baseline] {
-  align-self: baseline;
-}
-
-[class*=as-stretch] {
-  align-self: stretch;
-}
-
 [class*=order-1] {
   order: 1;
 }
@@ -3209,6 +3101,22 @@
     display: flex;
   }
 }
+[class*=fg-0] {
+  flex-grow: 0;
+}
+
+[class*=fg-1] {
+  flex-grow: 1;
+}
+
+[class*=fs-0] {
+  flex-shrink: 0;
+}
+
+[class*=fs-1] {
+  flex-shrink: 1;
+}
+
 /**
  * Nube System - CSS Utility Framework
  * 

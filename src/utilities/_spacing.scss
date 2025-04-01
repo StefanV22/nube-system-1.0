@@ -63,3 +63,17 @@
     column-gap: var(--layout--size--#{$i});
   }
 }
+
+// Auto margin utilities
+[class*="m-auto"] {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+[class*="ml-auto"] {
+  margin-left: auto;
+}
+
+[class*="mr-auto"] {
+  margin-right: auto;
+}
