@@ -16,6 +16,33 @@ npm install nube-system
 yarn add nube-system
 ```
 
+## Usage Options
+
+### Option 1: Complete System (Recommended)
+
+Simply import the complete system CSS file that includes all utilities:
+
+```javascript
+// All utilities bundled in one file with variables at the top
+import "nube-system/dist/system.css";
+```
+
+For production environments, you can use the minified version:
+
+```javascript
+import "nube-system/dist/system.min.css";
+```
+
+### Option 2: Individual Modules
+
+Import only the specific modules you need:
+
+```javascript
+import "nube-system/styles/variables.css"; // Required for any module
+import "nube-system/styles/flex.css"; // Only flex utilities
+import "nube-system/styles/layout.css"; // Only layout utilities
+```
+
 ## Usage in Astro Projects
 
 When installed in an Astro project, Nube System automatically creates:

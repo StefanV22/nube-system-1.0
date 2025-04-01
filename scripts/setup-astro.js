@@ -34,21 +34,20 @@ function setupAstro() {
   if (fs.existsSync(path.join(projectRoot, "src"))) {
     const stylesDir = path.join(projectRoot, "src", "styles");
 
-    // Define our CSS modules
-    const modules = {
-      variables: "variables.css",
-      flex: "flex.css",
-      layout: "layout.css",
-      spacing: "spacing.css",
-      typography: "typography.css",
-    };
+    // Ensure styles directory exists
+    ensureDirectoryExists(stylesDir);
 
-    // Copy each module
-    Object.entries(modules).forEach(([name, filename]) => {
-      const source = path.join(packagePath, "styles", filename);
-      const target = path.join(stylesDir, filename);
-      copyFile(source, target);
-    });
+    // Copy the unified system.css file
+    const systemSource = path.join(packagePath, "styles", "system.css");
+    const systemTarget = path.join(stylesDir, "system.css");
+    copyFile(systemSource, systemTarget);
+
+    // Copy minified version if it exists
+    const minifiedSource = path.join(packagePath, "styles", "system.min.css");
+    if (fs.existsSync(minifiedSource)) {
+      const minifiedTarget = path.join(stylesDir, "system.min.css");
+      copyFile(minifiedSource, minifiedTarget);
+    }
 
     // Copy documentation
     const docSource = path.join(packagePath, "DOCUMENTATION.md");
@@ -57,28 +56,17 @@ function setupAstro() {
 
     console.log("\nNube System has been set up in your project!");
     console.log("\nFiles created:");
-    console.log("1. Style Modules (in src/styles/):");
-    Object.values(modules).forEach((filename) => {
-      console.log(`   - ${filename}`);
-    });
-    console.log("2. Documentation:");
+    console.log("1. Complete System:");
+    console.log("   - system.css (all utilities in one file)");
+    console.log("   - system.min.css (minified version for production)");
+    console.log("\n2. Documentation:");
     console.log("   - system.doc.md (in src/styles/)");
 
-    console.log("\nTo use the system, import the modules you need:");
+    console.log("\nQuick Start:");
     console.log("\n// In your main layout or entry point:");
-    console.log('import "../styles/variables.css"; // Required');
-    console.log(
-      'import "../styles/flex.css";      // Optional - Flexbox utilities'
-    );
-    console.log(
-      'import "../styles/layout.css";    // Optional - Layout utilities'
-    );
-    console.log(
-      'import "../styles/spacing.css";   // Optional - Spacing utilities'
-    );
-    console.log(
-      'import "../styles/typography.css"; // Optional - Typography & theme'
-    );
+    console.log('import "../styles/system.css"; // Development');
+    console.log("// OR");
+    console.log('import "../styles/system.min.css"; // Production');
 
     console.log(
       "\nCheck system.doc.md for detailed documentation and examples."
