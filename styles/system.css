@@ -1139,10 +1139,6 @@
   padding-bottom: var(--layout--size--0);
 }
 
-[class*=gap0] {
-  gap: var(--layout--size--0);
-}
-
 [class*=vg0] {
   row-gap: var(--layout--size--0);
 }
@@ -1209,10 +1205,6 @@
 [class*=pv1] {
   padding-top: var(--layout--size--1);
   padding-bottom: var(--layout--size--1);
-}
-
-[class*=gap1] {
-  gap: var(--layout--size--1);
 }
 
 [class*=vg1] {
@@ -1283,10 +1275,6 @@
   padding-bottom: var(--layout--size--2);
 }
 
-[class*=gap2] {
-  gap: var(--layout--size--2);
-}
-
 [class*=vg2] {
   row-gap: var(--layout--size--2);
 }
@@ -1353,10 +1341,6 @@
 [class*=pv3] {
   padding-top: var(--layout--size--3);
   padding-bottom: var(--layout--size--3);
-}
-
-[class*=gap3] {
-  gap: var(--layout--size--3);
 }
 
 [class*=vg3] {
@@ -1427,10 +1411,6 @@
   padding-bottom: var(--layout--size--4);
 }
 
-[class*=gap4] {
-  gap: var(--layout--size--4);
-}
-
 [class*=vg4] {
   row-gap: var(--layout--size--4);
 }
@@ -1497,10 +1477,6 @@
 [class*=pv5] {
   padding-top: var(--layout--size--5);
   padding-bottom: var(--layout--size--5);
-}
-
-[class*=gap5] {
-  gap: var(--layout--size--5);
 }
 
 [class*=vg5] {
@@ -1571,10 +1547,6 @@
   padding-bottom: var(--layout--size--6);
 }
 
-[class*=gap6] {
-  gap: var(--layout--size--6);
-}
-
 [class*=vg6] {
   row-gap: var(--layout--size--6);
 }
@@ -1641,10 +1613,6 @@
 [class*=pv7] {
   padding-top: var(--layout--size--7);
   padding-bottom: var(--layout--size--7);
-}
-
-[class*=gap7] {
-  gap: var(--layout--size--7);
 }
 
 [class*=vg7] {
@@ -1715,10 +1683,6 @@
   padding-bottom: var(--layout--size--8);
 }
 
-[class*=gap8] {
-  gap: var(--layout--size--8);
-}
-
 [class*=vg8] {
   row-gap: var(--layout--size--8);
 }
@@ -1785,10 +1749,6 @@
 [class*=pv9] {
   padding-top: var(--layout--size--9);
   padding-bottom: var(--layout--size--9);
-}
-
-[class*=gap9] {
-  gap: var(--layout--size--9);
 }
 
 [class*=vg9] {
@@ -1859,10 +1819,6 @@
   padding-bottom: var(--layout--size--10);
 }
 
-[class*=gap10] {
-  gap: var(--layout--size--10);
-}
-
 [class*=vg10] {
   row-gap: var(--layout--size--10);
 }
@@ -1929,10 +1885,6 @@
 [class*=pv11] {
   padding-top: var(--layout--size--11);
   padding-bottom: var(--layout--size--11);
-}
-
-[class*=gap11] {
-  gap: var(--layout--size--11);
 }
 
 [class*=vg11] {
@@ -2003,10 +1955,6 @@
   padding-bottom: var(--layout--size--12);
 }
 
-[class*=gap12] {
-  gap: var(--layout--size--12);
-}
-
 [class*=vg12] {
   row-gap: var(--layout--size--12);
 }
@@ -2073,10 +2021,6 @@
 [class*=pv13] {
   padding-top: var(--layout--size--13);
   padding-bottom: var(--layout--size--13);
-}
-
-[class*=gap13] {
-  gap: var(--layout--size--13);
 }
 
 [class*=vg13] {
@@ -2156,42 +2100,6 @@
 
 [class*=order-12] {
   order: 12;
-}
-
-[class*=fg0] {
-  gap: var(--layout--size--0);
-}
-
-[class*=fg1] {
-  gap: var(--layout--size--1);
-}
-
-[class*=fg2] {
-  gap: var(--layout--size--2);
-}
-
-[class*=fg3] {
-  gap: var(--layout--size--3);
-}
-
-[class*=fg4] {
-  gap: var(--layout--size--4);
-}
-
-[class*=fg5] {
-  gap: var(--layout--size--5);
-}
-
-[class*=fg6] {
-  gap: var(--layout--size--6);
-}
-
-[class*=fg7] {
-  gap: var(--layout--size--7);
-}
-
-[class*=fg8] {
-  gap: var(--layout--size--8);
 }
 
 [class*=xs_fd0] {
@@ -2497,22 +2405,6 @@
     display: flex;
   }
 }
-[class*=fg-0] {
-  flex-grow: 0;
-}
-
-[class*=fg-1] {
-  flex-grow: 1;
-}
-
-[class*=fs-0] {
-  flex-shrink: 0;
-}
-
-[class*=fs-1] {
-  flex-shrink: 1;
-}
-
 /**
  * Nube System - CSS Utility Framework
  * 

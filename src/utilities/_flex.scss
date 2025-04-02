@@ -8,13 +8,6 @@
   }
 }
 
-// Generate flex gap utilities
-@for $i from 0 through 8 {
-  [class*="fg#{$i}"] {
-    gap: var(--layout--size--#{$i});
-  }
-}
-
 // Default (xs) Flex Direction classes
 [class*="xs_fd0"] {
   flex-direction: column;
@@ -193,18 +186,4 @@
       }
     }
   }
-}
-
-// Flex grow/shrink
-[class*="fg-0"] {
-  flex-grow: 0;
-}
-[class*="fg-1"] {
-  flex-grow: 1;
-}
-[class*="fs-0"] {
-  flex-shrink: 0;
-}
-[class*="fs-1"] {
-  flex-shrink: 1;
 }

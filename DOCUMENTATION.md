@@ -1,5 +1,19 @@
 # Nube System Documentation
 
+## Table of Contents
+
+1. [Installation](#installation)
+2. [Quick Start](#quick-start)
+3. [Core Concepts](#core-concepts)
+4. [Available Utilities](#available-utilities)
+   - [Colors](#colors)
+   - [Layout](#layout)
+   - [Spacing](#spacing)
+   - [Flexbox](#flexbox)
+   - [Element](#element)
+   - [Typography](#typography)
+5. [Breakpoints](#breakpoints)
+
 ## Installation
 
 ### Option 1: NPM
@@ -32,18 +46,6 @@ import "../styles/system.min.css"; // Production (minified) version
 ```
 
 This single file contains all utility classes and variables, with variables defined at the top for proper cascading.
-
-## Table of Contents
-
-1. [Core Concepts](#core-concepts)
-2. [Layout System](#layout-system)
-3. [Typography](#typography)
-4. [Grid System](#grid-system)
-5. [Flex Utilities](#flex-utilities)
-6. [Spacing Utilities](#spacing-utilities)
-7. [Color Utilities](#color-utilities)
-8. [Element Utilities](#element-utilities)
-9. [Responsive Design](#responsive-design)
 
 ## Core Concepts
 
@@ -289,18 +291,14 @@ Available flex classes:
 These utilities complement the flex directional classes:
 
 ```html
-<div class="fb-4 order-2 fg-1 fs-0">
-  <!-- Flex basis, order, grow and shrink properties -->
+<div class="order-2">
+  <!-- Order property -->
 </div>
 ```
 
 Available flex property classes:
 
-- `fb-0` through `fb-8`: Flex basis using layout size scale
 - `order-1` through `order-12`: Order property
-- `fg-0`, `fg-1`: Flex grow (0 or 1)
-- `fs-0`, `fs-1`: Flex shrink (0 or 1)
-- `gap-0` through `gap-8`: Gap using layout size scale
 
 ## Spacing Utilities
 
@@ -343,20 +341,6 @@ Available padding classes:
 - `pl0` through `pl13`: Padding left
 - `ph0` through `ph13`: Horizontal padding (left & right)
 - `pv0` through `pv13`: Vertical padding (top & bottom)
-
-### Gap Utilities
-
-```html
-<div class="gap5">Gap on both axes</div>
-<div class="vg3">Vertical gap (row-gap)</div>
-<div class="hg6">Horizontal gap (column-gap)</div>
-```
-
-Available gap classes:
-
-- `gap0` through `gap13`: Gap on both axes
-- `vg0` through `vg13`: Vertical gap (row-gap)
-- `hg0` through `hg13`: Horizontal gap (column-gap)
 
 ## Color Utilities
 
@@ -481,18 +465,18 @@ All major utility classes can be prefixed with a breakpoint to apply them at spe
 
 For specific breakpoint values, see the [Responsive Breakpoints](#responsive-breakpoints) section.
 
-## Table of Contents
+## Available Utilities
 
-1. [Colors](#colors)
-2. [Layout](#layout)
-3. [Spacing](#spacing)
-4. [Flexbox](#flexbox)
-5. [Element](#element)
-6. [Typography](#typography)
+### Colors
 
-## Colors
+#### Background Colors
 
-### Background Colors
+```html
+<div class="surface-primary">Primary surface</div>
+<div class="spot-accent">Accent spot color</div>
+```
+
+Available classes:
 
 - `surface-primary` - Primary surface color
 - `surface-secondary` - Secondary surface color
@@ -504,7 +488,16 @@ For specific breakpoint values, see the [Responsive Breakpoints](#responsive-bre
 - `spot-scarcity` - Scarcity spot color
 - `spot-scarcity-hover` - Scarcity hover state
 
-### Text Colors
+#### Text Colors
+
+```html
+<p class="ink-title">Title text</p>
+<p class="ink-body">Body text</p>
+<p class="ink-dimmed">Dimmed text</p>
+<p class="spot-ink-primary">Text on primary spot color</p>
+```
+
+Available classes:
 
 - `ink-title` - Title text color
 - `ink-body` - Body text color
@@ -519,28 +512,59 @@ For specific breakpoint values, see the [Responsive Breakpoints](#responsive-bre
 - `spot-ink-scarcity` - Scarcity spot text color
 - `spot-ink-scarcity-hover` - Scarcity hover text color
 
-### Border Colors
+#### Border Colors
+
+```html
+<div class="stroke-primary">Border with primary stroke color</div>
+```
+
+Available classes:
 
 - `stroke-primary` - Primary border color
 - `stroke-secondary` - Secondary border color
 - `stroke-tertiary` - Tertiary border color
 
-## Layout
+### Layout
 
-### Max Width
+#### Max Width
+
+```html
+<div class="mw_6">Half width container</div>
+<div class="mw_12">Full width container</div>
+<div class="mw_13">Extended width container</div>
+```
+
+Available classes:
 
 - `mw_1` through `mw_12` - Max width utilities (1/12 to 12/12 of grid width)
 - `mw_13` - Extended max width for larger containers
 
-### Grid
+#### Grid
+
+```html
+<div class="clm clm_6">Half width column</div>
+<div class="clm clm_12">Full width column</div>
+<div class="clm clm_13">Extended width column</div>
+```
+
+Available classes:
 
 - `clm` - Base column class
 - `clm_1` through `clm_12` - Column width utilities (1/12 to 12/12)
 - `clm_13` - Extended column width
 
-## Spacing
+### Spacing
 
-### Margin
+#### Margin
+
+```html
+<div class="m5">Margin on all sides</div>
+<div class="mt6">Margin top</div>
+<div class="ml3 mr3">Margin left and right</div>
+<div class="m-auto">Horizontally centered</div>
+```
+
+Available classes:
 
 - `m0` through `m13` - All sides margin
 - `mt0` through `mt13` - Top margin
@@ -553,7 +577,15 @@ For specific breakpoint values, see the [Responsive Breakpoints](#responsive-bre
 - `ml-auto` - Auto left margin
 - `mr-auto` - Auto right margin
 
-### Padding
+#### Padding
+
+```html
+<div class="p5">Padding on all sides</div>
+<div class="pt6">Padding top</div>
+<div class="pl3 pr3">Padding left and right</div>
+```
+
+Available classes:
 
 - `p0` through `p13` - All sides padding
 - `pt0` through `pt13` - Top padding
@@ -563,20 +595,25 @@ For specific breakpoint values, see the [Responsive Breakpoints](#responsive-bre
 - `ph0` through `ph13` - Horizontal padding (left and right)
 - `pv0` through `pv13` - Vertical padding (top and bottom)
 
-### Gap
+### Flexbox
 
-- `gap0` through `gap13` - Gap between elements
-- `vg0` through `vg13` - Vertical gap (row-gap)
-- `hg0` through `hg13` - Horizontal gap (column-gap)
-- `fg0` through `fg8` - Flex gap
+#### Order
 
-## Flexbox
+```html
+<div class="order-2">Second in order</div>
+```
 
-### Order
+Available classes:
 
-- `order-1` through `order-12` - Flex order
+- `order-1` through `order-12` - Order property
 
-### Flex Direction (Responsive)
+#### Flex Direction (Responsive)
+
+```html
+<div class="xs_fd1 md_fd0">Row by default, column on md+</div>
+```
+
+Available classes:
 
 - `xs_fd0` - Column (default)
 - `xs_fd1` - Row
@@ -584,7 +621,13 @@ For specific breakpoint values, see the [Responsive Breakpoints](#responsive-bre
 - `xs_fd3` - Row reverse
 - Available for all breakpoints (sm, md, lg)
 
-### Justify Content (Responsive)
+#### Justify Content (Responsive)
+
+```html
+<div class="xs_fj1 md_fj3">Centered by default, space-between on md+</div>
+```
+
+Available classes:
 
 - `xs_fj0` - Start
 - `xs_fj1` - Center
@@ -593,7 +636,13 @@ For specific breakpoint values, see the [Responsive Breakpoints](#responsive-bre
 - `xs_fj4` - Space around
 - Available for all breakpoints (sm, md, lg)
 
-### Align Items (Responsive)
+#### Align Items (Responsive)
+
+```html
+<div class="xs_fa1 md_fa0">Centered by default, start-aligned on md+</div>
+```
+
+Available classes:
 
 - `xs_fa0` - Start
 - `xs_fa1` - Center
@@ -602,48 +651,130 @@ For specific breakpoint values, see the [Responsive Breakpoints](#responsive-bre
 - `xs_fa4` - Baseline
 - Available for all breakpoints (sm, md, lg)
 
-### Flex Wrap (Responsive)
+#### Flex Wrap (Responsive)
+
+```html
+<div class="xs_fw1">Wrapped flex container</div>
+```
+
+Available classes:
 
 - `xs_fw0` - No wrap
 - `xs_fw1` - Wrap
 - `xs_fw2` - Wrap reverse
 - Available for all breakpoints (sm, md, lg)
 
-### Flex Grow/Shrink
+### Element
 
-- `fg-0` - No grow
-- `fg-1` - Grow
-- `fs-0` - No shrink
-- `fs-1` - Shrink
+#### Display (Responsive)
 
-## Element
+```html
+<div class="xs_ed1 md_ed2">Block by default, flex on md+</div>
+```
 
-### Display (Responsive)
+Available classes:
 
 - `xs_ed0` - None
-- `xs_ed1` - Block
-- `xs_ed2` - Flex
-- `xs_ed3` - Inline
-- `xs_ed4` - Inline flex
+- `xs_ed1` - Block display
+- `xs_ed2` - Flex display
+- `xs_ed3` - Inline display
+- `xs_ed4` - Inline flex display
 - Available for all breakpoints (sm, md, lg)
 
-### Position (Responsive)
+#### Position (Responsive)
 
-- `xs_ep0` - Static
-- `xs_ep1` - Relative
-- `xs_ep2` - Absolute
-- `xs_ep3` - Fixed
-- `xs_ep4` - Sticky
+```html
+<div class="xs_ep1 md_ep2">Relative by default, absolute on md+</div>
+```
+
+Available classes:
+
+- `xs_ep0` - Static positioning
+- `xs_ep1` - Relative positioning
+- `xs_ep2` - Absolute positioning
+- `xs_ep3` - Fixed positioning
+- `xs_ep4` - Sticky positioning
 - Available for all breakpoints (sm, md, lg)
 
-### Border Width
+#### Border Width
 
-- `bw0` through `bw8` - Border width utilities
+```html
+<div class="bw1">Thin border</div>
+<div class="bw8">Thick border</div>
+```
 
-### Border Radius (Responsive)
+Available classes:
 
-- `xs_br0` through `xs_br8` - Border radius utilities
+- `bw0` - No border
+- `bw1` - Thin border
+- `bw2` - Medium border
+- `bw8` - Thick border
+
+#### Border Radius (Responsive)
+
+```html
+<div class="xs_br1 md_br2">Small radius by default, medium on md+</div>
+```
+
+Available classes:
+
+- `xs_br0` - No border radius
+- `xs_br1` - Small border radius
+- `xs_br2` - Medium border radius
+- `xs_br8` - Large border radius
 - Available for all breakpoints (sm, md, lg)
+
+### Typography
+
+#### Font Size and Line Height
+
+```html
+<p class="f0">Small text</p>
+<p class="f1">Regular text</p>
+<p class="f8">Large heading</p>
+```
+
+Available classes:
+
+- `f0` through `f8` - Font sizes from smallest to largest
+
+#### Font Family
+
+```html
+<p class="ff0">Primary font</p>
+<code class="ff1">Monospace font</code>
+```
+
+Available classes:
+
+- `ff0` - Primary font (system UI)
+- `ff1` - Monospace font
+
+#### Font Weight
+
+```html
+<p class="fw0">Light text</p>
+<p class="fw1">Regular text</p>
+<p class="fw5">Heavy text</p>
+```
+
+Available classes:
+
+- `fw0` through `fw5` - Font weights from lightest to heaviest
+
+#### Text Utilities
+
+```html
+<p class="td-underline tt-uppercase xs_ta1">
+  Centered, underlined, uppercase text
+</p>
+```
+
+Available classes:
+
+- Text decoration: `td-underline`, `td-none`
+- Text transform: `tt-uppercase`, `tt-lowercase`, `tt-capitalize`
+- Text alignment: `xs_ta0` (left), `xs_ta1` (center), `xs_ta2` (right)
 
 ## Breakpoints
 
@@ -651,43 +782,3 @@ For specific breakpoint values, see the [Responsive Breakpoints](#responsive-bre
 - `sm` - 576px and up
 - `md` - 768px and up
 - `lg` - 992px and up
-
-## Usage Examples
-
-### Basic Layout
-
-```html
-<div class="clm clm_6 mw_6">
-  <div class="xs_fd1 xs_fj1 xs_fa1">
-    <!-- Content -->
-  </div>
-</div>
-```
-
-### Responsive Design
-
-```html
-<div class="xs_ed1 md_ed2 xs_fd0 md_fd1">
-  <!-- Content that changes display and direction at md breakpoint -->
-</div>
-```
-
-### Spacing
-
-```html
-<div class="m6 p4">
-  <div class="mt2 mb4">
-    <!-- Content with margin and padding -->
-  </div>
-</div>
-```
-
-### Colors
-
-```html
-<div class="surface-primary ink-body">
-  <div class="spot-primary spot-ink-primary">
-    <!-- Colored content -->
-  </div>
-</div>
-```

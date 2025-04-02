@@ -53,9 +53,7 @@
   }
 
   // Gap
-  [class*="gap#{$i}"] {
-    gap: var(--layout--size--#{$i});
-  }
+
   [class*="vg#{$i}"] {
     row-gap: var(--layout--size--#{$i});
   }
