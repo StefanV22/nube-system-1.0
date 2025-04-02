@@ -85,8 +85,20 @@
   --line--height--7: 1.06;
   --line--height--8: 1.07;
 
-  // Layout
+  //Border
+  --border--width--0: 0.5px;
+  --border--width--1: 1px;
+  --border--width--2: 2px;
 
+  // Border Radius
+  --border--radius--0: 0.125rem;
+  --border--radius--1: 0.25rem;
+  --border--radius--2: 0.5rem;
+  --border--radius--3: 0.75rem;
+  --border--radius--4: 1rem;
+  --border--radius--5: 1.5rem;
+
+  // Layout
   --layout--grid--width: 90rem;
   --layout--grid--margin: var(--layout--size--6);
   --layout--grid--gutter: var(--layout--size--6);

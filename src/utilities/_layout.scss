@@ -59,13 +59,6 @@
   max-width: 100%;
 }
 
-// Column Order classes
-@for $i from 1 through 4 {
-  [class*="clm"][class*="xs_o#{$i}"] {
-    order: $i;
-  }
-}
-
 // Default (xs) column widths
 @for $i from 1 through 12 {
   [class*="clm"][class*="xs_#{$i}"] {
@@ -80,13 +73,6 @@
 @each $breakpoint, $min-width in $breakpoints {
   @if $breakpoint != "xs" {
     @media (min-width: $min-width) {
-      // Column Order classes
-      @for $i from 1 through 4 {
-        [class*="clm"][class*="#{$breakpoint}_o#{$i}"] {
-          order: $i;
-        }
-      }
-
       // Column width classes
       @for $i from 1 through 12 {
         [class*="clm"][class*="#{$breakpoint}_#{$i}"] {
@@ -100,25 +86,6 @@
   }
 }
 
-// Fixed width column classes
-@for $i from 1 through 12 {
-  [class*="clm"][class*="fx_#{$i}"] {
-    flex-basis: calc(
-      (var(--layout--grid--width) * #{math.div($i, 12)}) +
-        #{$i} *
-        (var(--layout--grid--gutter) / 12)
-    );
-    width: 100%;
-    max-width: calc(
-      (var(--layout--grid--width) * #{math.div($i, 12)}) +
-        #{$i} *
-        (var(--layout--grid--gutter) / 12)
-    );
-    flex-grow: 1;
-    flex-shrink: 1;
-  }
-}
-
 // Max width classes
 @for $i from 1 through 12 {
   [class*="mw_#{$i}"] {
@@ -128,73 +95,5 @@
         #{(12 - $i)} *
         (var(--layout--grid--gutter) / 12)
     );
-  }
-}
-
-// Generate Size-based Utilities
-@for $i from 0 through 13 {
-  // Padding
-  [class*="p#{$i}"] {
-    padding: var(--layout--size--#{$i});
-  }
-
-  // Padding Top
-  [class*="pt#{$i}"] {
-    padding-top: var(--layout--size--#{$i});
-  }
-
-  // Padding Right
-  [class*="pr#{$i}"] {
-    padding-right: var(--layout--size--#{$i});
-  }
-
-  // Padding Bottom
-  [class*="pb#{$i}"] {
-    padding-bottom: var(--layout--size--#{$i});
-  }
-
-  // Padding Left
-  [class*="pl#{$i}"] {
-    padding-left: var(--layout--size--#{$i});
-  }
-
-  // Margin
-  [class*="m#{$i}"] {
-    margin: var(--layout--size--#{$i});
-  }
-
-  // Margin Top
-  [class*="mt#{$i}"] {
-    margin-top: var(--layout--size--#{$i});
-  }
-
-  // Margin Right
-  [class*="mr#{$i}"] {
-    margin-right: var(--layout--size--#{$i});
-  }
-
-  // Margin Bottom
-  [class*="mb#{$i}"] {
-    margin-bottom: var(--layout--size--#{$i});
-  }
-
-  // Margin Left
-  [class*="ml#{$i}"] {
-    margin-left: var(--layout--size--#{$i});
-  }
-
-  // Gap - Default (xs)
-  [class*="gap#{$i}"] {
-    gap: var(--layout--size--#{$i});
-  }
-
-  // Vertical Gap (Row Gap) - Default (xs)
-  [class*="vg#{$i}"] {
-    row-gap: var(--layout--size--#{$i});
-  }
-
-  // Horizontal Gap (Column Gap) - Default (xs)
-  [class*="hg#{$i}"] {
-    column-gap: var(--layout--size--#{$i});
   }
 }

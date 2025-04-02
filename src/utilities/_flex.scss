@@ -8,16 +8,9 @@
   }
 }
 
-// Generate flex basis utilities
-@for $i from 0 through 8 {
-  [class*="fb-#{$i}"] {
-    flex-basis: var(--layout--size--#{$i});
-  }
-}
-
 // Generate flex gap utilities
 @for $i from 0 through 8 {
-  [class*="gap-#{$i}"] {
+  [class*="fg#{$i}"] {
     gap: var(--layout--size--#{$i});
   }
 }

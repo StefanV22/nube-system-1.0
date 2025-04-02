@@ -1,5 +1,25 @@
 # Nube System Documentation
 
+## Installation
+
+### Option 1: NPM
+
+```bash
+npm install nube-system
+```
+
+### Option 2: Yarn
+
+```bash
+yarn add nube-system
+```
+
+### Option 3: Manual Installation
+
+1. Download the latest release from our [GitHub repository](https://github.com/StefanV22/nube-system-1.0/releases)
+2. Extract the files to your project
+3. Copy the `styles` folder to your project's assets directory
+
 ## Quick Start
 
 The simplest way to use Nube System is to import the unified CSS file:
@@ -22,7 +42,8 @@ This single file contains all utility classes and variables, with variables defi
 5. [Flex Utilities](#flex-utilities)
 6. [Spacing Utilities](#spacing-utilities)
 7. [Color Utilities](#color-utilities)
-8. [Responsive Design](#responsive-design)
+8. [Element Utilities](#element-utilities)
+9. [Responsive Design](#responsive-design)
 
 ## Core Concepts
 
@@ -375,6 +396,71 @@ Available border color classes:
 
 - Stroke colors: `stroke-primary`, `stroke-secondary`, `stroke-tertiary`
 
+## Element Utilities
+
+### Display (Responsive)
+
+```html
+<div class="xs_ed0">Hidden by default</div>
+<div class="xs_ed1">Block display</div>
+<div class="xs_ed2">Flex display</div>
+<div class="xs_ed3">Inline display</div>
+<div class="xs_ed4">Inline flex display</div>
+```
+
+Available display classes (responsive):
+
+- `xs_ed0` through `xs_ed4`: Default display properties
+- `sm_ed0` through `sm_ed4`: Display at sm breakpoint (480px+)
+- `md_ed0` through `md_ed4`: Display at md breakpoint (768px+)
+- `lg_ed0` through `lg_ed4`: Display at lg breakpoint (992px+)
+
+### Position (Responsive)
+
+```html
+<div class="xs_ep0">Static positioning</div>
+<div class="xs_ep1">Relative positioning</div>
+<div class="xs_ep2">Absolute positioning</div>
+<div class="xs_ep3">Fixed positioning</div>
+<div class="xs_ep4">Sticky positioning</div>
+```
+
+Available position classes (responsive):
+
+- `xs_ep0` through `xs_ep4`: Default position properties
+- `sm_ep0` through `sm_ep4`: Position at sm breakpoint (480px+)
+- `md_ep0` through `md_ep4`: Position at md breakpoint (768px+)
+- `lg_ep0` through `lg_ep4`: Position at lg breakpoint (992px+)
+
+### Border Width
+
+```html
+<div class="bw0">No border</div>
+<div class="bw1">Thin border</div>
+<div class="bw2">Medium border</div>
+<div class="bw8">Thick border</div>
+```
+
+Available border width classes:
+
+- `bw0` through `bw8`: Border width using layout size scale
+
+### Border Radius (Responsive)
+
+```html
+<div class="xs_br0">No border radius</div>
+<div class="xs_br1">Small border radius</div>
+<div class="xs_br2">Medium border radius</div>
+<div class="xs_br8">Large border radius</div>
+```
+
+Available border radius classes (responsive):
+
+- `xs_br0` through `xs_br8`: Default border radius
+- `sm_br0` through `sm_br8`: Border radius at sm breakpoint (480px+)
+- `md_br0` through `md_br8`: Border radius at md breakpoint (768px+)
+- `lg_br0` through `lg_br8`: Border radius at lg breakpoint (992px+)
+
 ## Responsive Design
 
 All major utility classes can be prefixed with a breakpoint to apply them at specific screen sizes:
@@ -394,3 +480,214 @@ All major utility classes can be prefixed with a breakpoint to apply them at spe
 ```
 
 For specific breakpoint values, see the [Responsive Breakpoints](#responsive-breakpoints) section.
+
+## Table of Contents
+
+1. [Colors](#colors)
+2. [Layout](#layout)
+3. [Spacing](#spacing)
+4. [Flexbox](#flexbox)
+5. [Element](#element)
+6. [Typography](#typography)
+
+## Colors
+
+### Background Colors
+
+- `surface-primary` - Primary surface color
+- `surface-secondary` - Secondary surface color
+- `surface-tertiary` - Tertiary surface color
+- `spot-primary` - Primary spot color
+- `spot-secondary` - Secondary spot color
+- `spot-accent` - Accent spot color
+- `spot-accent-hover` - Accent hover state
+- `spot-scarcity` - Scarcity spot color
+- `spot-scarcity-hover` - Scarcity hover state
+
+### Text Colors
+
+- `ink-title` - Title text color
+- `ink-body` - Body text color
+- `ink-strong` - Strong text color
+- `ink-dimmed` - Dimmed text color
+- `ink-faded` - Faded text color
+- `ink-accent` - Accent text color
+- `spot-ink-primary` - Primary spot text color
+- `spot-ink-secondary` - Secondary spot text color
+- `spot-ink-accent` - Accent spot text color
+- `spot-ink-accent-hover` - Accent hover text color
+- `spot-ink-scarcity` - Scarcity spot text color
+- `spot-ink-scarcity-hover` - Scarcity hover text color
+
+### Border Colors
+
+- `stroke-primary` - Primary border color
+- `stroke-secondary` - Secondary border color
+- `stroke-tertiary` - Tertiary border color
+
+## Layout
+
+### Max Width
+
+- `mw_1` through `mw_12` - Max width utilities (1/12 to 12/12 of grid width)
+- `mw_13` - Extended max width for larger containers
+
+### Grid
+
+- `clm` - Base column class
+- `clm_1` through `clm_12` - Column width utilities (1/12 to 12/12)
+- `clm_13` - Extended column width
+
+## Spacing
+
+### Margin
+
+- `m0` through `m13` - All sides margin
+- `mt0` through `mt13` - Top margin
+- `mr0` through `mr13` - Right margin
+- `mb0` through `mb13` - Bottom margin
+- `ml0` through `ml13` - Left margin
+- `mh0` through `mh13` - Horizontal margin (left and right)
+- `mv0` through `mv13` - Vertical margin (top and bottom)
+- `m-auto` - Auto margin
+- `ml-auto` - Auto left margin
+- `mr-auto` - Auto right margin
+
+### Padding
+
+- `p0` through `p13` - All sides padding
+- `pt0` through `pt13` - Top padding
+- `pr0` through `pr13` - Right padding
+- `pb0` through `pb13` - Bottom padding
+- `pl0` through `pl13` - Left padding
+- `ph0` through `ph13` - Horizontal padding (left and right)
+- `pv0` through `pv13` - Vertical padding (top and bottom)
+
+### Gap
+
+- `gap0` through `gap13` - Gap between elements
+- `vg0` through `vg13` - Vertical gap (row-gap)
+- `hg0` through `hg13` - Horizontal gap (column-gap)
+- `fg0` through `fg8` - Flex gap
+
+## Flexbox
+
+### Order
+
+- `order-1` through `order-12` - Flex order
+
+### Flex Direction (Responsive)
+
+- `xs_fd0` - Column (default)
+- `xs_fd1` - Row
+- `xs_fd2` - Column reverse
+- `xs_fd3` - Row reverse
+- Available for all breakpoints (sm, md, lg)
+
+### Justify Content (Responsive)
+
+- `xs_fj0` - Start
+- `xs_fj1` - Center
+- `xs_fj2` - End
+- `xs_fj3` - Space between
+- `xs_fj4` - Space around
+- Available for all breakpoints (sm, md, lg)
+
+### Align Items (Responsive)
+
+- `xs_fa0` - Start
+- `xs_fa1` - Center
+- `xs_fa2` - End
+- `xs_fa3` - Stretch
+- `xs_fa4` - Baseline
+- Available for all breakpoints (sm, md, lg)
+
+### Flex Wrap (Responsive)
+
+- `xs_fw0` - No wrap
+- `xs_fw1` - Wrap
+- `xs_fw2` - Wrap reverse
+- Available for all breakpoints (sm, md, lg)
+
+### Flex Grow/Shrink
+
+- `fg-0` - No grow
+- `fg-1` - Grow
+- `fs-0` - No shrink
+- `fs-1` - Shrink
+
+## Element
+
+### Display (Responsive)
+
+- `xs_ed0` - None
+- `xs_ed1` - Block
+- `xs_ed2` - Flex
+- `xs_ed3` - Inline
+- `xs_ed4` - Inline flex
+- Available for all breakpoints (sm, md, lg)
+
+### Position (Responsive)
+
+- `xs_ep0` - Static
+- `xs_ep1` - Relative
+- `xs_ep2` - Absolute
+- `xs_ep3` - Fixed
+- `xs_ep4` - Sticky
+- Available for all breakpoints (sm, md, lg)
+
+### Border Width
+
+- `bw0` through `bw8` - Border width utilities
+
+### Border Radius (Responsive)
+
+- `xs_br0` through `xs_br8` - Border radius utilities
+- Available for all breakpoints (sm, md, lg)
+
+## Breakpoints
+
+- `xs` - Default (mobile)
+- `sm` - 576px and up
+- `md` - 768px and up
+- `lg` - 992px and up
+
+## Usage Examples
+
+### Basic Layout
+
+```html
+<div class="clm clm_6 mw_6">
+  <div class="xs_fd1 xs_fj1 xs_fa1">
+    <!-- Content -->
+  </div>
+</div>
+```
+
+### Responsive Design
+
+```html
+<div class="xs_ed1 md_ed2 xs_fd0 md_fd1">
+  <!-- Content that changes display and direction at md breakpoint -->
+</div>
+```
+
+### Spacing
+
+```html
+<div class="m6 p4">
+  <div class="mt2 mb4">
+    <!-- Content with margin and padding -->
+  </div>
+</div>
+```
+
+### Colors
+
+```html
+<div class="surface-primary ink-body">
+  <div class="spot-primary spot-ink-primary">
+    <!-- Colored content -->
+  </div>
+</div>
+```
