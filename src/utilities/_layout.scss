@@ -43,9 +43,9 @@
   }
 }
 
-// Grid gap classes
+// Grid/Flex gap classes
 @for $i from 0 through 13 {
-  [class*="gg#{$i}"] {
+  [class*="fg#{$i}"] {
     gap: var(--layout--size--#{$i});
   }
 }

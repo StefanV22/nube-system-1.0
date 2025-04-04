@@ -340,59 +340,59 @@
     gap: var(--layout--grid--gutter);
   }
 }
-[class*=gg0] {
+[class*=fg0] {
   gap: var(--layout--size--0);
 }
 
-[class*=gg1] {
+[class*=fg1] {
   gap: var(--layout--size--1);
 }
 
-[class*=gg2] {
+[class*=fg2] {
   gap: var(--layout--size--2);
 }
 
-[class*=gg3] {
+[class*=fg3] {
   gap: var(--layout--size--3);
 }
 
-[class*=gg4] {
+[class*=fg4] {
   gap: var(--layout--size--4);
 }
 
-[class*=gg5] {
+[class*=fg5] {
   gap: var(--layout--size--5);
 }
 
-[class*=gg6] {
+[class*=fg6] {
   gap: var(--layout--size--6);
 }
 
-[class*=gg7] {
+[class*=fg7] {
   gap: var(--layout--size--7);
 }
 
-[class*=gg8] {
+[class*=fg8] {
   gap: var(--layout--size--8);
 }
 
-[class*=gg9] {
+[class*=fg9] {
   gap: var(--layout--size--9);
 }
 
-[class*=gg10] {
+[class*=fg10] {
   gap: var(--layout--size--10);
 }
 
-[class*=gg11] {
+[class*=fg11] {
   gap: var(--layout--size--11);
 }
 
-[class*=gg12] {
+[class*=fg12] {
   gap: var(--layout--size--12);
 }
 
-[class*=gg13] {
+[class*=fg13] {
   gap: var(--layout--size--13);
 }
 
