@@ -30,6 +30,7 @@
   "author": "Don Vaskez",
   "license": "MIT",
   "dependencies": {
-    "sass": "^1.69.5"
+    "sass": "^1.69.5",
+    "glob": "^10.3.10"
   }
 }
