@@ -1,0 +1,76 @@
+@use "../core/variables" as *;
+
+// Generate spacing utilities with combo class support
+@for $i from 0 through 13 {
+  // Margin
+  [class*="m#{$i}"] {
+    margin: var(--layout--size--#{$i});
+  }
+  [class*="mt#{$i}"] {
+    margin-top: var(--layout--size--#{$i});
+  }
+  [class*="mr#{$i}"] {
+    margin-right: var(--layout--size--#{$i});
+  }
+  [class*="mb#{$i}"] {
+    margin-bottom: var(--layout--size--#{$i});
+  }
+  [class*="ml#{$i}"] {
+    margin-left: var(--layout--size--#{$i});
+  }
+  [class*="mh#{$i}"] {
+    margin-left: var(--layout--size--#{$i});
+    margin-right: var(--layout--size--#{$i});
+  }
+  [class*="mv#{$i}"] {
+    margin-top: var(--layout--size--#{$i});
+    margin-bottom: var(--layout--size--#{$i});
+  }
+
+  // Padding
+  [class*="p#{$i}"] {
+    padding: var(--layout--size--#{$i});
+  }
+  [class*="pt#{$i}"] {
+    padding-top: var(--layout--size--#{$i});
+  }
+  [class*="pr#{$i}"] {
+    padding-right: var(--layout--size--#{$i});
+  }
+  [class*="pb#{$i}"] {
+    padding-bottom: var(--layout--size--#{$i});
+  }
+  [class*="pl#{$i}"] {
+    padding-left: var(--layout--size--#{$i});
+  }
+  [class*="ph#{$i}"] {
+    padding-left: var(--layout--size--#{$i});
+    padding-right: var(--layout--size--#{$i});
+  }
+  [class*="pv#{$i}"] {
+    padding-top: var(--layout--size--#{$i});
+    padding-bottom: var(--layout--size--#{$i});
+  }
+
+  // Gap
+  [class*="vg#{$i}"] {
+    row-gap: var(--layout--size--#{$i});
+  }
+  [class*="hg#{$i}"] {
+    column-gap: var(--layout--size--#{$i});
+  }
+}
+
+// Auto margin utilities
+[class*="m-auto"] {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+[class*="ml-auto"] {
+  margin-left: auto;
+}
+
+[class*="mr-auto"] {
+  margin-right: auto;
+}

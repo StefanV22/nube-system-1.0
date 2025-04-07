@@ -1,0 +1,93 @@
+@use "variables" as *;
+
+/// Generates utility classes from a map
+/// @param {String} $prefix - The prefix for the utility class
+/// @param {Map} $map - The map of values to generate classes from
+/// @param {String} $property - The CSS property to apply
+@mixin generate-classes($prefix, $map, $property) {
+  @each $key, $value in $map {
+    [class*="#{$prefix}-#{$key}"] {
+      #{$property}: $value;
+    }
+  }
+}
+
+/// Generates layout utilities
+@mixin layout-utilities {
+  // Modern CSS Grid
+  [class*="grid-auto-fit"] {
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(min(100%, var(--grid-min-size, 200px)), 1fr)
+    );
+  }
+  [class*="grid-auto-fill"] {
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(min(100%, var(--grid-min-size, 200px)), 1fr)
+    );
+  }
+}
+
+/// Generates animation utilities
+@mixin animation-utilities {
+  [class*="animate-fade"] {
+    animation: fade var(--transition-duration) ease-in-out;
+  }
+  [class*="animate-slide"] {
+    animation: slide var(--transition-duration) ease-in-out;
+  }
+  [class*="animate-scale"] {
+    animation: scale var(--transition-duration) ease-in-out;
+  }
+}
+
+/// Generates modern CSS feature utilities
+@mixin modern-features {
+  [class*="content-visibility"] {
+    content-visibility: var(--content-visibility);
+  }
+  [class*="contain"] {
+    contain: var(--contain);
+  }
+  [class*="backdrop-blur"] {
+    backdrop-filter: var(--backdrop-filter);
+  }
+  [class*="scroll-smooth"] {
+    scroll-behavior: var(--scroll-behavior);
+  }
+}
+
+// Generate responsive utility classes
+@mixin responsive($prefix, $map, $property) {
+  @each $breakpoint, $value in $breakpoints {
+    @media (min-width: $value) {
+      @each $key, $val in $map {
+        .#{$breakpoint}-#{$prefix}-#{$key} {
+          #{$property}: $val;
+        }
+      }
+    }
+  }
+}
+
+// Generate state variants (hover, focus, active)
+@mixin state-variants($prefix, $map, $property) {
+  @each $key, $value in $map {
+    .#{$prefix}-#{$key} {
+      #{$property}: $value;
+
+      &:hover {
+        #{$property}: darken($value, 10%);
+      }
+
+      &:focus {
+        #{$property}: darken($value, 15%);
+      }
+
+      &:active {
+        #{$property}: darken($value, 20%);
+      }
+    }
+  }
+}

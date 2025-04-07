@@ -1,0 +1,189 @@
+@use "sass:map";
+@use "../core/variables" as *;
+
+// Generate flex order utilities
+@for $i from 1 through 12 {
+  [class*="order-#{$i}"] {
+    order: $i;
+  }
+}
+
+// Default (xs) Flex Direction classes
+[class*="xs_fd0"] {
+  flex-direction: column;
+  display: flex;
+}
+
+[class*="xs_fd1"] {
+  flex-direction: row;
+  display: flex;
+}
+
+[class*="xs_fd2"] {
+  flex-direction: column-reverse;
+  display: flex;
+}
+
+[class*="xs_fd3"] {
+  flex-direction: row-reverse;
+  display: flex;
+}
+
+// Default (xs) Justify Content classes
+[class*="xs_fj0"] {
+  justify-content: start;
+  display: flex;
+}
+
+[class*="xs_fj1"] {
+  justify-content: center;
+  display: flex;
+}
+
+[class*="xs_fj2"] {
+  justify-content: end;
+  display: flex;
+}
+
+[class*="xs_fj3"] {
+  justify-content: space-between;
+  display: flex;
+}
+
+[class*="xs_fj4"] {
+  justify-content: space-around;
+  display: flex;
+}
+
+// Default (xs) Align Items classes
+[class*="xs_fa0"] {
+  align-items: start;
+  display: flex;
+}
+
+[class*="xs_fa1"] {
+  align-items: center;
+  display: flex;
+}
+
+[class*="xs_fa2"] {
+  align-items: end;
+  display: flex;
+}
+
+[class*="xs_fa3"] {
+  align-items: stretch;
+  display: flex;
+}
+
+[class*="xs_fa4"] {
+  align-items: baseline;
+  display: flex;
+}
+
+// Default (xs) Flex Wrap classes
+[class*="xs_fw0"] {
+  flex-wrap: nowrap;
+  display: flex;
+}
+
+[class*="xs_fw1"] {
+  flex-wrap: wrap;
+  display: flex;
+}
+
+[class*="xs_fw2"] {
+  flex-wrap: wrap-reverse;
+  display: flex;
+}
+
+// Responsive Flex utilities
+@each $breakpoint, $min-width in $breakpoints {
+  @if $breakpoint != "xs" {
+    @media (min-width: $min-width) {
+      // Flex Direction
+      [class*="#{$breakpoint}_fd0"] {
+        flex-direction: column;
+        display: flex;
+      }
+      [class*="#{$breakpoint}_fd1"] {
+        flex-direction: row;
+        display: flex;
+      }
+      [class*="#{$breakpoint}_fd2"] {
+        flex-direction: column-reverse;
+        display: flex;
+      }
+      [class*="#{$breakpoint}_fd3"] {
+        flex-direction: row-reverse;
+        display: flex;
+      }
+
+      // Justify Content
+      [class*="#{$breakpoint}_fj0"] {
+        justify-content: start;
+        display: flex;
+      }
+      [class*="#{$breakpoint}_fj1"] {
+        justify-content: center;
+        display: flex;
+      }
+      [class*="#{$breakpoint}_fj2"] {
+        justify-content: end;
+        display: flex;
+      }
+      [class*="#{$breakpoint}_fj3"] {
+        justify-content: space-between;
+        display: flex;
+      }
+      [class*="#{$breakpoint}_fj4"] {
+        justify-content: space-around;
+        display: flex;
+      }
+
+      // Align Items
+      [class*="#{$breakpoint}_fa0"] {
+        align-items: start;
+        display: flex;
+      }
+      [class*="#{$breakpoint}_fa1"] {
+        align-items: center;
+        display: flex;
+      }
+      [class*="#{$breakpoint}_fa2"] {
+        align-items: end;
+        display: flex;
+      }
+      [class*="#{$breakpoint}_fa3"] {
+        align-items: stretch;
+        display: flex;
+      }
+      [class*="#{$breakpoint}_fa4"] {
+        align-items: baseline;
+        display: flex;
+      }
+
+      // Flex Wrap
+      [class*="#{$breakpoint}_fw0"] {
+        flex-wrap: nowrap;
+        display: flex;
+      }
+      [class*="#{$breakpoint}_fw1"] {
+        flex-wrap: wrap;
+        display: flex;
+      }
+      [class*="#{$breakpoint}_fw2"] {
+        flex-wrap: wrap-reverse;
+        display: flex;
+      }
+
+      // Align Content
+      @if $breakpoint == "md" or $breakpoint == "lg" {
+        [class*="#{$breakpoint}_fac0"] {
+          align-content: flex-start;
+          display: flex;
+        }
+      }
+    }
+  }
+}

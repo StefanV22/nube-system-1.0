@@ -1,0 +1,74 @@
+@use "../core/variables" as *;
+
+// Font sizes with matching line heights
+@for $i from 0 through 8 {
+  [class*="f#{$i}"] {
+    font-size: var(--font--size--#{$i});
+    line-height: var(--line--height--#{$i});
+  }
+}
+
+// Font families
+[class*="ff0"] {
+  font-family: var(--font--family--0);
+}
+
+[class*="ff1"] {
+  font-family: var(--font--family--1);
+}
+
+// Font weights
+@for $i from 0 through 5 {
+  .fw#{$i} {
+    font-weight: var(--font--weight--#{$i});
+  }
+}
+
+// Default (xs) Text alignment
+[class*="xs_ta0"] {
+  text-align: left;
+}
+
+[class*="xs_ta1"] {
+  text-align: center;
+}
+
+[class*="xs_ta2"] {
+  text-align: right;
+}
+
+// Responsive text alignment
+@each $breakpoint, $min-width in $breakpoints {
+  @if $breakpoint != "xs" {
+    @media (min-width: $min-width) {
+      [class*="#{$breakpoint}_ta0"] {
+        text-align: left;
+      }
+      [class*="#{$breakpoint}_ta1"] {
+        text-align: center;
+      }
+      [class*="#{$breakpoint}_ta2"] {
+        text-align: right;
+      }
+    }
+  }
+}
+
+// Text decoration
+.td-underline {
+  text-decoration: underline;
+}
+.td-none {
+  text-decoration: none;
+}
+
+// Text transform
+.tt-uppercase {
+  text-transform: uppercase;
+}
+.tt-lowercase {
+  text-transform: lowercase;
+}
+.tt-capitalize {
+  text-transform: capitalize;
+}

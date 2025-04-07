@@ -1,0 +1,106 @@
+@use "sass:map";
+@use "../core/variables" as *;
+
+// Default (xs) Display classes
+[class*="xs_ed0"] {
+  display: none;
+}
+
+[class*="xs_ed1"] {
+  display: block;
+}
+
+[class*="xs_ed2"] {
+  display: flex;
+}
+
+[class*="xs_ed3"] {
+  display: inline;
+}
+
+[class*="xs_ed4"] {
+  display: inline-flex;
+}
+
+// Default (xs) Position classes
+[class*="xs_ep0"] {
+  position: static;
+}
+
+[class*="xs_ep1"] {
+  position: relative;
+}
+
+[class*="xs_ep2"] {
+  position: absolute;
+}
+
+[class*="xs_ep3"] {
+  position: fixed;
+}
+
+[class*="xs_ep4"] {
+  position: sticky;
+}
+
+// Border Width utilities (non-responsive)
+@for $i from 0 through 8 {
+  [class*="bw#{$i}"] {
+    border-width: var(--layout--size--#{$i});
+  }
+}
+
+// Default (xs) Border Radius classes
+@for $i from 0 through 8 {
+  [class*="xs_br#{$i}"] {
+    border-radius: var(--layout--size--#{$i});
+  }
+}
+
+// Responsive utilities
+@each $breakpoint, $min-width in $breakpoints {
+  @if $breakpoint != "xs" {
+    @media (min-width: $min-width) {
+      // Display classes
+      [class*="#{$breakpoint}_ed0"] {
+        display: none;
+      }
+      [class*="#{$breakpoint}_ed1"] {
+        display: block;
+      }
+      [class*="#{$breakpoint}_ed2"] {
+        display: flex;
+      }
+      [class*="#{$breakpoint}_ed3"] {
+        display: inline;
+      }
+      [class*="#{$breakpoint}_ed4"] {
+        display: inline-flex;
+      }
+
+      // Position classes
+      [class*="#{$breakpoint}_ep0"] {
+        position: static;
+      }
+      [class*="#{$breakpoint}_ep1"] {
+        position: relative;
+      }
+      [class*="#{$breakpoint}_ep2"] {
+        position: absolute;
+      }
+      [class*="#{$breakpoint}_ep3"] {
+        position: fixed;
+      }
+      [class*="#{$breakpoint}_ep4"] {
+        position: sticky;
+      }
+
+      // Border Radius classes
+      @for $i from 0 through 8 {
+        [class*="#{$breakpoint}_br#{$i}"] {
+          border-radius: var(--layout--size--#{$i});
+        }
+      }
+    }
+  }
+}

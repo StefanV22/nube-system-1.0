@@ -1,0 +1,2558 @@
+/**
+ * Nube System - CSS Utility Framework
+ * 
+ * This is the main entry file that compiles all utilities into a single system.css file.
+ * Variables and custom properties will be placed at the top of the compiled output.
+ */
+/**
+ * Variables (CSS Custom Properties)
+ * This MUST be first to ensure variables are at the top of the compiled CSS
+ */
+:root {
+  --layout--size--0: 0rem;
+  --layout--size--1: 0.125rem;
+  --layout--size--2: 0.25rem;
+  --layout--size--3: clamp(0.375rem, 0.185vw + 0.333rem, 0.5rem);
+  --layout--size--4: clamp(0.625rem, 0.185vw + 0.583rem, 0.75rem);
+  --layout--size--5: clamp(0.75rem, 0.37vw + 0.667rem, 1rem);
+  --layout--size--6: clamp(1.25rem, 0.37vw + 1.167rem, 1.5rem);
+  --layout--size--7: clamp(1.5rem, 0.741vw + 1.333rem, 2rem);
+  --layout--size--8: clamp(2.5rem, 0.741vw + 2.333rem, 3rem);
+  --layout--size--9: clamp(3rem, 1.481vw + 2.667rem, 4rem);
+  --layout--size--10: clamp(4rem, 2.222vw + 3.5rem, 5.5rem);
+  --layout--size--11: clamp(5.5rem, 3.704vw + 4.667rem, 8rem);
+  --layout--size--12: clamp(7.5rem, 7.407vw + 5.833rem, 12.5rem);
+  --layout--size--13: clamp(11.5rem, 7.407vw + 9.833rem, 16.5rem);
+  --font--size--0: 0.875rem;
+  --font--size--1: 1rem;
+  --font--size--2: clamp(1rem, 0.185vw + 0.958rem, 1.125rem);
+  --font--size--3: clamp(1.125rem, 0.185vw + 1.083rem, 1.25rem);
+  --font--size--4: clamp(1.25rem, 0.37vw + 1.167rem, 1.5rem);
+  --font--size--5: clamp(1.5rem, 0.741vw + 1.333rem, 2rem);
+  --font--size--6: clamp(2rem, 1.481vw + 1.667rem, 3rem);
+  --font--size--7: clamp(2.5rem, 2.222vw + 2rem, 4rem);
+  --font--size--8: clamp(3.25rem, 4.815vw + 2.167rem, 6.5rem);
+  --surface--primary: #1a1a1a;
+  --surface--secondary: #2a2a2a;
+  --surface--tertiary: #3a3a3a;
+  --ink--title: #090a0d;
+  --ink--body: #5a5e6b;
+  --ink--strong: #1f2129;
+  --ink--dimmed: #7a7e8b;
+  --ink--faded: #999da9;
+  --ink--accent: #165ff2;
+  --spot--primary: #3b82f6;
+  --spot--secondary: #60a5fa;
+  --spot--accent: #93c5fd;
+  --spot--accent-hover: #60a5fa;
+  --spot--scarcity: #ef4444;
+  --spot--scarcity-hover: #dc2626;
+  --spot-ink--primary: #ffffff;
+  --spot-ink--secondary: #ffffff;
+  --spot-ink--accent: #ffffff;
+  --spot-ink--accent-hover: #ffffff;
+  --spot-ink--scarcity: #ffffff;
+  --spot-ink--scarcity-hover: #ffffff;
+  --stroke--primary: rgba(255, 255, 255, 0.1);
+  --stroke--secondary: rgba(255, 255, 255, 0.05);
+  --stroke--tertiary: rgba(255, 255, 255, 0.02);
+  --font--family--0: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  --font--family--1: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+  --font--weight--0: 300;
+  --font--weight--1: 400;
+  --font--weight--2: 500;
+  --font--weight--3: 600;
+  --font--weight--4: 700;
+  --font--weight--5: 800;
+  --line--height--0: 1.42;
+  --line--height--1: 1.5;
+  --line--height--2: 1.33;
+  --line--height--3: 1.4;
+  --line--height--4: 1.33;
+  --line--height--5: 1.25;
+  --line--height--6: 1.16;
+  --line--height--7: 1.06;
+  --line--height--8: 1.07;
+  --border--width--0: 0.5px;
+  --border--width--1: 1px;
+  --border--width--2: 2px;
+  --border--radius--0: 0.125rem;
+  --border--radius--1: 0.25rem;
+  --border--radius--2: 0.5rem;
+  --border--radius--3: 0.75rem;
+  --border--radius--4: 1rem;
+  --border--radius--5: 1.5rem;
+  --layout--grid--width: 90rem;
+  --layout--grid--margin: var(--layout--size--6);
+  --layout--grid--gutter: var(--layout--size--6);
+  --layout--grid--row: var(--layout--size--3);
+}
+
+/**
+ * Mixins and Functions
+ * These don't output any CSS directly
+ */
+/**
+ * Nube System - CSS Utility Framework
+ * 
+ * This is the main entry file that compiles all utilities into a single system.css file.
+ * Variables and custom properties will be placed at the top of the compiled output.
+ */
+/**
+ * Variables (CSS Custom Properties)
+ * This MUST be first to ensure variables are at the top of the compiled CSS
+ */
+/**
+ * Utility Modules
+ * Each utility file handles its own dependency imports
+ */
+[class*=surface-primary] {
+  background-color: var(--surface--primary);
+}
+
+[class*=surface-secondary] {
+  background-color: var(--surface--secondary);
+}
+
+[class*=surface-tertiary] {
+  background-color: var(--surface--tertiary);
+}
+
+[class*=spot-primary] {
+  background-color: var(--spot--primary);
+}
+
+[class*=spot-secondary] {
+  background-color: var(--spot--secondary);
+}
+
+[class*=spot-accent] {
+  background-color: var(--spot--accent);
+}
+
+[class*=spot-accent-hover] {
+  background-color: var(--spot--accent-hover);
+}
+
+[class*=spot-scarcity] {
+  background-color: var(--spot--scarcity);
+}
+
+[class*=spot-scarcity-hover] {
+  background-color: var(--spot--scarcity-hover);
+}
+
+[class*=ink-title] {
+  color: var(--ink--title);
+}
+
+[class*=ink-body] {
+  color: var(--ink--body);
+}
+
+[class*=ink-strong] {
+  color: var(--ink--strong);
+}
+
+[class*=ink-dimmed] {
+  color: var(--ink--dimmed);
+}
+
+[class*=ink-faded] {
+  color: var(--ink--faded);
+}
+
+[class*=ink-accent] {
+  color: var(--ink--accent);
+}
+
+[class*=spot-ink-primary] {
+  color: var(--spot-ink--primary);
+}
+
+[class*=spot-ink-secondary] {
+  color: var(--spot-ink--secondary);
+}
+
+[class*=spot-ink-accent] {
+  color: var(--spot-ink--accent);
+}
+
+[class*=spot-ink-accent-hover] {
+  color: var(--spot-ink--accent-hover);
+}
+
+[class*=spot-ink-scarcity] {
+  color: var(--spot-ink--scarcity);
+}
+
+[class*=spot-ink-scarcity-hover] {
+  color: var(--spot-ink--scarcity-hover);
+}
+
+[class*=stroke-primary] {
+  border-color: var(--stroke--primary);
+}
+
+[class*=stroke-secondary] {
+  border-color: var(--stroke--secondary);
+}
+
+[class*=stroke-tertiary] {
+  border-color: var(--stroke--tertiary);
+}
+
+/**
+ * Nube System - CSS Utility Framework
+ * 
+ * This is the main entry file that compiles all utilities into a single system.css file.
+ * Variables and custom properties will be placed at the top of the compiled output.
+ */
+/**
+ * Variables (CSS Custom Properties)
+ * This MUST be first to ensure variables are at the top of the compiled CSS
+ */
+.cnt {
+  width: calc(100% - 2 * var(--layout--grid--margin));
+  max-width: var(--layout--grid--width);
+  margin-right: auto;
+  margin-left: auto;
+}
+
+[class*=rw] {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: calc(-1 * var(--layout--grid--gutter) / 2);
+  margin-left: calc(-1 * var(--layout--grid--gutter) / 2);
+  grid-row-gap: var(--layout--grid--row);
+}
+
+[class*=xs_grid-x2] {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--layout--grid--gutter);
+}
+
+[class*=xs_grid-x3] {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--layout--grid--gutter);
+}
+
+[class*=xs_grid-x4] {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--layout--grid--gutter);
+}
+
+[class*=xs_grid-x5] {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--layout--grid--gutter);
+}
+
+[class*=xs_grid-x6] {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: var(--layout--grid--gutter);
+}
+
+@media (min-width: 480px) {
+  [class*=sm_grid-x2] {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--layout--grid--gutter);
+  }
+  [class*=sm_grid-x3] {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--layout--grid--gutter);
+  }
+  [class*=sm_grid-x4] {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--layout--grid--gutter);
+  }
+  [class*=sm_grid-x5] {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: var(--layout--grid--gutter);
+  }
+  [class*=sm_grid-x6] {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: var(--layout--grid--gutter);
+  }
+}
+@media (min-width: 768px) {
+  [class*=md_grid-x2] {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--layout--grid--gutter);
+  }
+  [class*=md_grid-x3] {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--layout--grid--gutter);
+  }
+  [class*=md_grid-x4] {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--layout--grid--gutter);
+  }
+  [class*=md_grid-x5] {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: var(--layout--grid--gutter);
+  }
+  [class*=md_grid-x6] {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: var(--layout--grid--gutter);
+  }
+}
+@media (min-width: 992px) {
+  [class*=lg_grid-x2] {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--layout--grid--gutter);
+  }
+  [class*=lg_grid-x3] {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--layout--grid--gutter);
+  }
+  [class*=lg_grid-x4] {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--layout--grid--gutter);
+  }
+  [class*=lg_grid-x5] {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: var(--layout--grid--gutter);
+  }
+  [class*=lg_grid-x6] {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: var(--layout--grid--gutter);
+  }
+}
+[class*=fg0] {
+  gap: var(--layout--size--0);
+}
+
+[class*=fg1] {
+  gap: var(--layout--size--1);
+}
+
+[class*=fg2] {
+  gap: var(--layout--size--2);
+}
+
+[class*=fg3] {
+  gap: var(--layout--size--3);
+}
+
+[class*=fg4] {
+  gap: var(--layout--size--4);
+}
+
+[class*=fg5] {
+  gap: var(--layout--size--5);
+}
+
+[class*=fg6] {
+  gap: var(--layout--size--6);
+}
+
+[class*=fg7] {
+  gap: var(--layout--size--7);
+}
+
+[class*=fg8] {
+  gap: var(--layout--size--8);
+}
+
+[class*=fg9] {
+  gap: var(--layout--size--9);
+}
+
+[class*=fg10] {
+  gap: var(--layout--size--10);
+}
+
+[class*=fg11] {
+  gap: var(--layout--size--11);
+}
+
+[class*=fg12] {
+  gap: var(--layout--size--12);
+}
+
+[class*=fg13] {
+  gap: var(--layout--size--13);
+}
+
+[class*=clm] {
+  padding-right: calc(var(--layout--grid--gutter) / 2);
+  padding-left: calc(var(--layout--grid--gutter) / 2);
+  flex-basis: 100%;
+  flex-grow: 1;
+  max-width: 100%;
+}
+
+[class*=clm][class*=xs_1] {
+  flex-basis: 8.3333333333%;
+  max-width: 8.3333333333%;
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+
+[class*=clm][class*=xs_2] {
+  flex-basis: 16.6666666667%;
+  max-width: 16.6666666667%;
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+
+[class*=clm][class*=xs_3] {
+  flex-basis: 25%;
+  max-width: 25%;
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+
+[class*=clm][class*=xs_4] {
+  flex-basis: 33.3333333333%;
+  max-width: 33.3333333333%;
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+
+[class*=clm][class*=xs_5] {
+  flex-basis: 41.6666666667%;
+  max-width: 41.6666666667%;
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+
+[class*=clm][class*=xs_6] {
+  flex-basis: 50%;
+  max-width: 50%;
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+
+[class*=clm][class*=xs_7] {
+  flex-basis: 58.3333333333%;
+  max-width: 58.3333333333%;
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+
+[class*=clm][class*=xs_8] {
+  flex-basis: 66.6666666667%;
+  max-width: 66.6666666667%;
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+
+[class*=clm][class*=xs_9] {
+  flex-basis: 75%;
+  max-width: 75%;
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+
+[class*=clm][class*=xs_10] {
+  flex-basis: 83.3333333333%;
+  max-width: 83.3333333333%;
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+
+[class*=clm][class*=xs_11] {
+  flex-basis: 91.6666666667%;
+  max-width: 91.6666666667%;
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+
+[class*=clm][class*=xs_12] {
+  flex-basis: 100%;
+  max-width: 100%;
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+
+@media (min-width: 480px) {
+  [class*=clm][class*=sm_1] {
+    flex-basis: 8.3333333333%;
+    max-width: 8.3333333333%;
+    flex-grow: 1;
+    flex-shrink: 1;
+  }
+  [class*=clm][class*=sm_2] {
+    flex-basis: 16.6666666667%;
+    max-width: 16.6666666667%;
+    flex-grow: 1;
+    flex-shrink: 1;
+  }
+  [class*=clm][class*=sm_3] {
+    flex-basis: 25%;
+    max-width: 25%;
+    flex-grow: 1;
+    flex-shrink: 1;
+  }
+  [class*=clm][class*=sm_4] {
+    flex-basis: 33.3333333333%;
+    max-width: 33.3333333333%;
+    flex-grow: 1;
+    flex-shrink: 1;
+  }
+  [class*=clm][class*=sm_5] {
+    flex-basis: 41.6666666667%;
+    max-width: 41.6666666667%;
+    flex-grow: 1;
+    flex-shrink: 1;
+  }
+  [class*=clm][class*=sm_6] {
+    flex-basis: 50%;
+    max-width: 50%;
+    flex-grow: 1;
+    flex-shrink: 1;
+  }
+  [class*=clm][class*=sm_7] {
+    flex-basis: 58.3333333333%;
+    max-width: 58.3333333333%;
+    flex-grow: 1;
+    flex-shrink: 1;
+  }
+  [class*=clm][class*=sm_8] {
+    flex-basis: 66.6666666667%;
+    max-width: 66.6666666667%;
+    flex-grow: 1;
+    flex-shrink: 1;
+  }
+  [class*=clm][class*=sm_9] {
+    flex-basis: 75%;
+    max-width: 75%;
+    flex-grow: 1;
+    flex-shrink: 1;
+  }
+  [class*=clm][class*=sm_10] {
+    flex-basis: 83.3333333333%;
+    max-width: 83.3333333333%;
+    flex-grow: 1;
+    flex-shrink: 1;
+  }
+  [class*=clm][class*=sm_11] {
+    flex-basis: 91.6666666667%;
+    max-width: 91.6666666667%;
+    flex-grow: 1;
+    flex-shrink: 1;
+  }
+  [class*=clm][class*=sm_12] {
+    flex-basis: 100%;
+    max-width: 100%;
+    flex-grow: 1;
+    flex-shrink: 1;
+  }
+}
+@media (min-width: 768px) {
+  [class*=clm][class*=md_1] {
+    flex-basis: 8.3333333333%;
+    max-width: 8.3333333333%;
+    flex-grow: 1;
+    flex-shrink: 1;
+  }
+  [class*=clm][class*=md_2] {
+    flex-basis: 16.6666666667%;
+    max-width: 16.6666666667%;
+    flex-grow: 1;
+    flex-shrink: 1;
+  }
+  [class*=clm][class*=md_3] {
+    flex-basis: 25%;
+    max-width: 25%;
+    flex-grow: 1;
+    flex-shrink: 1;
+  }
+  [class*=clm][class*=md_4] {
+    flex-basis: 33.3333333333%;
+    max-width: 33.3333333333%;
+    flex-grow: 1;
+    flex-shrink: 1;
+  }
+  [class*=clm][class*=md_5] {
+    flex-basis: 41.6666666667%;
+    max-width: 41.6666666667%;
+    flex-grow: 1;
+    flex-shrink: 1;
+  }
+  [class*=clm][class*=md_6] {
+    flex-basis: 50%;
+    max-width: 50%;
+    flex-grow: 1;
+    flex-shrink: 1;
+  }
+  [class*=clm][class*=md_7] {
+    flex-basis: 58.3333333333%;
+    max-width: 58.3333333333%;
+    flex-grow: 1;
+    flex-shrink: 1;
+  }
+  [class*=clm][class*=md_8] {
+    flex-basis: 66.6666666667%;
+    max-width: 66.6666666667%;
+    flex-grow: 1;
+    flex-shrink: 1;
+  }
+  [class*=clm][class*=md_9] {
+    flex-basis: 75%;
+    max-width: 75%;
+    flex-grow: 1;
+    flex-shrink: 1;
+  }
+  [class*=clm][class*=md_10] {
+    flex-basis: 83.3333333333%;
+    max-width: 83.3333333333%;
+    flex-grow: 1;
+    flex-shrink: 1;
+  }
+  [class*=clm][class*=md_11] {
+    flex-basis: 91.6666666667%;
+    max-width: 91.6666666667%;
+    flex-grow: 1;
+    flex-shrink: 1;
+  }
+  [class*=clm][class*=md_12] {
+    flex-basis: 100%;
+    max-width: 100%;
+    flex-grow: 1;
+    flex-shrink: 1;
+  }
+}
+@media (min-width: 992px) {
+  [class*=clm][class*=lg_1] {
+    flex-basis: 8.3333333333%;
+    max-width: 8.3333333333%;
+    flex-grow: 1;
+    flex-shrink: 1;
+  }
+  [class*=clm][class*=lg_2] {
+    flex-basis: 16.6666666667%;
+    max-width: 16.6666666667%;
+    flex-grow: 1;
+    flex-shrink: 1;
+  }
+  [class*=clm][class*=lg_3] {
+    flex-basis: 25%;
+    max-width: 25%;
+    flex-grow: 1;
+    flex-shrink: 1;
+  }
+  [class*=clm][class*=lg_4] {
+    flex-basis: 33.3333333333%;
+    max-width: 33.3333333333%;
+    flex-grow: 1;
+    flex-shrink: 1;
+  }
+  [class*=clm][class*=lg_5] {
+    flex-basis: 41.6666666667%;
+    max-width: 41.6666666667%;
+    flex-grow: 1;
+    flex-shrink: 1;
+  }
+  [class*=clm][class*=lg_6] {
+    flex-basis: 50%;
+    max-width: 50%;
+    flex-grow: 1;
+    flex-shrink: 1;
+  }
+  [class*=clm][class*=lg_7] {
+    flex-basis: 58.3333333333%;
+    max-width: 58.3333333333%;
+    flex-grow: 1;
+    flex-shrink: 1;
+  }
+  [class*=clm][class*=lg_8] {
+    flex-basis: 66.6666666667%;
+    max-width: 66.6666666667%;
+    flex-grow: 1;
+    flex-shrink: 1;
+  }
+  [class*=clm][class*=lg_9] {
+    flex-basis: 75%;
+    max-width: 75%;
+    flex-grow: 1;
+    flex-shrink: 1;
+  }
+  [class*=clm][class*=lg_10] {
+    flex-basis: 83.3333333333%;
+    max-width: 83.3333333333%;
+    flex-grow: 1;
+    flex-shrink: 1;
+  }
+  [class*=clm][class*=lg_11] {
+    flex-basis: 91.6666666667%;
+    max-width: 91.6666666667%;
+    flex-grow: 1;
+    flex-shrink: 1;
+  }
+  [class*=clm][class*=lg_12] {
+    flex-basis: 100%;
+    max-width: 100%;
+    flex-grow: 1;
+    flex-shrink: 1;
+  }
+}
+[class*=mw_1] {
+  width: 100%;
+  max-width: calc(var(--layout--grid--width) * 0.0833333333 - 11 * var(--layout--grid--gutter) / 12);
+}
+
+[class*=mw_2] {
+  width: 100%;
+  max-width: calc(var(--layout--grid--width) * 0.1666666667 - 10 * var(--layout--grid--gutter) / 12);
+}
+
+[class*=mw_3] {
+  width: 100%;
+  max-width: calc(var(--layout--grid--width) * 0.25 - 9 * var(--layout--grid--gutter) / 12);
+}
+
+[class*=mw_4] {
+  width: 100%;
+  max-width: calc(var(--layout--grid--width) * 0.3333333333 - 8 * var(--layout--grid--gutter) / 12);
+}
+
+[class*=mw_5] {
+  width: 100%;
+  max-width: calc(var(--layout--grid--width) * 0.4166666667 - 7 * var(--layout--grid--gutter) / 12);
+}
+
+[class*=mw_6] {
+  width: 100%;
+  max-width: calc(var(--layout--grid--width) * 0.5 - 6 * var(--layout--grid--gutter) / 12);
+}
+
+[class*=mw_7] {
+  width: 100%;
+  max-width: calc(var(--layout--grid--width) * 0.5833333333 - 5 * var(--layout--grid--gutter) / 12);
+}
+
+[class*=mw_8] {
+  width: 100%;
+  max-width: calc(var(--layout--grid--width) * 0.6666666667 - 4 * var(--layout--grid--gutter) / 12);
+}
+
+[class*=mw_9] {
+  width: 100%;
+  max-width: calc(var(--layout--grid--width) * 0.75 - 3 * var(--layout--grid--gutter) / 12);
+}
+
+[class*=mw_10] {
+  width: 100%;
+  max-width: calc(var(--layout--grid--width) * 0.8333333333 - 2 * var(--layout--grid--gutter) / 12);
+}
+
+[class*=mw_11] {
+  width: 100%;
+  max-width: calc(var(--layout--grid--width) * 0.9166666667 - 1 * var(--layout--grid--gutter) / 12);
+}
+
+[class*=mw_12] {
+  width: 100%;
+  max-width: calc(var(--layout--grid--width) * 1 - 0 * var(--layout--grid--gutter) / 12);
+}
+
+/**
+ * Nube System - CSS Utility Framework
+ * 
+ * This is the main entry file that compiles all utilities into a single system.css file.
+ * Variables and custom properties will be placed at the top of the compiled output.
+ */
+/**
+ * Variables (CSS Custom Properties)
+ * This MUST be first to ensure variables are at the top of the compiled CSS
+ */
+[class*=xs_ed0] {
+  display: none;
+}
+
+[class*=xs_ed1] {
+  display: block;
+}
+
+[class*=xs_ed2] {
+  display: flex;
+}
+
+[class*=xs_ed3] {
+  display: inline;
+}
+
+[class*=xs_ed4] {
+  display: inline-flex;
+}
+
+[class*=xs_ep0] {
+  position: static;
+}
+
+[class*=xs_ep1] {
+  position: relative;
+}
+
+[class*=xs_ep2] {
+  position: absolute;
+}
+
+[class*=xs_ep3] {
+  position: fixed;
+}
+
+[class*=xs_ep4] {
+  position: sticky;
+}
+
+[class*=bw0] {
+  border-width: var(--layout--size--0);
+}
+
+[class*=bw1] {
+  border-width: var(--layout--size--1);
+}
+
+[class*=bw2] {
+  border-width: var(--layout--size--2);
+}
+
+[class*=bw3] {
+  border-width: var(--layout--size--3);
+}
+
+[class*=bw4] {
+  border-width: var(--layout--size--4);
+}
+
+[class*=bw5] {
+  border-width: var(--layout--size--5);
+}
+
+[class*=bw6] {
+  border-width: var(--layout--size--6);
+}
+
+[class*=bw7] {
+  border-width: var(--layout--size--7);
+}
+
+[class*=bw8] {
+  border-width: var(--layout--size--8);
+}
+
+[class*=xs_br0] {
+  border-radius: var(--layout--size--0);
+}
+
+[class*=xs_br1] {
+  border-radius: var(--layout--size--1);
+}
+
+[class*=xs_br2] {
+  border-radius: var(--layout--size--2);
+}
+
+[class*=xs_br3] {
+  border-radius: var(--layout--size--3);
+}
+
+[class*=xs_br4] {
+  border-radius: var(--layout--size--4);
+}
+
+[class*=xs_br5] {
+  border-radius: var(--layout--size--5);
+}
+
+[class*=xs_br6] {
+  border-radius: var(--layout--size--6);
+}
+
+[class*=xs_br7] {
+  border-radius: var(--layout--size--7);
+}
+
+[class*=xs_br8] {
+  border-radius: var(--layout--size--8);
+}
+
+@media (min-width: 480px) {
+  [class*=sm_ed0] {
+    display: none;
+  }
+  [class*=sm_ed1] {
+    display: block;
+  }
+  [class*=sm_ed2] {
+    display: flex;
+  }
+  [class*=sm_ed3] {
+    display: inline;
+  }
+  [class*=sm_ed4] {
+    display: inline-flex;
+  }
+  [class*=sm_ep0] {
+    position: static;
+  }
+  [class*=sm_ep1] {
+    position: relative;
+  }
+  [class*=sm_ep2] {
+    position: absolute;
+  }
+  [class*=sm_ep3] {
+    position: fixed;
+  }
+  [class*=sm_ep4] {
+    position: sticky;
+  }
+  [class*=sm_br0] {
+    border-radius: var(--layout--size--0);
+  }
+  [class*=sm_br1] {
+    border-radius: var(--layout--size--1);
+  }
+  [class*=sm_br2] {
+    border-radius: var(--layout--size--2);
+  }
+  [class*=sm_br3] {
+    border-radius: var(--layout--size--3);
+  }
+  [class*=sm_br4] {
+    border-radius: var(--layout--size--4);
+  }
+  [class*=sm_br5] {
+    border-radius: var(--layout--size--5);
+  }
+  [class*=sm_br6] {
+    border-radius: var(--layout--size--6);
+  }
+  [class*=sm_br7] {
+    border-radius: var(--layout--size--7);
+  }
+  [class*=sm_br8] {
+    border-radius: var(--layout--size--8);
+  }
+}
+@media (min-width: 768px) {
+  [class*=md_ed0] {
+    display: none;
+  }
+  [class*=md_ed1] {
+    display: block;
+  }
+  [class*=md_ed2] {
+    display: flex;
+  }
+  [class*=md_ed3] {
+    display: inline;
+  }
+  [class*=md_ed4] {
+    display: inline-flex;
+  }
+  [class*=md_ep0] {
+    position: static;
+  }
+  [class*=md_ep1] {
+    position: relative;
+  }
+  [class*=md_ep2] {
+    position: absolute;
+  }
+  [class*=md_ep3] {
+    position: fixed;
+  }
+  [class*=md_ep4] {
+    position: sticky;
+  }
+  [class*=md_br0] {
+    border-radius: var(--layout--size--0);
+  }
+  [class*=md_br1] {
+    border-radius: var(--layout--size--1);
+  }
+  [class*=md_br2] {
+    border-radius: var(--layout--size--2);
+  }
+  [class*=md_br3] {
+    border-radius: var(--layout--size--3);
+  }
+  [class*=md_br4] {
+    border-radius: var(--layout--size--4);
+  }
+  [class*=md_br5] {
+    border-radius: var(--layout--size--5);
+  }
+  [class*=md_br6] {
+    border-radius: var(--layout--size--6);
+  }
+  [class*=md_br7] {
+    border-radius: var(--layout--size--7);
+  }
+  [class*=md_br8] {
+    border-radius: var(--layout--size--8);
+  }
+}
+@media (min-width: 992px) {
+  [class*=lg_ed0] {
+    display: none;
+  }
+  [class*=lg_ed1] {
+    display: block;
+  }
+  [class*=lg_ed2] {
+    display: flex;
+  }
+  [class*=lg_ed3] {
+    display: inline;
+  }
+  [class*=lg_ed4] {
+    display: inline-flex;
+  }
+  [class*=lg_ep0] {
+    position: static;
+  }
+  [class*=lg_ep1] {
+    position: relative;
+  }
+  [class*=lg_ep2] {
+    position: absolute;
+  }
+  [class*=lg_ep3] {
+    position: fixed;
+  }
+  [class*=lg_ep4] {
+    position: sticky;
+  }
+  [class*=lg_br0] {
+    border-radius: var(--layout--size--0);
+  }
+  [class*=lg_br1] {
+    border-radius: var(--layout--size--1);
+  }
+  [class*=lg_br2] {
+    border-radius: var(--layout--size--2);
+  }
+  [class*=lg_br3] {
+    border-radius: var(--layout--size--3);
+  }
+  [class*=lg_br4] {
+    border-radius: var(--layout--size--4);
+  }
+  [class*=lg_br5] {
+    border-radius: var(--layout--size--5);
+  }
+  [class*=lg_br6] {
+    border-radius: var(--layout--size--6);
+  }
+  [class*=lg_br7] {
+    border-radius: var(--layout--size--7);
+  }
+  [class*=lg_br8] {
+    border-radius: var(--layout--size--8);
+  }
+}
+/**
+ * Nube System - CSS Utility Framework
+ * 
+ * This is the main entry file that compiles all utilities into a single system.css file.
+ * Variables and custom properties will be placed at the top of the compiled output.
+ */
+/**
+ * Variables (CSS Custom Properties)
+ * This MUST be first to ensure variables are at the top of the compiled CSS
+ */
+[class*=m0] {
+  margin: var(--layout--size--0);
+}
+
+[class*=mt0] {
+  margin-top: var(--layout--size--0);
+}
+
+[class*=mr0] {
+  margin-right: var(--layout--size--0);
+}
+
+[class*=mb0] {
+  margin-bottom: var(--layout--size--0);
+}
+
+[class*=ml0] {
+  margin-left: var(--layout--size--0);
+}
+
+[class*=mh0] {
+  margin-left: var(--layout--size--0);
+  margin-right: var(--layout--size--0);
+}
+
+[class*=mv0] {
+  margin-top: var(--layout--size--0);
+  margin-bottom: var(--layout--size--0);
+}
+
+[class*=p0] {
+  padding: var(--layout--size--0);
+}
+
+[class*=pt0] {
+  padding-top: var(--layout--size--0);
+}
+
+[class*=pr0] {
+  padding-right: var(--layout--size--0);
+}
+
+[class*=pb0] {
+  padding-bottom: var(--layout--size--0);
+}
+
+[class*=pl0] {
+  padding-left: var(--layout--size--0);
+}
+
+[class*=ph0] {
+  padding-left: var(--layout--size--0);
+  padding-right: var(--layout--size--0);
+}
+
+[class*=pv0] {
+  padding-top: var(--layout--size--0);
+  padding-bottom: var(--layout--size--0);
+}
+
+[class*=vg0] {
+  row-gap: var(--layout--size--0);
+}
+
+[class*=hg0] {
+  column-gap: var(--layout--size--0);
+}
+
+[class*=m1] {
+  margin: var(--layout--size--1);
+}
+
+[class*=mt1] {
+  margin-top: var(--layout--size--1);
+}
+
+[class*=mr1] {
+  margin-right: var(--layout--size--1);
+}
+
+[class*=mb1] {
+  margin-bottom: var(--layout--size--1);
+}
+
+[class*=ml1] {
+  margin-left: var(--layout--size--1);
+}
+
+[class*=mh1] {
+  margin-left: var(--layout--size--1);
+  margin-right: var(--layout--size--1);
+}
+
+[class*=mv1] {
+  margin-top: var(--layout--size--1);
+  margin-bottom: var(--layout--size--1);
+}
+
+[class*=p1] {
+  padding: var(--layout--size--1);
+}
+
+[class*=pt1] {
+  padding-top: var(--layout--size--1);
+}
+
+[class*=pr1] {
+  padding-right: var(--layout--size--1);
+}
+
+[class*=pb1] {
+  padding-bottom: var(--layout--size--1);
+}
+
+[class*=pl1] {
+  padding-left: var(--layout--size--1);
+}
+
+[class*=ph1] {
+  padding-left: var(--layout--size--1);
+  padding-right: var(--layout--size--1);
+}
+
+[class*=pv1] {
+  padding-top: var(--layout--size--1);
+  padding-bottom: var(--layout--size--1);
+}
+
+[class*=vg1] {
+  row-gap: var(--layout--size--1);
+}
+
+[class*=hg1] {
+  column-gap: var(--layout--size--1);
+}
+
+[class*=m2] {
+  margin: var(--layout--size--2);
+}
+
+[class*=mt2] {
+  margin-top: var(--layout--size--2);
+}
+
+[class*=mr2] {
+  margin-right: var(--layout--size--2);
+}
+
+[class*=mb2] {
+  margin-bottom: var(--layout--size--2);
+}
+
+[class*=ml2] {
+  margin-left: var(--layout--size--2);
+}
+
+[class*=mh2] {
+  margin-left: var(--layout--size--2);
+  margin-right: var(--layout--size--2);
+}
+
+[class*=mv2] {
+  margin-top: var(--layout--size--2);
+  margin-bottom: var(--layout--size--2);
+}
+
+[class*=p2] {
+  padding: var(--layout--size--2);
+}
+
+[class*=pt2] {
+  padding-top: var(--layout--size--2);
+}
+
+[class*=pr2] {
+  padding-right: var(--layout--size--2);
+}
+
+[class*=pb2] {
+  padding-bottom: var(--layout--size--2);
+}
+
+[class*=pl2] {
+  padding-left: var(--layout--size--2);
+}
+
+[class*=ph2] {
+  padding-left: var(--layout--size--2);
+  padding-right: var(--layout--size--2);
+}
+
+[class*=pv2] {
+  padding-top: var(--layout--size--2);
+  padding-bottom: var(--layout--size--2);
+}
+
+[class*=vg2] {
+  row-gap: var(--layout--size--2);
+}
+
+[class*=hg2] {
+  column-gap: var(--layout--size--2);
+}
+
+[class*=m3] {
+  margin: var(--layout--size--3);
+}
+
+[class*=mt3] {
+  margin-top: var(--layout--size--3);
+}
+
+[class*=mr3] {
+  margin-right: var(--layout--size--3);
+}
+
+[class*=mb3] {
+  margin-bottom: var(--layout--size--3);
+}
+
+[class*=ml3] {
+  margin-left: var(--layout--size--3);
+}
+
+[class*=mh3] {
+  margin-left: var(--layout--size--3);
+  margin-right: var(--layout--size--3);
+}
+
+[class*=mv3] {
+  margin-top: var(--layout--size--3);
+  margin-bottom: var(--layout--size--3);
+}
+
+[class*=p3] {
+  padding: var(--layout--size--3);
+}
+
+[class*=pt3] {
+  padding-top: var(--layout--size--3);
+}
+
+[class*=pr3] {
+  padding-right: var(--layout--size--3);
+}
+
+[class*=pb3] {
+  padding-bottom: var(--layout--size--3);
+}
+
+[class*=pl3] {
+  padding-left: var(--layout--size--3);
+}
+
+[class*=ph3] {
+  padding-left: var(--layout--size--3);
+  padding-right: var(--layout--size--3);
+}
+
+[class*=pv3] {
+  padding-top: var(--layout--size--3);
+  padding-bottom: var(--layout--size--3);
+}
+
+[class*=vg3] {
+  row-gap: var(--layout--size--3);
+}
+
+[class*=hg3] {
+  column-gap: var(--layout--size--3);
+}
+
+[class*=m4] {
+  margin: var(--layout--size--4);
+}
+
+[class*=mt4] {
+  margin-top: var(--layout--size--4);
+}
+
+[class*=mr4] {
+  margin-right: var(--layout--size--4);
+}
+
+[class*=mb4] {
+  margin-bottom: var(--layout--size--4);
+}
+
+[class*=ml4] {
+  margin-left: var(--layout--size--4);
+}
+
+[class*=mh4] {
+  margin-left: var(--layout--size--4);
+  margin-right: var(--layout--size--4);
+}
+
+[class*=mv4] {
+  margin-top: var(--layout--size--4);
+  margin-bottom: var(--layout--size--4);
+}
+
+[class*=p4] {
+  padding: var(--layout--size--4);
+}
+
+[class*=pt4] {
+  padding-top: var(--layout--size--4);
+}
+
+[class*=pr4] {
+  padding-right: var(--layout--size--4);
+}
+
+[class*=pb4] {
+  padding-bottom: var(--layout--size--4);
+}
+
+[class*=pl4] {
+  padding-left: var(--layout--size--4);
+}
+
+[class*=ph4] {
+  padding-left: var(--layout--size--4);
+  padding-right: var(--layout--size--4);
+}
+
+[class*=pv4] {
+  padding-top: var(--layout--size--4);
+  padding-bottom: var(--layout--size--4);
+}
+
+[class*=vg4] {
+  row-gap: var(--layout--size--4);
+}
+
+[class*=hg4] {
+  column-gap: var(--layout--size--4);
+}
+
+[class*=m5] {
+  margin: var(--layout--size--5);
+}
+
+[class*=mt5] {
+  margin-top: var(--layout--size--5);
+}
+
+[class*=mr5] {
+  margin-right: var(--layout--size--5);
+}
+
+[class*=mb5] {
+  margin-bottom: var(--layout--size--5);
+}
+
+[class*=ml5] {
+  margin-left: var(--layout--size--5);
+}
+
+[class*=mh5] {
+  margin-left: var(--layout--size--5);
+  margin-right: var(--layout--size--5);
+}
+
+[class*=mv5] {
+  margin-top: var(--layout--size--5);
+  margin-bottom: var(--layout--size--5);
+}
+
+[class*=p5] {
+  padding: var(--layout--size--5);
+}
+
+[class*=pt5] {
+  padding-top: var(--layout--size--5);
+}
+
+[class*=pr5] {
+  padding-right: var(--layout--size--5);
+}
+
+[class*=pb5] {
+  padding-bottom: var(--layout--size--5);
+}
+
+[class*=pl5] {
+  padding-left: var(--layout--size--5);
+}
+
+[class*=ph5] {
+  padding-left: var(--layout--size--5);
+  padding-right: var(--layout--size--5);
+}
+
+[class*=pv5] {
+  padding-top: var(--layout--size--5);
+  padding-bottom: var(--layout--size--5);
+}
+
+[class*=vg5] {
+  row-gap: var(--layout--size--5);
+}
+
+[class*=hg5] {
+  column-gap: var(--layout--size--5);
+}
+
+[class*=m6] {
+  margin: var(--layout--size--6);
+}
+
+[class*=mt6] {
+  margin-top: var(--layout--size--6);
+}
+
+[class*=mr6] {
+  margin-right: var(--layout--size--6);
+}
+
+[class*=mb6] {
+  margin-bottom: var(--layout--size--6);
+}
+
+[class*=ml6] {
+  margin-left: var(--layout--size--6);
+}
+
+[class*=mh6] {
+  margin-left: var(--layout--size--6);
+  margin-right: var(--layout--size--6);
+}
+
+[class*=mv6] {
+  margin-top: var(--layout--size--6);
+  margin-bottom: var(--layout--size--6);
+}
+
+[class*=p6] {
+  padding: var(--layout--size--6);
+}
+
+[class*=pt6] {
+  padding-top: var(--layout--size--6);
+}
+
+[class*=pr6] {
+  padding-right: var(--layout--size--6);
+}
+
+[class*=pb6] {
+  padding-bottom: var(--layout--size--6);
+}
+
+[class*=pl6] {
+  padding-left: var(--layout--size--6);
+}
+
+[class*=ph6] {
+  padding-left: var(--layout--size--6);
+  padding-right: var(--layout--size--6);
+}
+
+[class*=pv6] {
+  padding-top: var(--layout--size--6);
+  padding-bottom: var(--layout--size--6);
+}
+
+[class*=vg6] {
+  row-gap: var(--layout--size--6);
+}
+
+[class*=hg6] {
+  column-gap: var(--layout--size--6);
+}
+
+[class*=m7] {
+  margin: var(--layout--size--7);
+}
+
+[class*=mt7] {
+  margin-top: var(--layout--size--7);
+}
+
+[class*=mr7] {
+  margin-right: var(--layout--size--7);
+}
+
+[class*=mb7] {
+  margin-bottom: var(--layout--size--7);
+}
+
+[class*=ml7] {
+  margin-left: var(--layout--size--7);
+}
+
+[class*=mh7] {
+  margin-left: var(--layout--size--7);
+  margin-right: var(--layout--size--7);
+}
+
+[class*=mv7] {
+  margin-top: var(--layout--size--7);
+  margin-bottom: var(--layout--size--7);
+}
+
+[class*=p7] {
+  padding: var(--layout--size--7);
+}
+
+[class*=pt7] {
+  padding-top: var(--layout--size--7);
+}
+
+[class*=pr7] {
+  padding-right: var(--layout--size--7);
+}
+
+[class*=pb7] {
+  padding-bottom: var(--layout--size--7);
+}
+
+[class*=pl7] {
+  padding-left: var(--layout--size--7);
+}
+
+[class*=ph7] {
+  padding-left: var(--layout--size--7);
+  padding-right: var(--layout--size--7);
+}
+
+[class*=pv7] {
+  padding-top: var(--layout--size--7);
+  padding-bottom: var(--layout--size--7);
+}
+
+[class*=vg7] {
+  row-gap: var(--layout--size--7);
+}
+
+[class*=hg7] {
+  column-gap: var(--layout--size--7);
+}
+
+[class*=m8] {
+  margin: var(--layout--size--8);
+}
+
+[class*=mt8] {
+  margin-top: var(--layout--size--8);
+}
+
+[class*=mr8] {
+  margin-right: var(--layout--size--8);
+}
+
+[class*=mb8] {
+  margin-bottom: var(--layout--size--8);
+}
+
+[class*=ml8] {
+  margin-left: var(--layout--size--8);
+}
+
+[class*=mh8] {
+  margin-left: var(--layout--size--8);
+  margin-right: var(--layout--size--8);
+}
+
+[class*=mv8] {
+  margin-top: var(--layout--size--8);
+  margin-bottom: var(--layout--size--8);
+}
+
+[class*=p8] {
+  padding: var(--layout--size--8);
+}
+
+[class*=pt8] {
+  padding-top: var(--layout--size--8);
+}
+
+[class*=pr8] {
+  padding-right: var(--layout--size--8);
+}
+
+[class*=pb8] {
+  padding-bottom: var(--layout--size--8);
+}
+
+[class*=pl8] {
+  padding-left: var(--layout--size--8);
+}
+
+[class*=ph8] {
+  padding-left: var(--layout--size--8);
+  padding-right: var(--layout--size--8);
+}
+
+[class*=pv8] {
+  padding-top: var(--layout--size--8);
+  padding-bottom: var(--layout--size--8);
+}
+
+[class*=vg8] {
+  row-gap: var(--layout--size--8);
+}
+
+[class*=hg8] {
+  column-gap: var(--layout--size--8);
+}
+
+[class*=m9] {
+  margin: var(--layout--size--9);
+}
+
+[class*=mt9] {
+  margin-top: var(--layout--size--9);
+}
+
+[class*=mr9] {
+  margin-right: var(--layout--size--9);
+}
+
+[class*=mb9] {
+  margin-bottom: var(--layout--size--9);
+}
+
+[class*=ml9] {
+  margin-left: var(--layout--size--9);
+}
+
+[class*=mh9] {
+  margin-left: var(--layout--size--9);
+  margin-right: var(--layout--size--9);
+}
+
+[class*=mv9] {
+  margin-top: var(--layout--size--9);
+  margin-bottom: var(--layout--size--9);
+}
+
+[class*=p9] {
+  padding: var(--layout--size--9);
+}
+
+[class*=pt9] {
+  padding-top: var(--layout--size--9);
+}
+
+[class*=pr9] {
+  padding-right: var(--layout--size--9);
+}
+
+[class*=pb9] {
+  padding-bottom: var(--layout--size--9);
+}
+
+[class*=pl9] {
+  padding-left: var(--layout--size--9);
+}
+
+[class*=ph9] {
+  padding-left: var(--layout--size--9);
+  padding-right: var(--layout--size--9);
+}
+
+[class*=pv9] {
+  padding-top: var(--layout--size--9);
+  padding-bottom: var(--layout--size--9);
+}
+
+[class*=vg9] {
+  row-gap: var(--layout--size--9);
+}
+
+[class*=hg9] {
+  column-gap: var(--layout--size--9);
+}
+
+[class*=m10] {
+  margin: var(--layout--size--10);
+}
+
+[class*=mt10] {
+  margin-top: var(--layout--size--10);
+}
+
+[class*=mr10] {
+  margin-right: var(--layout--size--10);
+}
+
+[class*=mb10] {
+  margin-bottom: var(--layout--size--10);
+}
+
+[class*=ml10] {
+  margin-left: var(--layout--size--10);
+}
+
+[class*=mh10] {
+  margin-left: var(--layout--size--10);
+  margin-right: var(--layout--size--10);
+}
+
+[class*=mv10] {
+  margin-top: var(--layout--size--10);
+  margin-bottom: var(--layout--size--10);
+}
+
+[class*=p10] {
+  padding: var(--layout--size--10);
+}
+
+[class*=pt10] {
+  padding-top: var(--layout--size--10);
+}
+
+[class*=pr10] {
+  padding-right: var(--layout--size--10);
+}
+
+[class*=pb10] {
+  padding-bottom: var(--layout--size--10);
+}
+
+[class*=pl10] {
+  padding-left: var(--layout--size--10);
+}
+
+[class*=ph10] {
+  padding-left: var(--layout--size--10);
+  padding-right: var(--layout--size--10);
+}
+
+[class*=pv10] {
+  padding-top: var(--layout--size--10);
+  padding-bottom: var(--layout--size--10);
+}
+
+[class*=vg10] {
+  row-gap: var(--layout--size--10);
+}
+
+[class*=hg10] {
+  column-gap: var(--layout--size--10);
+}
+
+[class*=m11] {
+  margin: var(--layout--size--11);
+}
+
+[class*=mt11] {
+  margin-top: var(--layout--size--11);
+}
+
+[class*=mr11] {
+  margin-right: var(--layout--size--11);
+}
+
+[class*=mb11] {
+  margin-bottom: var(--layout--size--11);
+}
+
+[class*=ml11] {
+  margin-left: var(--layout--size--11);
+}
+
+[class*=mh11] {
+  margin-left: var(--layout--size--11);
+  margin-right: var(--layout--size--11);
+}
+
+[class*=mv11] {
+  margin-top: var(--layout--size--11);
+  margin-bottom: var(--layout--size--11);
+}
+
+[class*=p11] {
+  padding: var(--layout--size--11);
+}
+
+[class*=pt11] {
+  padding-top: var(--layout--size--11);
+}
+
+[class*=pr11] {
+  padding-right: var(--layout--size--11);
+}
+
+[class*=pb11] {
+  padding-bottom: var(--layout--size--11);
+}
+
+[class*=pl11] {
+  padding-left: var(--layout--size--11);
+}
+
+[class*=ph11] {
+  padding-left: var(--layout--size--11);
+  padding-right: var(--layout--size--11);
+}
+
+[class*=pv11] {
+  padding-top: var(--layout--size--11);
+  padding-bottom: var(--layout--size--11);
+}
+
+[class*=vg11] {
+  row-gap: var(--layout--size--11);
+}
+
+[class*=hg11] {
+  column-gap: var(--layout--size--11);
+}
+
+[class*=m12] {
+  margin: var(--layout--size--12);
+}
+
+[class*=mt12] {
+  margin-top: var(--layout--size--12);
+}
+
+[class*=mr12] {
+  margin-right: var(--layout--size--12);
+}
+
+[class*=mb12] {
+  margin-bottom: var(--layout--size--12);
+}
+
+[class*=ml12] {
+  margin-left: var(--layout--size--12);
+}
+
+[class*=mh12] {
+  margin-left: var(--layout--size--12);
+  margin-right: var(--layout--size--12);
+}
+
+[class*=mv12] {
+  margin-top: var(--layout--size--12);
+  margin-bottom: var(--layout--size--12);
+}
+
+[class*=p12] {
+  padding: var(--layout--size--12);
+}
+
+[class*=pt12] {
+  padding-top: var(--layout--size--12);
+}
+
+[class*=pr12] {
+  padding-right: var(--layout--size--12);
+}
+
+[class*=pb12] {
+  padding-bottom: var(--layout--size--12);
+}
+
+[class*=pl12] {
+  padding-left: var(--layout--size--12);
+}
+
+[class*=ph12] {
+  padding-left: var(--layout--size--12);
+  padding-right: var(--layout--size--12);
+}
+
+[class*=pv12] {
+  padding-top: var(--layout--size--12);
+  padding-bottom: var(--layout--size--12);
+}
+
+[class*=vg12] {
+  row-gap: var(--layout--size--12);
+}
+
+[class*=hg12] {
+  column-gap: var(--layout--size--12);
+}
+
+[class*=m13] {
+  margin: var(--layout--size--13);
+}
+
+[class*=mt13] {
+  margin-top: var(--layout--size--13);
+}
+
+[class*=mr13] {
+  margin-right: var(--layout--size--13);
+}
+
+[class*=mb13] {
+  margin-bottom: var(--layout--size--13);
+}
+
+[class*=ml13] {
+  margin-left: var(--layout--size--13);
+}
+
+[class*=mh13] {
+  margin-left: var(--layout--size--13);
+  margin-right: var(--layout--size--13);
+}
+
+[class*=mv13] {
+  margin-top: var(--layout--size--13);
+  margin-bottom: var(--layout--size--13);
+}
+
+[class*=p13] {
+  padding: var(--layout--size--13);
+}
+
+[class*=pt13] {
+  padding-top: var(--layout--size--13);
+}
+
+[class*=pr13] {
+  padding-right: var(--layout--size--13);
+}
+
+[class*=pb13] {
+  padding-bottom: var(--layout--size--13);
+}
+
+[class*=pl13] {
+  padding-left: var(--layout--size--13);
+}
+
+[class*=ph13] {
+  padding-left: var(--layout--size--13);
+  padding-right: var(--layout--size--13);
+}
+
+[class*=pv13] {
+  padding-top: var(--layout--size--13);
+  padding-bottom: var(--layout--size--13);
+}
+
+[class*=vg13] {
+  row-gap: var(--layout--size--13);
+}
+
+[class*=hg13] {
+  column-gap: var(--layout--size--13);
+}
+
+[class*=m-auto] {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+[class*=ml-auto] {
+  margin-left: auto;
+}
+
+[class*=mr-auto] {
+  margin-right: auto;
+}
+
+/**
+ * Nube System - CSS Utility Framework
+ * 
+ * This is the main entry file that compiles all utilities into a single system.css file.
+ * Variables and custom properties will be placed at the top of the compiled output.
+ */
+/**
+ * Variables (CSS Custom Properties)
+ * This MUST be first to ensure variables are at the top of the compiled CSS
+ */
+[class*=order-1] {
+  order: 1;
+}
+
+[class*=order-2] {
+  order: 2;
+}
+
+[class*=order-3] {
+  order: 3;
+}
+
+[class*=order-4] {
+  order: 4;
+}
+
+[class*=order-5] {
+  order: 5;
+}
+
+[class*=order-6] {
+  order: 6;
+}
+
+[class*=order-7] {
+  order: 7;
+}
+
+[class*=order-8] {
+  order: 8;
+}
+
+[class*=order-9] {
+  order: 9;
+}
+
+[class*=order-10] {
+  order: 10;
+}
+
+[class*=order-11] {
+  order: 11;
+}
+
+[class*=order-12] {
+  order: 12;
+}
+
+[class*=xs_fd0] {
+  flex-direction: column;
+  display: flex;
+}
+
+[class*=xs_fd1] {
+  flex-direction: row;
+  display: flex;
+}
+
+[class*=xs_fd2] {
+  flex-direction: column-reverse;
+  display: flex;
+}
+
+[class*=xs_fd3] {
+  flex-direction: row-reverse;
+  display: flex;
+}
+
+[class*=xs_fj0] {
+  justify-content: start;
+  display: flex;
+}
+
+[class*=xs_fj1] {
+  justify-content: center;
+  display: flex;
+}
+
+[class*=xs_fj2] {
+  justify-content: end;
+  display: flex;
+}
+
+[class*=xs_fj3] {
+  justify-content: space-between;
+  display: flex;
+}
+
+[class*=xs_fj4] {
+  justify-content: space-around;
+  display: flex;
+}
+
+[class*=xs_fa0] {
+  align-items: start;
+  display: flex;
+}
+
+[class*=xs_fa1] {
+  align-items: center;
+  display: flex;
+}
+
+[class*=xs_fa2] {
+  align-items: end;
+  display: flex;
+}
+
+[class*=xs_fa3] {
+  align-items: stretch;
+  display: flex;
+}
+
+[class*=xs_fa4] {
+  align-items: baseline;
+  display: flex;
+}
+
+[class*=xs_fw0] {
+  flex-wrap: nowrap;
+  display: flex;
+}
+
+[class*=xs_fw1] {
+  flex-wrap: wrap;
+  display: flex;
+}
+
+[class*=xs_fw2] {
+  flex-wrap: wrap-reverse;
+  display: flex;
+}
+
+@media (min-width: 480px) {
+  [class*=sm_fd0] {
+    flex-direction: column;
+    display: flex;
+  }
+  [class*=sm_fd1] {
+    flex-direction: row;
+    display: flex;
+  }
+  [class*=sm_fd2] {
+    flex-direction: column-reverse;
+    display: flex;
+  }
+  [class*=sm_fd3] {
+    flex-direction: row-reverse;
+    display: flex;
+  }
+  [class*=sm_fj0] {
+    justify-content: start;
+    display: flex;
+  }
+  [class*=sm_fj1] {
+    justify-content: center;
+    display: flex;
+  }
+  [class*=sm_fj2] {
+    justify-content: end;
+    display: flex;
+  }
+  [class*=sm_fj3] {
+    justify-content: space-between;
+    display: flex;
+  }
+  [class*=sm_fj4] {
+    justify-content: space-around;
+    display: flex;
+  }
+  [class*=sm_fa0] {
+    align-items: start;
+    display: flex;
+  }
+  [class*=sm_fa1] {
+    align-items: center;
+    display: flex;
+  }
+  [class*=sm_fa2] {
+    align-items: end;
+    display: flex;
+  }
+  [class*=sm_fa3] {
+    align-items: stretch;
+    display: flex;
+  }
+  [class*=sm_fa4] {
+    align-items: baseline;
+    display: flex;
+  }
+  [class*=sm_fw0] {
+    flex-wrap: nowrap;
+    display: flex;
+  }
+  [class*=sm_fw1] {
+    flex-wrap: wrap;
+    display: flex;
+  }
+  [class*=sm_fw2] {
+    flex-wrap: wrap-reverse;
+    display: flex;
+  }
+}
+@media (min-width: 768px) {
+  [class*=md_fd0] {
+    flex-direction: column;
+    display: flex;
+  }
+  [class*=md_fd1] {
+    flex-direction: row;
+    display: flex;
+  }
+  [class*=md_fd2] {
+    flex-direction: column-reverse;
+    display: flex;
+  }
+  [class*=md_fd3] {
+    flex-direction: row-reverse;
+    display: flex;
+  }
+  [class*=md_fj0] {
+    justify-content: start;
+    display: flex;
+  }
+  [class*=md_fj1] {
+    justify-content: center;
+    display: flex;
+  }
+  [class*=md_fj2] {
+    justify-content: end;
+    display: flex;
+  }
+  [class*=md_fj3] {
+    justify-content: space-between;
+    display: flex;
+  }
+  [class*=md_fj4] {
+    justify-content: space-around;
+    display: flex;
+  }
+  [class*=md_fa0] {
+    align-items: start;
+    display: flex;
+  }
+  [class*=md_fa1] {
+    align-items: center;
+    display: flex;
+  }
+  [class*=md_fa2] {
+    align-items: end;
+    display: flex;
+  }
+  [class*=md_fa3] {
+    align-items: stretch;
+    display: flex;
+  }
+  [class*=md_fa4] {
+    align-items: baseline;
+    display: flex;
+  }
+  [class*=md_fw0] {
+    flex-wrap: nowrap;
+    display: flex;
+  }
+  [class*=md_fw1] {
+    flex-wrap: wrap;
+    display: flex;
+  }
+  [class*=md_fw2] {
+    flex-wrap: wrap-reverse;
+    display: flex;
+  }
+  [class*=md_fac0] {
+    align-content: flex-start;
+    display: flex;
+  }
+}
+@media (min-width: 992px) {
+  [class*=lg_fd0] {
+    flex-direction: column;
+    display: flex;
+  }
+  [class*=lg_fd1] {
+    flex-direction: row;
+    display: flex;
+  }
+  [class*=lg_fd2] {
+    flex-direction: column-reverse;
+    display: flex;
+  }
+  [class*=lg_fd3] {
+    flex-direction: row-reverse;
+    display: flex;
+  }
+  [class*=lg_fj0] {
+    justify-content: start;
+    display: flex;
+  }
+  [class*=lg_fj1] {
+    justify-content: center;
+    display: flex;
+  }
+  [class*=lg_fj2] {
+    justify-content: end;
+    display: flex;
+  }
+  [class*=lg_fj3] {
+    justify-content: space-between;
+    display: flex;
+  }
+  [class*=lg_fj4] {
+    justify-content: space-around;
+    display: flex;
+  }
+  [class*=lg_fa0] {
+    align-items: start;
+    display: flex;
+  }
+  [class*=lg_fa1] {
+    align-items: center;
+    display: flex;
+  }
+  [class*=lg_fa2] {
+    align-items: end;
+    display: flex;
+  }
+  [class*=lg_fa3] {
+    align-items: stretch;
+    display: flex;
+  }
+  [class*=lg_fa4] {
+    align-items: baseline;
+    display: flex;
+  }
+  [class*=lg_fw0] {
+    flex-wrap: nowrap;
+    display: flex;
+  }
+  [class*=lg_fw1] {
+    flex-wrap: wrap;
+    display: flex;
+  }
+  [class*=lg_fw2] {
+    flex-wrap: wrap-reverse;
+    display: flex;
+  }
+  [class*=lg_fac0] {
+    align-content: flex-start;
+    display: flex;
+  }
+}
+/**
+ * Nube System - CSS Utility Framework
+ * 
+ * This is the main entry file that compiles all utilities into a single system.css file.
+ * Variables and custom properties will be placed at the top of the compiled output.
+ */
+/**
+ * Variables (CSS Custom Properties)
+ * This MUST be first to ensure variables are at the top of the compiled CSS
+ */
+[class*=f0] {
+  font-size: var(--font--size--0);
+  line-height: var(--line--height--0);
+}
+
+[class*=f1] {
+  font-size: var(--font--size--1);
+  line-height: var(--line--height--1);
+}
+
+[class*=f2] {
+  font-size: var(--font--size--2);
+  line-height: var(--line--height--2);
+}
+
+[class*=f3] {
+  font-size: var(--font--size--3);
+  line-height: var(--line--height--3);
+}
+
+[class*=f4] {
+  font-size: var(--font--size--4);
+  line-height: var(--line--height--4);
+}
+
+[class*=f5] {
+  font-size: var(--font--size--5);
+  line-height: var(--line--height--5);
+}
+
+[class*=f6] {
+  font-size: var(--font--size--6);
+  line-height: var(--line--height--6);
+}
+
+[class*=f7] {
+  font-size: var(--font--size--7);
+  line-height: var(--line--height--7);
+}
+
+[class*=f8] {
+  font-size: var(--font--size--8);
+  line-height: var(--line--height--8);
+}
+
+[class*=ff0] {
+  font-family: var(--font--family--0);
+}
+
+[class*=ff1] {
+  font-family: var(--font--family--1);
+}
+
+.fw0 {
+  font-weight: var(--font--weight--0);
+}
+
+.fw1 {
+  font-weight: var(--font--weight--1);
+}
+
+.fw2 {
+  font-weight: var(--font--weight--2);
+}
+
+.fw3 {
+  font-weight: var(--font--weight--3);
+}
+
+.fw4 {
+  font-weight: var(--font--weight--4);
+}
+
+.fw5 {
+  font-weight: var(--font--weight--5);
+}
+
+[class*=xs_ta0] {
+  text-align: left;
+}
+
+[class*=xs_ta1] {
+  text-align: center;
+}
+
+[class*=xs_ta2] {
+  text-align: right;
+}
+
+@media (min-width: 480px) {
+  [class*=sm_ta0] {
+    text-align: left;
+  }
+  [class*=sm_ta1] {
+    text-align: center;
+  }
+  [class*=sm_ta2] {
+    text-align: right;
+  }
+}
+@media (min-width: 768px) {
+  [class*=md_ta0] {
+    text-align: left;
+  }
+  [class*=md_ta1] {
+    text-align: center;
+  }
+  [class*=md_ta2] {
+    text-align: right;
+  }
+}
+@media (min-width: 992px) {
+  [class*=lg_ta0] {
+    text-align: left;
+  }
+  [class*=lg_ta1] {
+    text-align: center;
+  }
+  [class*=lg_ta2] {
+    text-align: right;
+  }
+}
+.td-underline {
+  text-decoration: underline;
+}
+
+.td-none {
+  text-decoration: none;
+}
+
+.tt-uppercase {
+  text-transform: uppercase;
+}
+
+.tt-lowercase {
+  text-transform: lowercase;
+}
+
+.tt-capitalize {
+  text-transform: capitalize;
+}

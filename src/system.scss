@@ -1,0 +1,41 @@
+/**
+ * Nube System - CSS Utility Framework
+ * 
+ * This is the main entry file that compiles all utilities into a single system.css file.
+ * Variables and custom properties will be placed at the top of the compiled output.
+ */
+
+/**
+ * Variables (CSS Custom Properties)
+ * This MUST be first to ensure variables are at the top of the compiled CSS
+ */
+@forward "core/variables";
+
+/**
+ * Mixins and Functions
+ * These don't output any CSS directly
+ */
+@use "core/mixins";
+
+/**
+ * Utility Modules
+ * Each utility file handles its own dependency imports
+ */
+
+// Theme utilities (colors, backgrounds, borders)
+@use "utilities/theme";
+
+// Layout utilities (grid, positioning, display)
+@use "utilities/layout";
+
+// Element utilities (display, position)
+@use "utilities/element";
+
+// Spacing utilities (margin, padding, gap)
+@use "utilities/spacing";
+
+// Flexbox utilities
+@use "utilities/flex";
+
+// Typography utilities
+@use "utilities/typography";

@@ -1,0 +1,99 @@
+@use "sass:math";
+@use "../core/variables" as *;
+
+// Grid Container
+.cnt {
+  width: calc(100% - 2 * var(--layout--grid--margin));
+  max-width: var(--layout--grid--width);
+  margin-right: auto;
+  margin-left: auto;
+}
+
+// Grid Row
+[class*="rw"] {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: calc(-1 * calc(var(--layout--grid--gutter) / 2));
+  margin-left: calc(-1 * calc(var(--layout--grid--gutter) / 2));
+  grid-row-gap: var(--layout--grid--row);
+}
+
+// CSS Grid Layout
+// Default (xs) grid column classes
+@for $i from 2 through 6 {
+  [class*="xs_grid-x#{$i}"] {
+    display: grid;
+    grid-template-columns: repeat(#{$i}, 1fr);
+    gap: var(--layout--grid--gutter);
+  }
+}
+
+// Generate responsive grid column classes
+@each $breakpoint, $min-width in $breakpoints {
+  @if $breakpoint != "xs" {
+    @media (min-width: $min-width) {
+      @for $i from 2 through 6 {
+        [class*="#{$breakpoint}_grid-x#{$i}"] {
+          display: grid;
+          grid-template-columns: repeat(#{$i}, 1fr);
+          gap: var(--layout--grid--gutter);
+        }
+      }
+    }
+  }
+}
+
+// Grid/Flex gap classes
+@for $i from 0 through 13 {
+  [class*="fg#{$i}"] {
+    gap: var(--layout--size--#{$i});
+  }
+}
+
+// Grid Column Base
+[class*="clm"] {
+  padding-right: calc(var(--layout--grid--gutter) / 2);
+  padding-left: calc(var(--layout--grid--gutter) / 2);
+  flex-basis: 100%;
+  flex-grow: 1;
+  max-width: 100%;
+}
+
+// Default (xs) column widths
+@for $i from 1 through 12 {
+  [class*="clm"][class*="xs_#{$i}"] {
+    flex-basis: math.percentage(math.div($i, 12));
+    max-width: math.percentage(math.div($i, 12));
+    flex-grow: 1;
+    flex-shrink: 1;
+  }
+}
+
+// Generate responsive column widths
+@each $breakpoint, $min-width in $breakpoints {
+  @if $breakpoint != "xs" {
+    @media (min-width: $min-width) {
+      // Column width classes
+      @for $i from 1 through 12 {
+        [class*="clm"][class*="#{$breakpoint}_#{$i}"] {
+          flex-basis: math.percentage(math.div($i, 12));
+          max-width: math.percentage(math.div($i, 12));
+          flex-grow: 1;
+          flex-shrink: 1;
+        }
+      }
+    }
+  }
+}
+
+// Max width classes
+@for $i from 1 through 12 {
+  [class*="mw_#{$i}"] {
+    width: 100%;
+    max-width: calc(
+      (var(--layout--grid--width) * #{math.div($i, 12)}) -
+        #{(12 - $i)} *
+        (var(--layout--grid--gutter) / 12)
+    );
+  }
+}
