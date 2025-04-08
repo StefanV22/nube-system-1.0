@@ -896,6 +896,46 @@ When using Nube System with Astro, the CSS purging process is completely automat
 
 This means you don't need to manually run the purge command before builds - it's taken care of automatically. The Astro build hook ensures your CSS is always optimized in production builds.
 
+### Importing in Astro Projects
+
+For Astro projects, you need to import the CSS files in your Layout component:
+
+```astro
+---
+// src/layouts/Layout.astro
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Astro Site</title>
+    <!-- Import Nube System CSS files -->
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  /* Import the variable definitions first */
+  @import "../nube-system/styles/variables.css";
+
+  /* Import the optimized utility classes */
+  @import "../nube-system/styles/system-styles.css";
+</style>
+```
+
+Alternatively, you can import them directly in the head section:
+
+```astro
+<head>
+  <!-- Other head elements -->
+  <link rel="stylesheet" href="/src/nube-system/styles/variables.css" />
+  <link rel="stylesheet" href="/src/nube-system/styles/system-styles.css" />
+</head>
+```
+
 If you want to manually optimize during development, you can still run:
 
 ```bash
