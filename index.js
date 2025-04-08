@@ -1,18 +1,21 @@
 /**
  * Nube System - A modern, utility-first CSS framework
  *
- * This module exports paths to the compiled CSS files
- * for easy importing in various environments.
+ * This index file provides export paths for the CSS files.
  */
 
-// Export paths to CSS files
-export default {
-  // Standard CSS file (expanded)
+module.exports = {
+  // Main CSS files
   css: "./styles/system.css",
+  variables: "./styles/variables.css",
 
-  // Minified CSS file
-  minCss: "./styles/system.min.css",
+  // The optimized (purged) version is created by the setup script
+  // in the user's project at src/nube-system/styles/system-styles.css
 
-  // Path to source files for customization
-  srcDir: "./src",
+  // Relative paths for imports
+  paths: {
+    styles: "./styles",
+    variables: "./styles/variables.css",
+    system: "./styles/system.css",
+  },
 };

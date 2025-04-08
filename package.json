@@ -1,6 +1,6 @@
 {
   "name": "nube-system",
-  "version": "1.6.4",
+  "version": "1.6.5",
   "description": "A modern, utility-first CSS framework with semantic theme tokens and fluid responsive design",
   "main": "index.js",
   "style": "styles/system.css",
@@ -12,10 +12,9 @@
     "LICENSE"
   ],
   "scripts": {
-    "build": "sass src/system.scss:styles/system.css --style=expanded --no-source-map",
-    "build:minified": "sass src/system.scss:styles/system.min.css --style=compressed --no-source-map",
-    "dev": "sass src/system.scss:styles/system.css --watch --style=expanded --no-source-map",
-    "prepare": "npm run build && npm run build:minified",
+    "build": "sass src/system.scss:styles/system.css src/variables.scss:styles/variables.css --style=expanded --no-source-map",
+    "dev": "sass src/system.scss:styles/system.css src/variables.scss:styles/variables.css --watch --style=expanded --no-source-map",
+    "prepare": "npm run build",
     "postinstall": "node scripts/setup-astro.js"
   },
   "keywords": [

@@ -52,6 +52,8 @@ Original size: \${systemCss.length} bytes
     fs.writeFileSync(systemStylesPath, header + "\\n\\n" + systemCss);
 
     console.log("✅ Successfully copied system.css to system-styles.css");
+    console.log("✨ Remember: variables.css is a separate file that contains your theme variables");
+    console.log("📝 You can modify variables.css to customize your theme without affecting utilities");
   } catch (error) {
     console.error("❌ Error while copying CSS:", error);
     process.exit(1);
@@ -510,6 +512,11 @@ function setupAstro() {
     const systemTarget = path.join(stylesDir, "system.css");
     copyFile(systemSource, systemTarget);
 
+    // Copy the variables.css file
+    const variablesSource = path.join(packagePath, "styles", "variables.css");
+    const variablesTarget = path.join(stylesDir, "variables.css");
+    copyFile(variablesSource, variablesTarget);
+
     // Create initial system-styles.css (copy of system.css)
     const systemStylesTarget = path.join(stylesDir, "system-styles.css");
     copyFile(systemSource, systemStylesTarget);
@@ -538,9 +545,144 @@ function setupAstro() {
         "node --experimental-modules src/nube-system/scripts/copy-css.js";
       packageJson.scripts["purge-css"] =
         "node --experimental-modules src/nube-system/scripts/purge-css.js";
+
       fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2));
       console.log("✓ Added scripts to package.json");
     }
+
+    // Update or create astro.config.mjs to add the build hook
+    const astroConfigPath = path.join(projectRoot, "astro.config.mjs");
+    let configContent = "";
+    let existingConfig = false;
+
+    if (fs.existsSync(astroConfigPath)) {
+      existingConfig = true;
+      configContent = fs.readFileSync(astroConfigPath, "utf8");
+    }
+
+    // Create a hook integration file
+    const hookFilePath = path.join(scriptsDir, "purge-hook.js");
+    const hookContent = `
+export function purgeCssHook() {
+  return {
+    name: 'nube-system-purge-hook',
+    hooks: {
+      'astro:build:start': async () => {
+        console.log('🧹 Running PurgeCSS before build...');
+        const { execSync } = await import('child_process');
+        try {
+          execSync('npm run purge-css', { stdio: 'inherit' });
+          console.log('✅ CSS purged successfully!');
+        } catch (error) {
+          console.error('❌ Error running PurgeCSS:', error);
+        }
+      }
+    }
+  };
+}
+`;
+    fs.writeFileSync(hookFilePath, hookContent);
+
+    if (existingConfig) {
+      // If config exists, update it to include our hook
+      if (!configContent.includes("nube-system-purge-hook")) {
+        // Add import if not already there
+        if (!configContent.includes("import { purgeCssHook }")) {
+          // Find the last import statement to add ours after it
+          const lastImportIndex = configContent.lastIndexOf("import ");
+          let lastImportEndIndex = -1;
+
+          if (lastImportIndex !== -1) {
+            lastImportEndIndex = configContent.indexOf(";", lastImportIndex);
+            if (lastImportEndIndex === -1) {
+              // Try finding the end of the line if no semicolon
+              lastImportEndIndex = configContent.indexOf("\n", lastImportIndex);
+            }
+          }
+
+          if (lastImportEndIndex !== -1) {
+            configContent =
+              configContent.slice(0, lastImportEndIndex + 1) +
+              "\nimport { purgeCssHook } from './src/nube-system/scripts/purge-hook.js';" +
+              configContent.slice(lastImportEndIndex + 1);
+          } else {
+            // No imports found, add at the beginning
+            configContent =
+              "import { purgeCssHook } from './src/nube-system/scripts/purge-hook.js';\n" +
+              configContent;
+          }
+        }
+
+        // Find where to add the hook in the integrations array
+        const integrationsMatch = configContent.match(
+          /integrations\s*:\s*\[([^\]]*)\]/s
+        );
+        if (integrationsMatch) {
+          // Already has integrations array
+          const integrations = integrationsMatch[1];
+          const updatedIntegrations =
+            integrations.trim().length > 0
+              ? integrations + ", purgeCssHook()"
+              : "purgeCssHook()";
+
+          configContent = configContent.replace(
+            /integrations\s*:\s*\[([^\]]*)\]/s,
+            `integrations: [${updatedIntegrations}]`
+          );
+        } else {
+          // No integrations array found, check if defineConfig exists
+          const defineConfigMatch = configContent.match(
+            /defineConfig\s*\(\s*\{([^}]*)\}\s*\)/s
+          );
+          if (defineConfigMatch) {
+            // Add integrations to existing defineConfig
+            configContent = configContent.replace(
+              /defineConfig\s*\(\s*\{([^}]*)\}\s*\)/s,
+              `defineConfig({\$1, integrations: [purgeCssHook()]})`
+            );
+          } else {
+            // Just append a basic config at the end
+            configContent += `\n\nexport default {
+  integrations: [purgeCssHook()]
+};\n`;
+          }
+        }
+      }
+    } else {
+      // Create a new config file
+      configContent = `import { defineConfig } from 'astro/config';
+import { purgeCssHook } from './src/nube-system/scripts/purge-hook.js';
+
+export default defineConfig({
+  integrations: [purgeCssHook()]
+});
+`;
+    }
+
+    fs.writeFileSync(astroConfigPath, configContent);
+    console.log("✓ Updated astro.config.mjs with build hook");
+
+    // Create a README explaining the automation
+    const readmePath = path.join(nubeSystemDir, "README.md");
+    const readmeContent =
+      "# Nube System Integration\n\n" +
+      "## CSS Optimization\n\n" +
+      "This project uses Nube System CSS framework with automatic CSS optimization during builds.\n\n" +
+      "### How it works\n\n" +
+      "- When you run `npm run build`, the CSS is automatically optimized through the Astro build hook\n" +
+      "- This hook runs `purge-css` before Astro builds your site\n" +
+      "- Only the CSS classes you actually use in your project will be included in the final build\n" +
+      "- This significantly reduces your CSS file size\n\n" +
+      "### Manual optimization\n\n" +
+      "You can also manually optimize your CSS at any time:\n\n" +
+      "- `npm run purge-css` - Removes unused classes and minifies system-styles.css\n" +
+      "- `npm run copy-css` - Copies all utility classes to system-styles.css (use during development)\n\n" +
+      "### Files\n\n" +
+      "- `variables.css` - Theme variables (you can customize these)\n" +
+      "- `system.css` - All utility classes (don't edit directly)\n" +
+      "- `system-styles.css` - Optimized CSS for your project (automatically generated)";
+
+    fs.writeFileSync(readmePath, readmeContent);
 
     console.log("\nNube System has been set up in your project!");
     console.log("\nDirectory structure created:");
@@ -548,14 +690,23 @@ function setupAstro() {
     console.log("└── nube-system/");
     console.log("    ├── scripts/");
     console.log("    │   ├── copy-css.js");
-    console.log("    │   └── purge-css.js");
+    console.log("    │   ├── purge-css.js");
+    console.log("    │   └── purge-hook.js (Astro integration)");
     console.log("    └── styles/");
-    console.log("        ├── system.css");
-    console.log("        └── system-styles.css");
+    console.log("        ├── variables.css (customizable theme variables)");
+    console.log("        ├── system.css (all utility classes)");
+    console.log(
+      "        └── system-styles.css (optimized version for your project)"
+    );
 
     console.log("\nQuick Start:");
     console.log("\n// In your main layout or entry point:");
-    console.log('import "../nube-system/styles/system-styles.css";');
+    console.log(
+      'import "../nube-system/styles/variables.css"; // Theme variables'
+    );
+    console.log(
+      'import "../nube-system/styles/system-styles.css"; // Utility classes'
+    );
 
     console.log("\nAvailable npm scripts:");
     console.log(
@@ -563,6 +714,17 @@ function setupAstro() {
     );
     console.log(
       "npm run purge-css - Remove unused classes and minify system-styles.css"
+    );
+    console.log(
+      "npm run build     - Will automatically run purge-css before building your Astro project"
+    );
+
+    console.log("\nAutomatic CSS Optimization:");
+    console.log(
+      "✓ Added Astro build hook to run purge-css automatically before builds"
+    );
+    console.log(
+      "✓ See src/nube-system/README.md for details on CSS optimization"
     );
 
     console.log("\nCheck src/nube-system/system.doc.md for documentation.");

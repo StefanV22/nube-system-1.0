@@ -2,20 +2,20 @@
  * Nube System - CSS Utility Framework
  * 
  * This is the main entry file that compiles all utilities into a single system.css file.
- * Variables and custom properties will be placed at the top of the compiled output.
+ * Note: Variables are now in a separate file (variables.css) for easier customization.
  */
-
-/**
- * Variables (CSS Custom Properties)
- * This MUST be first to ensure variables are at the top of the compiled CSS
- */
-@forward "core/variables";
 
 /**
  * Mixins and Functions
  * These don't output any CSS directly
  */
 @use "core/mixins";
+
+/**
+ * Variables still need to be imported for SCSS processing
+ * But they won't output any CSS here
+ */
+@use "core/variables" as vars;
 
 /**
  * Utility Modules

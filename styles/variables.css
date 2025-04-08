@@ -1,0 +1,88 @@
+/**
+ * Nube System - Variables
+ * 
+ * This file compiles only the CSS variables (custom properties).
+ * These variables can be customized for each project without affecting utility classes.
+ */
+:root {
+  --layout--size--0: 0rem;
+  --layout--size--1: 0.125rem;
+  --layout--size--2: 0.25rem;
+  --layout--size--3: clamp(0.375rem, 0.185vw + 0.333rem, 0.5rem);
+  --layout--size--4: clamp(0.625rem, 0.185vw + 0.583rem, 0.75rem);
+  --layout--size--5: clamp(0.75rem, 0.37vw + 0.667rem, 1rem);
+  --layout--size--6: clamp(1.25rem, 0.37vw + 1.167rem, 1.5rem);
+  --layout--size--7: clamp(1.5rem, 0.741vw + 1.333rem, 2rem);
+  --layout--size--8: clamp(2.5rem, 0.741vw + 2.333rem, 3rem);
+  --layout--size--9: clamp(3rem, 1.481vw + 2.667rem, 4rem);
+  --layout--size--10: clamp(4rem, 2.222vw + 3.5rem, 5.5rem);
+  --layout--size--11: clamp(5.5rem, 3.704vw + 4.667rem, 8rem);
+  --layout--size--12: clamp(7.5rem, 7.407vw + 5.833rem, 12.5rem);
+  --layout--size--13: clamp(11.5rem, 7.407vw + 9.833rem, 16.5rem);
+  --font--size--0: 0.875rem;
+  --font--size--1: 1rem;
+  --font--size--2: clamp(1rem, 0.185vw + 0.958rem, 1.125rem);
+  --font--size--3: clamp(1.125rem, 0.185vw + 1.083rem, 1.25rem);
+  --font--size--4: clamp(1.25rem, 0.37vw + 1.167rem, 1.5rem);
+  --font--size--5: clamp(1.5rem, 0.741vw + 1.333rem, 2rem);
+  --font--size--6: clamp(2rem, 1.481vw + 1.667rem, 3rem);
+  --font--size--7: clamp(2.5rem, 2.222vw + 2rem, 4rem);
+  --font--size--8: clamp(3.25rem, 4.815vw + 2.167rem, 6.5rem);
+  --surface--primary: #1a1a1a;
+  --surface--secondary: #2a2a2a;
+  --surface--tertiary: #3a3a3a;
+  --ink--title: #090a0d;
+  --ink--body: #5a5e6b;
+  --ink--strong: #1f2129;
+  --ink--dimmed: #7a7e8b;
+  --ink--faded: #999da9;
+  --ink--accent: #165ff2;
+  --spot--primary: #3b82f6;
+  --spot--secondary: #60a5fa;
+  --spot--accent: #93c5fd;
+  --spot--accent-hover: #60a5fa;
+  --spot--scarcity: #ef4444;
+  --spot--scarcity-hover: #dc2626;
+  --spot-ink--primary: #ffffff;
+  --spot-ink--secondary: #ffffff;
+  --spot-ink--accent: #ffffff;
+  --spot-ink--accent-hover: #ffffff;
+  --spot-ink--scarcity: #ffffff;
+  --spot-ink--scarcity-hover: #ffffff;
+  --stroke--primary: rgba(255, 255, 255, 0.1);
+  --stroke--secondary: rgba(255, 255, 255, 0.05);
+  --stroke--tertiary: rgba(255, 255, 255, 0.02);
+  --font--family--0: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+    sans-serif;
+  --font--family--1: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+  --font--weight--0: 300;
+  --font--weight--1: 400;
+  --font--weight--2: 500;
+  --font--weight--3: 600;
+  --font--weight--4: 700;
+  --font--weight--5: 800;
+  --line--height--0: 1.42;
+  --line--height--1: 1.5;
+  --line--height--2: 1.33;
+  --line--height--3: 1.4;
+  --line--height--4: 1.33;
+  --line--height--5: 1.25;
+  --line--height--6: 1.16;
+  --line--height--7: 1.06;
+  --line--height--8: 1.07;
+  --border--width--0: 0.5px;
+  --border--width--1: 1px;
+  --border--width--2: 2px;
+  --border--radius--0: 0.125rem;
+  --border--radius--1: 0.25rem;
+  --border--radius--2: 0.5rem;
+  --border--radius--3: 0.75rem;
+  --border--radius--4: 1rem;
+  --border--radius--5: 1.5rem;
+  --layout--grid--width: 90rem;
+  --layout--grid--margin: var(--layout--size--6);
+  --layout--grid--gutter: var(--layout--size--6);
+  --layout--grid--row: var(--layout--size--3);
+}

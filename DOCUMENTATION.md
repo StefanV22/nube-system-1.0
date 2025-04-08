@@ -14,6 +14,7 @@
    - [Typography](#typography)
 5. [Breakpoints](#breakpoints)
 6. [CSS Purging System](#css-purging-system)
+7. [Customizing Variables](#customizing-variables)
 
 ## Installation
 
@@ -50,21 +51,27 @@ src/
     │   ├── copy-css.js
     │   └── purge-css.js
     ├── styles/
-    │   ├── system.css (original with all classes)
+    │   ├── variables.css (theme variables)
+    │   ├── system.css (all utility classes)
     │   └── system-styles.css (optimized version for your project)
     └── system.doc.md (documentation)
 ```
 
 ## Quick Start
 
-After installing Nube System, simply import the system-styles.css file in your main layout:
+After installing Nube System, import both the variables.css and system-styles.css files in your main layout:
 
 ```javascript
 // In your main.js, Layout.astro, or other entry point:
-import "../nube-system/styles/system-styles.css";
+import "../nube-system/styles/variables.css"; // Theme variables
+import "../nube-system/styles/system-styles.css"; // Utility classes
 ```
 
-This file contains all the utility classes your project needs, with variables defined at the top for proper cascading.
+The separation of variables and utility classes offers several benefits:
+
+- Variables can be easily customized without affecting utility classes
+- Only the utility classes get purged and minified, not the variables
+- You can modify variables for each project while keeping the same utility set
 
 ### Optimizing Your CSS
 
@@ -82,6 +89,7 @@ The recommended workflow:
 
 1. Use `npm run copy-css` when starting a new component to have all classes available
 2. Run `npm run purge-css` before deploying to optimize file size
+3. Customize `variables.css` to match your project's theme as needed
 
 ## Core Concepts
 
@@ -862,7 +870,7 @@ Nube System now comes with a built-in CSS purging system that:
 1. Scans your project files for used utility classes
 2. Keeps only the classes you're actually using
 3. Minifies the result for even better performance
-4. Maintains all the required CSS variables and media queries
+4. Keeps variables.css separate and untouched
 
 To use it, simply run:
 
@@ -870,7 +878,7 @@ To use it, simply run:
 npm run purge-css
 ```
 
-This will optimize your `system-styles.css` file, which is the one you import in your project.
+This will optimize your `system-styles.css` file while leaving your `variables.css` file intact.
 
 If you need access to all utility classes again (for example, when starting a new component), you can run:
 
@@ -878,14 +886,30 @@ If you need access to all utility classes again (for example, when starting a ne
 npm run copy-css
 ```
 
+### Automatic Optimization in Astro Projects
+
+When using Nube System with Astro, the CSS purging process is completely automated:
+
+1. **During development**: Work with the full utility class set
+2. **During builds**: When you run `npm run build` or `astro build`, the CSS is automatically purged
+3. **How it works**: The framework uses Astro's integration API and lifecycle hooks to automatically run `purge-css` before building
+
+This means you don't need to manually run the purge command before builds - it's taken care of automatically. The Astro build hook ensures your CSS is always optimized in production builds.
+
+If you want to manually optimize during development, you can still run:
+
+```bash
+npm run purge-css  # Manually optimize CSS
+npm run copy-css   # Restore full CSS for development
+```
+
 ### Development Workflow
 
 1. **Initial setup**: When you install Nube System, it automatically sets up both the full system.css and an optimized system-styles.css
 2. **Starting a new component**: Run `npm run copy-css` to make all utility classes available
 3. **During development**: Work with the full utility class set
-4. **Before deployment**: Run `npm run purge-css` to optimize the CSS file
-
-This approach gives you the best of both worlds: full access to all utility classes during development and optimized CSS files for production.
+4. **Building for production**: Run `npm run build` - CSS is automatically optimized
+5. **Manual optimization**: Run `npm run purge-css` when needed during development
 
 ### Benefits of CSS Purging
 
@@ -894,3 +918,38 @@ This approach gives you the best of both worlds: full access to all utility clas
 - **Better performance**: Especially important for mobile devices
 - **Improved maintainability**: No manual editing of CSS files required
 - **Automatic minification**: Further reduces file size without losing functionality
+- **Preserved variables**: Theme variables remain intact and can be customized per project
+- **Zero-configuration**: Automatic optimization during Astro builds
+
+## Customizing Variables
+
+One of the key benefits of Nube System's architecture is the separation of variables from utility classes. This allows you to easily customize your theme without modifying the utility classes.
+
+### How to Customize Variables
+
+1. Open the `src/nube-system/styles/variables.css` file in your project
+2. Modify the CSS variables in the `:root` section to match your project's design
+3. No need to run any additional scripts after making changes
+
+For example, to change the primary color:
+
+```css
+:root {
+  /* Original value */
+  /* --spot--primary: #3b82f6; */
+
+  /* Your custom value */
+  --spot--primary: #8b5cf6;
+}
+```
+
+### Available Variables
+
+The variables.css file includes:
+
+- **Layout Sizes**: Spacing scales used throughout the system
+- **Font Sizes**: Typography size scale
+- **Theme Colors**: Surface, ink, spot, and stroke colors
+- **Typography**: Font families, weights, and line heights
+- **Borders**: Border widths and radius values
+- **Layout**: Grid dimensions and spacing
