@@ -636,9 +636,15 @@ export function purgeCssHook() {
           );
           if (defineConfigMatch) {
             // Add integrations to existing defineConfig
+            const existingConfig = defineConfigMatch[1].trim();
+            // Check if the existing config ends with a comma already
+            const needsComma =
+              existingConfig.length > 0 && !existingConfig.endsWith(",");
+            const separator = needsComma ? ", " : " ";
+
             configContent = configContent.replace(
               /defineConfig\s*\(\s*\{([^}]*)\}\s*\)/s,
-              `defineConfig({\$1, integrations: [purgeCssHook()]})`
+              `defineConfig({$1${separator}integrations: [purgeCssHook()]})`
             );
           } else {
             // Just append a basic config at the end
