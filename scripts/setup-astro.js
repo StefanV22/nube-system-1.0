@@ -586,25 +586,34 @@ export function purgeCssHook() {
     if (existingConfig) {
       // If config exists, update it to include our hook
       if (!configContent.includes("nube-system-purge-hook")) {
+        // First, check if the purge-hook is already imported
+        const hookImportRegex =
+          /import\s+\{\s*purgeCssHook\s*\}\s+from\s+['"]\.\/src\/nube-system\/scripts\/purge-hook\.js['"]/;
+        const hasHookImport = hookImportRegex.test(configContent);
+
         // Add import if not already there
-        if (!configContent.includes("import { purgeCssHook }")) {
-          // Find the last import statement to add ours after it
-          const lastImportIndex = configContent.lastIndexOf("import ");
-          let lastImportEndIndex = -1;
+        if (!hasHookImport) {
+          const importInsertPoint = configContent.lastIndexOf("import");
 
-          if (lastImportIndex !== -1) {
-            lastImportEndIndex = configContent.indexOf(";", lastImportIndex);
-            if (lastImportEndIndex === -1) {
-              // Try finding the end of the line if no semicolon
-              lastImportEndIndex = configContent.indexOf("\n", lastImportIndex);
+          if (importInsertPoint !== -1) {
+            // Find the end of the last import statement
+            let importEndIndex = configContent.indexOf(";", importInsertPoint);
+            if (importEndIndex === -1) {
+              // No semicolon, try finding the end of line
+              importEndIndex = configContent.indexOf("\n", importInsertPoint);
             }
-          }
 
-          if (lastImportEndIndex !== -1) {
-            configContent =
-              configContent.slice(0, lastImportEndIndex + 1) +
-              "\nimport { purgeCssHook } from './src/nube-system/scripts/purge-hook.js';" +
-              configContent.slice(lastImportEndIndex + 1);
+            if (importEndIndex !== -1) {
+              configContent =
+                configContent.slice(0, importEndIndex + 1) +
+                "\nimport { purgeCssHook } from './src/nube-system/scripts/purge-hook.js';" +
+                configContent.slice(importEndIndex + 1);
+            } else {
+              // Fallback if import end can't be found
+              configContent =
+                "import { purgeCssHook } from './src/nube-system/scripts/purge-hook.js';\n" +
+                configContent;
+            }
           } else {
             // No imports found, add at the beginning
             configContent =
@@ -613,45 +622,89 @@ export function purgeCssHook() {
           }
         }
 
-        // Find where to add the hook in the integrations array
-        const integrationsMatch = configContent.match(
-          /integrations\s*:\s*\[([^\]]*)\]/s
-        );
-        if (integrationsMatch) {
-          // Already has integrations array
-          const integrations = integrationsMatch[1];
-          const updatedIntegrations =
-            integrations.trim().length > 0
-              ? integrations + ", purgeCssHook()"
-              : "purgeCssHook()";
+        // Now handle the integration insertion
+        if (configContent.includes("integrations: [")) {
+          // Already has an integrations array
+          const integrationsRegex = /integrations\s*:\s*\[(.*?)\]/s;
+          const match = configContent.match(integrationsRegex);
 
-          configContent = configContent.replace(
-            /integrations\s*:\s*\[([^\]]*)\]/s,
-            `integrations: [${updatedIntegrations}]`
-          );
-        } else {
-          // No integrations array found, check if defineConfig exists
-          const defineConfigMatch = configContent.match(
-            /defineConfig\s*\(\s*\{([^}]*)\}\s*\)/s
-          );
-          if (defineConfigMatch) {
-            // Add integrations to existing defineConfig
-            const existingConfig = defineConfigMatch[1].trim();
-            // Check if the existing config ends with a comma already
+          if (match && !match[1].includes("purgeCssHook")) {
+            // Only add if not already present
+            const existingIntegrations = match[1].trim();
             const needsComma =
-              existingConfig.length > 0 && !existingConfig.endsWith(",");
-            const separator = needsComma ? ", " : " ";
+              existingIntegrations.length > 0 &&
+              !existingIntegrations.endsWith(",");
+            const updatedIntegrations =
+              existingIntegrations +
+              (needsComma ? ", " : "") +
+              "purgeCssHook()";
 
             configContent = configContent.replace(
-              /defineConfig\s*\(\s*\{([^}]*)\}\s*\)/s,
-              `defineConfig({$1${separator}integrations: [purgeCssHook()]})`
+              integrationsRegex,
+              `integrations: [${updatedIntegrations}]`
+            );
+          }
+        } else if (configContent.includes("defineConfig({")) {
+          // Has defineConfig but no integrations array
+          const defineConfigRegex = /(defineConfig\s*\(\s*\{)(.*?)(\}\s*\))/s;
+          const match = configContent.match(defineConfigRegex);
+
+          if (match) {
+            const configStart = match[1];
+            const configContents = match[2];
+            const configEnd = match[3];
+
+            // Check if config content is empty or ends with a comma
+            const needsComma =
+              configContents.trim().length > 0 &&
+              !configContents.trim().endsWith(",");
+
+            configContent = configContent.replace(
+              defineConfigRegex,
+              `${configStart}${configContents}${
+                needsComma ? ", " : ""
+              }integrations: [purgeCssHook()]${configEnd}`
             );
           } else {
-            // Just append a basic config at the end
-            configContent += `\n\nexport default {
+            // Fallback for simple defineConfig
+            configContent = configContent.replace(
+              /(defineConfig\s*\(\s*\{\s*)/,
+              `$1integrations: [purgeCssHook()], `
+            );
+          }
+        } else if (configContent.includes("export default {")) {
+          // Has export default but no defineConfig
+          const defaultExportRegex = /(export\s+default\s*\{)(.*?)(\})/s;
+          const match = configContent.match(defaultExportRegex);
+
+          if (match) {
+            const exportStart = match[1];
+            const exportContents = match[2];
+            const exportEnd = match[3];
+
+            // Check if export content is empty or ends with a comma
+            const needsComma =
+              exportContents.trim().length > 0 &&
+              !exportContents.trim().endsWith(",");
+
+            configContent = configContent.replace(
+              defaultExportRegex,
+              `${exportStart}${exportContents}${
+                needsComma ? ", " : ""
+              }integrations: [purgeCssHook()]${exportEnd}`
+            );
+          } else {
+            // Fallback for simple export default
+            configContent = configContent.replace(
+              /(export\s+default\s*\{\s*)/,
+              `$1integrations: [purgeCssHook()], `
+            );
+          }
+        } else {
+          // No existing config structure we can recognize, append a new one
+          configContent += `\n\nexport default {
   integrations: [purgeCssHook()]
 };\n`;
-          }
         }
       }
     } else {
