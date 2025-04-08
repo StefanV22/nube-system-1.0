@@ -718,6 +718,18 @@ export default defineConfig({
 `;
     }
 
+    // Final check to ensure no double comma syntax error after defineConfig({
+    configContent = configContent.replace(
+      /defineConfig\s*\(\s*\{\s*,/g,
+      "defineConfig({"
+    );
+
+    // Final check to ensure no duplicate hooks
+    configContent = configContent.replace(
+      /\[purgeCssHook\(\)\s*,\s*purgeCssHook\(\)\]/g,
+      "[purgeCssHook()]"
+    );
+
     fs.writeFileSync(astroConfigPath, configContent);
     console.log("✓ Updated astro.config.mjs with build hook");
 
