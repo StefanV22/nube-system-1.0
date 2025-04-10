@@ -51,7 +51,7 @@ src/
     │   ├── copy-css.js
     │   └── purge-css.js
     ├── styles/
-    │   ├── variables.css (theme variables)
+    │   ├── setup.css (theme variables and default styles)
     │   ├── system.css (all utility classes)
     │   └── system-styles.css (optimized version for your project)
     └── system.doc.md (documentation)
@@ -59,18 +59,18 @@ src/
 
 ## Quick Start
 
-After installing Nube System, import both the variables.css and system-styles.css files in your main layout:
+After installing Nube System, import both the setup.css and system-styles.css files in your main layout:
 
 ```javascript
 // In your main.js, Layout.astro, or other entry point:
-import "../nube-system/styles/variables.css"; // Theme variables
+import "../nube-system/styles/setup.css"; // Theme variables and default styles
 import "../nube-system/styles/system-styles.css"; // Utility classes
 ```
 
-The separation of variables and utility classes offers several benefits:
+The separation of setup and utility classes offers several benefits:
 
-- Variables can be easily customized without affecting utility classes
-- Only the utility classes get purged and minified, not the variables
+- Variables and default styles can be easily customized without affecting utility classes
+- Only the utility classes get purged and minified, not the variables or default styles
 - You can modify variables for each project while keeping the same utility set
 
 ### Optimizing Your CSS
@@ -89,7 +89,7 @@ The recommended workflow:
 
 1. Use `npm run copy-css` when starting a new component to have all classes available
 2. Run `npm run purge-css` before deploying to optimize file size
-3. Customize `variables.css` to match your project's theme as needed
+3. Customize `setup.css` to match your project's theme as needed
 
 ## Core Concepts
 
@@ -870,7 +870,7 @@ Nube System now comes with a built-in CSS purging system that:
 1. Scans your project files for used utility classes
 2. Keeps only the classes you're actually using
 3. Minifies the result for even better performance
-4. Keeps variables.css separate and untouched
+4. Keeps setup.css separate and untouched
 
 To use it, simply run:
 
@@ -878,7 +878,7 @@ To use it, simply run:
 npm run purge-css
 ```
 
-This will optimize your `system-styles.css` file while leaving your `variables.css` file intact.
+This will optimize your `system-styles.css` file while leaving your `setup.css` file intact.
 
 If you need access to all utility classes again (for example, when starting a new component), you can run:
 
@@ -919,7 +919,7 @@ For Astro projects, you need to import the CSS files in your Layout component:
 
 <style is:global>
   /* Import the variable definitions first */
-  @import "../nube-system/styles/variables.css";
+  @import "../nube-system/styles/setup.css";
 
   /* Import the optimized utility classes */
   @import "../nube-system/styles/system-styles.css";
@@ -931,7 +931,7 @@ Alternatively, you can import them directly in the head section:
 ```astro
 <head>
   <!-- Other head elements -->
-  <link rel="stylesheet" href="/src/nube-system/styles/variables.css" />
+  <link rel="stylesheet" href="/src/nube-system/styles/setup.css" />
   <link rel="stylesheet" href="/src/nube-system/styles/system-styles.css" />
 </head>
 ```
@@ -967,7 +967,7 @@ One of the key benefits of Nube System's architecture is the separation of varia
 
 ### How to Customize Variables
 
-1. Open the `src/nube-system/styles/variables.css` file in your project
+1. Open the `src/nube-system/styles/setup.css` file in your project
 2. Modify the CSS variables in the `:root` section to match your project's design
 3. No need to run any additional scripts after making changes
 
@@ -985,7 +985,7 @@ For example, to change the primary color:
 
 ### Available Variables
 
-The variables.css file includes:
+The setup.css file includes:
 
 - **Layout Sizes**: Spacing scales used throughout the system
 - **Font Sizes**: Typography size scale

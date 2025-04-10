@@ -52,8 +52,8 @@ Original size: \${systemCss.length} bytes
     fs.writeFileSync(systemStylesPath, header + "\\n\\n" + systemCss);
 
     console.log("✅ Successfully copied system.css to system-styles.css");
-    console.log("✨ Remember: variables.css is a separate file that contains your theme variables");
-    console.log("📝 You can modify variables.css to customize your theme without affecting utilities");
+    console.log("✨ Remember: setup.css is a separate file that contains your theme variables and default styles");
+    console.log("📝 You can modify setup.css to customize your theme without affecting utilities");
   } catch (error) {
     console.error("❌ Error while copying CSS:", error);
     process.exit(1);
@@ -512,10 +512,10 @@ function setupAstro() {
     const systemTarget = path.join(stylesDir, "system.css");
     copyFile(systemSource, systemTarget);
 
-    // Copy the variables.css file
-    const variablesSource = path.join(packagePath, "styles", "variables.css");
-    const variablesTarget = path.join(stylesDir, "variables.css");
-    copyFile(variablesSource, variablesTarget);
+    // Copy the setup.css file
+    const setupSource = path.join(packagePath, "styles", "setup.css");
+    const setupTarget = path.join(stylesDir, "setup.css");
+    copyFile(setupSource, setupTarget);
 
     // Create initial system-styles.css (copy of system.css)
     const systemStylesTarget = path.join(stylesDir, "system-styles.css");
@@ -749,7 +749,7 @@ export default defineConfig({
       "- `npm run purge-css` - Removes unused classes and minifies system-styles.css\n" +
       "- `npm run copy-css` - Copies all utility classes to system-styles.css (use during development)\n\n" +
       "### Files\n\n" +
-      "- `variables.css` - Theme variables (you can customize these)\n" +
+      "- `setup.css` - Theme variables and default styles (you can customize these)\n" +
       "- `system.css` - All utility classes (don't edit directly)\n" +
       "- `system-styles.css` - Optimized CSS for your project (automatically generated)";
 
@@ -764,7 +764,9 @@ export default defineConfig({
     console.log("    │   ├── purge-css.js");
     console.log("    │   └── purge-hook.js (Astro integration)");
     console.log("    └── styles/");
-    console.log("        ├── variables.css (customizable theme variables)");
+    console.log(
+      "        ├── setup.css (customizable theme variables and default styles)"
+    );
     console.log("        ├── system.css (all utility classes)");
     console.log(
       "        └── system-styles.css (optimized version for your project)"
@@ -773,7 +775,7 @@ export default defineConfig({
     console.log("\nQuick Start:");
     console.log("\n// In your main layout or entry point:");
     console.log(
-      'import "../nube-system/styles/variables.css"; // Theme variables'
+      'import "../nube-system/styles/setup.css"; // Theme variables and default styles'
     );
     console.log(
       'import "../nube-system/styles/system-styles.css"; // Utility classes'

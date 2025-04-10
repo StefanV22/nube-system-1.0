@@ -12,8 +12,8 @@
     "LICENSE"
   ],
   "scripts": {
-    "build": "sass src/system.scss:styles/system.css src/variables.scss:styles/variables.css --style=expanded --no-source-map",
-    "dev": "sass src/system.scss:styles/system.css src/variables.scss:styles/variables.css --watch --style=expanded --no-source-map",
+    "build": "sass src/system.scss:styles/system.css src/setup.scss:styles/setup.css --style=expanded --no-source-map",
+    "dev": "sass src/system.scss:styles/system.css src/setup.scss:styles/setup.css --watch --style=expanded --no-source-map",
     "prepare": "npm run build",
     "postinstall": "node scripts/setup-astro.js"
   },

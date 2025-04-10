@@ -1,8 +1,21 @@
 /**
- * Nube System - Variables
+ * Nube System - Setup
  * 
- * This file compiles only the CSS variables (custom properties).
- * These variables can be customized for each project without affecting utility classes.
+ * This file contains:
+ * 1. CSS variables (custom properties) that can be customized for each project
+ * 2. Default styles that will be applied to all projects
+ * 
+ * The default styles section is where you can add styles that should be applied
+ * globally to all projects using Nube System. These styles will not be purged.
+ * 
+ * Example default styles you can add:
+ * - Reset styles (margin, padding, box-sizing)
+ * - Typography defaults (font-family, line-height)
+ * - Heading styles (h1-h6)
+ * - Link styles
+ * - List styles
+ * - Form element defaults
+ * - Any other base styles that should be consistent across projects
  */
 :root {
   --layout--size--0: 0rem;
@@ -53,8 +66,7 @@
   --stroke--secondary: rgba(255, 255, 255, 0.05);
   --stroke--tertiary: rgba(255, 255, 255, 0.02);
   --font--family--0: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
-    sans-serif;
+    Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   --font--family--1: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
     "Liberation Mono", "Courier New", monospace;
   --font--weight--0: 300;
@@ -85,4 +97,53 @@
   --layout--grid--margin: var(--layout--size--6);
   --layout--grid--gutter: var(--layout--size--6);
   --layout--grid--row: var(--layout--size--3);
+}
+
+/* Default styles section - Add your global styles here */
+/* These styles will be applied to all pages and won't be purged */
+body {
+  margin: 0;
+  font-family: var(--font--family--1);
+  line-height: var(--line--height--1);
+  color: var(--ink--body);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  color: var(--ink--title);
+}
+
+h1 {
+  font-size: var(--font--size--8);
+  line-height: var(--line--height--8);
+}
+
+h2 {
+  font-size: var(--font--size--7);
+  line-height: var(--line--height--7);
+}
+
+h3 {
+  font-size: var(--font--size--6);
+  line-height: var(--line--height--6);
+}
+
+h4 {
+  font-size: var(--font--size--5);
+  line-height: var(--line--height--5);
+}
+
+h5 {
+  font-size: var(--font--size--4);
+  line-height: var(--line--height--4);
+}
+
+p {
+  font-size: var(--font--size--1);
+  line-height: var(--line--height--1);
 }

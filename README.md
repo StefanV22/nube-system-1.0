@@ -25,7 +25,7 @@ Import the complete system CSS file that includes all utilities:
 import "nube-system/styles/system.css";
 
 // OR Production (minified) version
-import "nube-system/styles/variables.css";
+import "nube-system/styles/setup.css";
 import "nube-system/styles/system-styles.css";
 ```
 
@@ -35,7 +35,7 @@ When installed in an Astro project, Nube System automatically configures itself.
 
 ```javascript
 // e.g., in src/layouts/Layout.astro
-import "../nube-system/styles/variables.css"; // Theme variables
+import "../nube-system/styles/setup.css"; // Theme variables and default styles
 import "../nube-system/styles/system-styles.css"; // Optimized utilities
 ```
 
