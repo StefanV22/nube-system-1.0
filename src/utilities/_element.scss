@@ -44,9 +44,9 @@
 }
 
 // Border Width utilities (non-responsive)
-@for $i from 0 through 8 {
+@for $i from 0 through 2 {
   [class*="bw#{$i}"] {
-    border-width: var(--layout--size--#{$i});
+    border-width: var(--border--width--#{$i});
   }
 }
 
