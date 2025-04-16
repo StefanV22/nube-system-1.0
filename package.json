@@ -1,6 +1,6 @@
 {
   "name": "nube-system",
-  "version": "1.7.2",
+  "version": "1.7.3",
   "description": "A modern, utility-first CSS framework with semantic theme tokens and fluid responsive design",
   "main": "index.js",
   "style": "styles/system.css",
