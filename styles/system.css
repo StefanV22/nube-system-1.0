@@ -127,6 +127,12 @@
   grid-row-gap: var(--layout--grid--row);
 }
 
+[class*=xs_grid-x1] {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: var(--layout--grid--gutter);
+}
+
 [class*=xs_grid-x2] {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -239,59 +245,73 @@
   }
 }
 [class*=fg0] {
-  gap: var(--layout--size--0);
+  grid-column-gap: var(--layout--size--0);
+  grid-row-gap: var(--layout--size--0);
 }
 
 [class*=fg1] {
-  gap: var(--layout--size--1);
+  grid-column-gap: var(--layout--size--1);
+  grid-row-gap: var(--layout--size--1);
 }
 
 [class*=fg2] {
-  gap: var(--layout--size--2);
+  grid-column-gap: var(--layout--size--2);
+  grid-row-gap: var(--layout--size--2);
 }
 
 [class*=fg3] {
-  gap: var(--layout--size--3);
+  grid-column-gap: var(--layout--size--3);
+  grid-row-gap: var(--layout--size--3);
 }
 
 [class*=fg4] {
-  gap: var(--layout--size--4);
+  grid-column-gap: var(--layout--size--4);
+  grid-row-gap: var(--layout--size--4);
 }
 
 [class*=fg5] {
-  gap: var(--layout--size--5);
+  grid-column-gap: var(--layout--size--5);
+  grid-row-gap: var(--layout--size--5);
 }
 
 [class*=fg6] {
-  gap: var(--layout--size--6);
+  grid-column-gap: var(--layout--size--6);
+  grid-row-gap: var(--layout--size--6);
 }
 
 [class*=fg7] {
-  gap: var(--layout--size--7);
+  grid-column-gap: var(--layout--size--7);
+  grid-row-gap: var(--layout--size--7);
 }
 
 [class*=fg8] {
-  gap: var(--layout--size--8);
+  grid-column-gap: var(--layout--size--8);
+  grid-row-gap: var(--layout--size--8);
 }
 
 [class*=fg9] {
-  gap: var(--layout--size--9);
+  grid-column-gap: var(--layout--size--9);
+  grid-row-gap: var(--layout--size--9);
 }
 
 [class*=fg10] {
-  gap: var(--layout--size--10);
+  grid-column-gap: var(--layout--size--10);
+  grid-row-gap: var(--layout--size--10);
 }
 
 [class*=fg11] {
-  gap: var(--layout--size--11);
+  grid-column-gap: var(--layout--size--11);
+  grid-row-gap: var(--layout--size--11);
 }
 
 [class*=fg12] {
-  gap: var(--layout--size--12);
+  grid-column-gap: var(--layout--size--12);
+  grid-row-gap: var(--layout--size--12);
 }
 
 [class*=fg13] {
-  gap: var(--layout--size--13);
+  grid-column-gap: var(--layout--size--13);
+  grid-row-gap: var(--layout--size--13);
 }
 
 [class*=clm] {
@@ -710,14 +730,17 @@
 
 [class*=bw0] {
   border-width: var(--border--width--0);
+  border-style: solid;
 }
 
 [class*=bw1] {
   border-width: var(--border--width--1);
+  border-style: solid;
 }
 
 [class*=bw2] {
   border-width: var(--border--width--2);
+  border-style: solid;
 }
 
 [class*=xs_br0] {
