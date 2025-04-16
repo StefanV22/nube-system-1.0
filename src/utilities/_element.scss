@@ -47,6 +47,7 @@
 @for $i from 0 through 2 {
   [class*="bw#{$i}"] {
     border-width: var(--border--width--#{$i});
+    border-style: solid;
   }
 }
 
